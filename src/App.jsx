@@ -18,7 +18,7 @@ class App extends Component {
 
         <Resizer
           growthUnit={growthUnit}
-          timeoutDelay={0}
+          timeoutDelay={200}
           minHeight={200}
           maxHeight={500}
           uniqueId="test"

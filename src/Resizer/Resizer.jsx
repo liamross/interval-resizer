@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 let waitToRender = null;
+let isWrapperHeightSet;
 
 class Resizer extends Component {
   constructor(props) {
     super(props);
+    isWrapperHeightSet = false;
 
     // Binds.
     this.renderTimeout = this.renderTimeout.bind(this);
@@ -36,9 +38,8 @@ class Resizer extends Component {
     clearTimeout(waitToRender);
     // Reset the height of the internal wrapper. This must be async or else the
     // internals flicker. If a better solution exists then implement it instead.
-    setTimeout(() => {
-      this.resetWrapperHeight();
-    });
+    // Only fires if the wrapper height is set (to set to auto).
+    isWrapperHeightSet && setTimeout(() => { this.resetWrapperHeight() });
     // Start the timeout before setting the new height.
     waitToRender = setTimeout(() => {
       this.setWrapperHeight();
@@ -78,6 +79,7 @@ class Resizer extends Component {
     // Set the height of the immediate child to 100%. Could also hard code it
     // to be String(newHeight)+'px' as well. Not sure which is better.
     wrapper.style.height = '100%';
+    isWrapperHeightSet = true;
   }
 
   /**
@@ -88,6 +90,7 @@ class Resizer extends Component {
     const sensorDiv = document.getElementById(`_resizeWrapper_${uniqueId}`);
     const wrapper = sensorDiv.firstChild;
     wrapper.style.height = 'auto';
+    isWrapperHeightSet = false;
   }
 
   render() {
