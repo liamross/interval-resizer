@@ -8,21 +8,21 @@ class App extends Component {
   render() {
     return (
       <div>
-        {Array(20).fill(0).map((x, index) => {
-          console.log(x);
-          console.log(index);
-          return <div
+        {Array(20).fill(0).map((x, index) =>
+          <div
+            key={index}
             className="line"
             style={{ top: `${String(growthUnit * index + 18)}px` }}
           />
-        })}
+        )}
 
         <Resizer
           growthUnit={growthUnit}
           timeoutDelay={0}
           minHeight={200}
-          maxHeight={400}
-          uniqueId={'test'}
+          maxHeight={500}
+          uniqueId="test"
+          className="resizing-widget"
         >
           <div className="Outer">
             <div className="Inner Inner--one">

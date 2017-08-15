@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './Resizer.css';
 
 let waitToRender = null;
 
@@ -93,7 +92,10 @@ class Resizer extends Component {
 
   render() {
     return (
-      <div id={`_resizeWrapper_${this.props.uniqueId}`}>
+      <div
+        id={`_resizeWrapper_${this.props.uniqueId}`}
+        className={this.props.className}
+      >
         {this.props.children}
       </div>
     );
@@ -105,6 +107,7 @@ Resizer.defaultProps = {
   minHeight: 0,
   maxHeight: null,
   uniqueId: '',
+  className: null,
 };
 
 Resizer.propTypes = {
@@ -114,6 +117,7 @@ Resizer.propTypes = {
   minHeight: PropTypes.number,
   maxHeight: PropTypes.number,
   uniqueId: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Resizer;
