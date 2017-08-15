@@ -40,9 +40,10 @@ class Resizer extends Component {
   }
 
   /**
-   * Gets height of internal wrapper, then sets resize wrapper to next-largest
-   * growthUnit interval. It also ensures that it is set larger than the
-   * minHeight. Finally, sets internal wrapper to 100%.
+   * Sets internal wrapper to height auto, gets height of internal wrapper, then
+   * sets resize wrapper to next-largest growthUnit interval. It also ensures
+   * that it is set larger than the minHeight and smaller than maxHeight.
+   * Finally, sets internal wrapper to 100%.
    */
   setWrapperHeight() {
     const { growthUnit, uniqueId, minHeight, maxHeight } = this.props;
