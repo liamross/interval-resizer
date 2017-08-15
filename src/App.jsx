@@ -18,7 +18,7 @@ class App extends Component {
 
         <Resizer
           growthUnit={growthUnit}
-          timeoutDelay={200}
+          timeoutDelay={0}
           minHeight={200}
           maxHeight={500}
           uniqueId="test"
@@ -42,10 +42,8 @@ class App extends Component {
             <div className="Inner Inner--three">
               <div>
                 Three Three Three Three Three Three Three Three Three Three
-                Three
                 Three Three Three Three Three Three Three Three Three Three
-                Three
-                Three
+                Three Three Three
               </div>
             </div>
           </div>
