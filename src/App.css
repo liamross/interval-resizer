@@ -1,0 +1,37 @@
+body {
+    margin: 16px;
+}
+
+.Outer {
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+}
+
+.Inner {
+    flex: 1 1 0;
+
+    display: flex;
+    align-items: center;
+    padding: 8px 4px;
+}
+
+.Inner--one {
+    background-color: lightblue;
+}
+
+.Inner--two {
+    background-color: lightcoral;
+}
+
+.Inner--three {
+    background-color: lightgreen;
+}
+
+.line {
+    z-index: -1;
+    left: 16px;
+    right: 16px;
+    position: absolute;
+    border-bottom: 1px solid rgba(0, 0, 0, .4);
+}
