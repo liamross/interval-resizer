@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Resizer from './Resizer/Resizer';
 import './App.css';
 
-const growthUnit = 50;
+const growthUnit = 100;
 
 class App extends Component {
   render() {
@@ -18,7 +18,7 @@ class App extends Component {
 
         <Resizer
           growthUnit={growthUnit}
-          timeoutDelay={0}
+          timeoutDelay={200}
           minHeight={200}
           maxHeight={500}
           uniqueId="test"
