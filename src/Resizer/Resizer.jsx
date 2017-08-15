@@ -26,7 +26,6 @@ class Resizer extends Component {
   }
   setWrapperHeight() {
     const { growthUnit, uniqueId, minHeight, maxHeight } = this.props;
-    const intervalMinHeight = Math.ceil(minHeight / growthUnit) * growthUnit;
     const sensorDiv = document.getElementById(`_resizeWrapper_${uniqueId}`);
     const wrapper = sensorDiv.firstChild;
     const contentHeight = wrapper.offsetHeight;
