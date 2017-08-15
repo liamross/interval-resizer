@@ -48,18 +48,32 @@ class Resizer extends Component {
 
   /**
    * Gets height of internal wrapper, then sets resize wrapper to next-largest
-   * growthUnit interval. Finally, sets internal wrapper to 100%.
+   * growthUnit interval. It also ensures that it is set larger than the
+   * minHeight. Finally, sets internal wrapper to 100%.
    */
   setWrapperHeight() {
-    const { growthUnit, uniqueId } = this.props;
+    const { growthUnit, uniqueId, minHeight, maxHeight } = this.props;
+    // Set intervalMinHeight to be a multiple of growthUnits.
+    const intervalMinHeight = Math.ceil(minHeight / growthUnit) * growthUnit;
     // Get the resize wrapper.
     const sensorDiv = document.getElementById(`_resizeWrapper_${uniqueId}`);
     // Get the immediate child of the resize wrapper.
     const wrapper = sensorDiv.firstChild;
     // Get the height of the immediate child.
     const contentHeight = wrapper.offsetHeight;
-    // Find the next-largest interval.
-    const newHeight = Math.ceil(contentHeight / growthUnit) * growthUnit;
+    // Find the next-largest interval, or intervalMinHeight.
+    let newHeight = Math.max(
+      intervalMinHeight,
+      Math.ceil(contentHeight / growthUnit) * growthUnit,
+    );
+    // If maxHeight is not null, then restrict newHeight to the growthUnit
+    // interval closest to maxHeight
+    if (maxHeight !== null) {
+      newHeight = Math.min(
+        newHeight,
+        Math.floor(maxHeight / growthUnit) * growthUnit,
+      )
+    }
     // Set the resize wrapper height to newHeight.
     sensorDiv.style.height = String(newHeight) + 'px';
     // Set the height of the immediate child to 100%. Could also hard code it
@@ -87,15 +101,19 @@ class Resizer extends Component {
 }
 
 Resizer.defaultProps = {
-  timeoutDelay: 400,
+  timeoutDelay: 0,
+  minHeight: 0,
+  maxHeight: null,
   uniqueId: '',
 };
 
 Resizer.propTypes = {
   growthUnit: PropTypes.number.isRequired,
   children: PropTypes.element.isRequired,
-  uniqueId: PropTypes.string,
   timeoutDelay: PropTypes.number,
+  minHeight: PropTypes.number,
+  maxHeight: PropTypes.number,
+  uniqueId: PropTypes.string,
 };
 
 export default Resizer;

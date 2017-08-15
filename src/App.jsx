@@ -8,25 +8,22 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className="line"
-             style={{ top: `${String(growthUnit * 1 + 18)}px` }} />
-        <div className="line"
-             style={{ top: `${String(growthUnit * 2 + 18)}px` }} />
-        <div className="line"
-             style={{ top: `${String(growthUnit * 3 + 18)}px` }} />
-        <div className="line"
-             style={{ top: `${String(growthUnit * 4 + 18)}px` }} />
-        <div className="line"
-             style={{ top: `${String(growthUnit * 5 + 18)}px` }} />
-        <div className="line"
-             style={{ top: `${String(growthUnit * 6 + 18)}px` }} />
-        <div className="line"
-             style={{ top: `${String(growthUnit * 7 + 18)}px` }} />
-        <div className="line"
-             style={{ top: `${String(growthUnit * 8 + 18)}px` }} />
-        <div className="line"
-             style={{ top: `${String(growthUnit * 9 + 18)}px` }} />
-        <Resizer growthUnit={growthUnit} timeoutDelay={0}>
+        {Array(20).fill(0).map((x, index) => {
+          console.log(x);
+          console.log(index);
+          return <div
+            className="line"
+            style={{ top: `${String(growthUnit * index + 18)}px` }}
+          />
+        })}
+
+        <Resizer
+          growthUnit={growthUnit}
+          timeoutDelay={0}
+          minHeight={200}
+          maxHeight={400}
+          uniqueId={'test'}
+        >
           <div className="Outer">
             <div className="Inner Inner--one">
               <div>
