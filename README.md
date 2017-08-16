@@ -62,6 +62,7 @@ uniqueId:       string          (default: none) // A unique id (> 1 resizer).
 className:      string          (default: none) // A general class.
 ```
 
+### Best practices
 To use, extract the Resizer file found in `src/Resizer/Resizer.jsx` and place it
 within your React project as needed. In order to work (as of August 15, 2017),
 this component requires the following:
