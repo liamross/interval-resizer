@@ -44,10 +44,10 @@ To get the demo running:
 1. `npm install` or `yarn`
 1. `npm start` or `yarn start`
 
-The component itself is found in `src/Resizer/Resizer.jsx`. This component can
-be extracted from its file It is entirely self-contained and depends only on the
-React and PropTypes libraries. It can easily be refactored to exclude the
-prop-types requirement.
+The component itself is found in `src/IntervalResizer/IntervalResizer.jsx`. This
+component can be extracted from its file It is entirely self-contained and
+depends only on the React and PropTypes libraries. It can easily be refactored
+to exclude the prop-types requirement.
 
 ## Use
 
@@ -62,9 +62,10 @@ uniqueId:       string          (default: none) // A unique id (> 1 resizer).
 className:      string          (default: none) // A general class.
 ```
 
-To use, extract the Resizer file found in `src/Resizer/Resizer.jsx` and place it
-within your React project as needed. In order to work (as of August 15, 2017),
-this component requires the following:
+To use, extract the IntervalResizer file found in
+`src/IntervalResizer/IntervalResizer.jsx` and place it within your React project
+as needed. In order to work (as of August 15, 2017), this component requires the
+following:
 - A single child *internals*, which wraps all of the things rendered into the
 *resizer*
 - To benefit from the *resizer*, content within the *internals* wrapper must be

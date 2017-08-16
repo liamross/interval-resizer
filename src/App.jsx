@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Resizer from './Resizer/Resizer';
+import IntervalResizer from './IntervalResizer/IntervalResizer';
 import './App.css';
 
 class App extends Component {
@@ -15,12 +15,15 @@ class App extends Component {
   render() {
     return (
       <div>
+        <h3>
+          Interval Resize Demo
+        </h3>
         <div className="resizeDemo-settings">
           <label>
             Growth Units:
             <input
               type="number"
-              placeholder="Minimum 50"
+              placeholder="Minimum: 50"
               value={this.state.growthUnit || ''}
               onChange={e => this.setState({
                 ...this.state,
@@ -32,7 +35,7 @@ class App extends Component {
             Resize Delay:
             <input
               type="number"
-              placeholder="After movement stops"
+              placeholder="Empty is no delay"
               value={this.state.timeoutDelay || ''}
               onChange={e => this.setState({
                 ...this.state,
@@ -44,7 +47,7 @@ class App extends Component {
             Min Height:
             <input
               type="number"
-              placeholder="Blank is no min"
+              placeholder="Empty is no min"
               value={this.state.minHeight || ''}
               onChange={e => this.setState({
                 ...this.state,
@@ -56,7 +59,7 @@ class App extends Component {
             Max Height:
             <input
               type="number"
-              placeholder="Blank is no max"
+              placeholder="Empty is no max"
               value={this.state.maxHeight || ''}
               onChange={e => this.setState({
                 ...this.state,
@@ -74,7 +77,7 @@ class App extends Component {
                 Math.max(this.state.growthUnit, 50) : 50) * index)}px` }}
             />
           )}
-          <Resizer
+          <IntervalResizer
             growthUnit={ this.state.growthUnit ?
               Math.max(this.state.growthUnit, 50) : 50
             }
@@ -134,7 +137,7 @@ class App extends Component {
                 </div>
               </div>
             </div>
-          </Resizer>
+          </IntervalResizer>
         </div>
       </div>
     );

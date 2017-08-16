@@ -1,4 +1,6 @@
-/* Resizer.jsx -- A wrapper for resizing content to hit a pre-defined interval.
+/* IntervalResizer.jsx -- A React resizer which detects the height of its
+ * internals, then expands them to the nearest multiple of a pre-defined
+ * interval.
  *
  * Copyright (C) 2017 Liam Ross
  *
@@ -45,7 +47,7 @@ class Resizer extends Component {
    */
   setWrapperHeight() {
     const { growthUnit, uniqueId, minHeight, maxHeight } = this.props;
-    const resizeWrapper = document.getElementById(`_resizeWrapper_${uniqueId}`);
+    const resizeWrapper = document.getElementById(`_intervalResize${uniqueId}`);
     const internalWrapper = resizeWrapper.firstChild;
     // 1. Set height of content to auto, allowing detection of content height.
     internalWrapper.style.height = 'auto';
@@ -76,7 +78,7 @@ class Resizer extends Component {
   render() {
     return (
       <div
-        id={`_resizeWrapper_${this.props.uniqueId}`}
+        id={`_intervalResize${this.props.uniqueId}`}
         className={this.props.className}>
         {this.props.children}
       </div>

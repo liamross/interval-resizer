@@ -3,15 +3,23 @@ body {
 }
 
 .resizeDemo-settings {
-    height: 100px;
-    overflow: auto;
+    height: 80px;
+    width: 100%;
+    overflow-x: auto;
     display: flex;
-    flex-wrap: wrap;
 }
 
 .resizeDemo-settings > * {
-    margin: 8px;
+    margin: 16px;
     flex: 1 1 0;
+}
+
+.resizeDemo-settings > *:first-child {
+    margin-left: 0;
+}
+
+.resizeDemo-settings > *:last-child {
+    margin-right: 0;
 }
 
 .resizeDemo-body {
@@ -31,7 +39,7 @@ body {
 }
 
 .Inner {
-    flex: 1 1 0;
+    flex: 1 1 auto;
 
     display: flex;
     align-items: center;
