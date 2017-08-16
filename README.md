@@ -54,10 +54,10 @@ prop-types requirement.
 growthUnit:     number          (required)      // Unit interval to grow by.
 children:       React.Component (required)      // Child to populate wrapper.
 timeoutDelay:   number          (default: none) // The re-render timeout.
-minHeight:      number          (defailt: none) // The resizer's minimum height.
-maxHeight:      number          (defailt: none) // The resizer's maximum height.
-uniqueId:       string          (defailt: none) // A unique id (> 1 resizer).
-className:      string          (defailt: none) // A general class.
+minHeight:      number          (default: none) // The resizer's minimum height.
+maxHeight:      number          (default: none) // The resizer's maximum height.
+uniqueId:       string          (default: none) // A unique id (> 1 resizer).
+className:      string          (default: none) // A general class.
 ```
 
 To use, extract the Resizer file found in `src/Resizer/Resizer.jsx` and place it
