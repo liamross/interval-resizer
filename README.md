@@ -1,11 +1,11 @@
 # Interval Resizer
 
-A React component that wraps an item, and dynamically resizes its content to a
-multiple of a provided unit. This allows for a component to adapt to its
-contents, but still round off cleanly to a multiple of your base unit. This
-solves the paradox of having internals fit to container height, while still
-having container fit height of internal content (arises when you want to have
-set height of container).
+A React component that wraps an item, and dynamically resizes to a multiple of 
+a provided base unit while accounting for the size of its internals. This allows 
+for a component to adapt to its contents, but still round off cleanly to a 
+multiple of your base unit. This solves the paradox of having internals fit to 
+container height, while still having container fit height of internal content 
+(arises when you want to have set height of container).
 
 At its core, this relies on the fact that contents set to fill the height of a
 container that has height auto will still only be as large as they need to be.
