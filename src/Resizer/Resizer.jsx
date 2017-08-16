@@ -86,11 +86,11 @@ class Resizer extends Component {
 }
 
 Resizer.defaultProps = {
-  timeoutDelay: 0,
-  minHeight: null,
-  maxHeight: null,
-  uniqueId: '',
-  className: null,
+  timeoutDelay: 0,  // Default delay is 0, meaning instant re-rendering.
+  minHeight: null,  // No min height by default.
+  maxHeight: null,  // No max height by default.
+  uniqueId: '',     // No addition to id by default.
+  className: null,  // No class name by default.
 };
 
 Resizer.propTypes = {
