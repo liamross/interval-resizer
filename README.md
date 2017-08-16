@@ -53,7 +53,7 @@ to exclude the prop-types requirement.
 
 ### Props
 
-```javascript
+```text
 growthUnit:     number          (required)      // Unit interval to grow by.
 children:       React.Component (required)      // Child to populate wrapper.
 timeoutDelay:   number          (default: none) // The re-render timeout.
