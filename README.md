@@ -66,6 +66,12 @@ To use, extract the IntervalResizer file found in
 `src/IntervalResizer/IntervalResizer.jsx` and place it within your React project
 as needed. In order to work (as of August 15, 2017), this component requires the
 following:
+=======
+### Best practices
+To use, extract the IntervalResizer file found in
+`src/IntervalResizer/IntervalResizer.jsx` and place it within your React project
+as needed. In order to work (as of August 15, 2017), this component requires the
+following:
 - A single child *internals*, which wraps all of the things rendered into the
 *resizer*
 - To benefit from the *resizer*, content within the *internals* wrapper must be
