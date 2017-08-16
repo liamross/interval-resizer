@@ -99,7 +99,7 @@ Resizer.propTypes = {
   minHeight: PropTypes.number,              // The resizer's minimum height.
   maxHeight: PropTypes.number,              // The resizer's maximum height.
   uniqueId: PropTypes.string,               // A unique id (> 1 resizer).
-  className: PropTypes.string,              // A general class (styling many).
+  className: PropTypes.string,              // A general class.
 };
 
 export default Resizer;
