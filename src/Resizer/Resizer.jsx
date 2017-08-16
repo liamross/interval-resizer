@@ -33,9 +33,7 @@ class Resizer extends Component {
    * the timeout and begins again.
    */
   renderTimeout() {
-    // Clear any previous timeouts.
     clearTimeout(this.waitToRender);
-    // Start the timeout before setting the new height.
     this.waitToRender = setTimeout(() => {
       this.setWrapperHeight();
     }, this.props.timeoutDelay);
