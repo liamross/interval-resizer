@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-let waitToRender = null;
-
 class Resizer extends Component {
   constructor(props) {
     super(props);
 
-    // Binds.
+    this.waitToRender = null;
     this.renderTimeout = this.renderTimeout.bind(this);
     this.setWrapperHeight = this.setWrapperHeight.bind(this);
   }
 
-  /**
-   * Add/remove listener on mount/unmount. Right now it listens to window
-   * resize, may be more efficient to listen to div resize.
-   */
   componentDidMount() {
     this.renderTimeout();
     window.addEventListener('resize', this.renderTimeout);
@@ -32,53 +26,45 @@ class Resizer extends Component {
    */
   renderTimeout() {
     // Clear any previous timeouts.
-    clearTimeout(waitToRender);
+    clearTimeout(this.waitToRender);
     // Start the timeout before setting the new height.
-    waitToRender = setTimeout(() => {
+    this.waitToRender = setTimeout(() => {
       this.setWrapperHeight();
     }, this.props.timeoutDelay);
   }
 
   /**
-   * Sets internal wrapper to height auto, gets height of internal wrapper, then
-   * sets resize wrapper to next-largest growthUnit interval. It also ensures
-   * that it is set larger than the minHeight and smaller than maxHeight.
-   * Finally, sets internal wrapper to 100%.
+   * Detects the internal wrapper height and sets the resize wrapper to the next
+   * larger growthUnit multiple. It then adjusts the content to fit that height.
    */
   setWrapperHeight() {
     const { growthUnit, uniqueId, minHeight, maxHeight } = this.props;
-    // Get the resize wrapper.
-    const sensorDiv = document.getElementById(`_resizeWrapper_${uniqueId}`);
-    // Get the immediate child of the resize wrapper.
-    const wrapper = sensorDiv.firstChild;
-    // Set the height of the immediate child to auto.
-    wrapper.style.height = 'auto';
-    // Get the height of the immediate child.
-    const contentHeight = wrapper.offsetHeight;
-    // Set newHeight to the next-largest interval of growthUnit.
+    const resizeWrapper = document.getElementById(`_resizeWrapper_${uniqueId}`);
+    const internalWrapper = resizeWrapper.firstChild;
+    // 1. Set height of content to auto, allowing detection of content height.
+    internalWrapper.style.height = 'auto';
+    // 2. Store height of content.
+    const contentHeight = internalWrapper.offsetHeight;
+    // 3. Find the next larger growthUnit multiple.
     let newHeight = Math.ceil(contentHeight / growthUnit) * growthUnit;
-    // If minHeight is not null, then restrict newHeight to be above or be
-    // equal to minHeight.
+    // 4. Make sure it's larger than min if min exists.
     if (minHeight !== null) {
       newHeight = Math.max(
         newHeight,
         Math.ceil(minHeight / growthUnit) * growthUnit,
-      )
+      );
     }
-    // If maxHeight is not null, then restrict newHeight to be below or be
-    // equal to maxHeight.
+    // 5. Make sure it's smaller than max if max exists.
     if (maxHeight !== null) {
       newHeight = Math.min(
         newHeight,
         Math.floor(maxHeight / growthUnit) * growthUnit,
-      )
+      );
     }
-    // Set the resize wrapper height to newHeight.
-    sensorDiv.style.height = String(newHeight) + 'px';
-    // Set the height of the immediate child to 100%. This is better than hard-
-    // coding, as you may have internal borders on the _resizeWrapper_, or
-    // padding, causing the content to be smaller than the hard height.
-    wrapper.style.height = '100%';
+    // 6. Set height of resizeWrapper to growthUnit multiple newHeight.
+    resizeWrapper.style.height = `${String(newHeight)}px`;
+    // 7. Set height of internals to 100% again.
+    internalWrapper.style.height = '100%';
   }
 
   render() {
