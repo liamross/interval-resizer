@@ -1,5 +1,7 @@
 # Interval Resizer
 
+[Click here to see a working demo](https://liamross.github.io/interval-resizer/)
+
 A React *resizer* which detects the height of its *internals*, then expands them
 to the nearest multiple of a pre-defined interval.
 
