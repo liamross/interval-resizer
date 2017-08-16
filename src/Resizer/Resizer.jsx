@@ -77,8 +77,7 @@ class Resizer extends Component {
     return (
       <div
         id={`_resizeWrapper_${this.props.uniqueId}`}
-        className={this.props.className}
-      >
+        className={this.props.className}>
         {this.props.children}
       </div>
     );
@@ -97,9 +96,9 @@ Resizer.propTypes = {
   growthUnit: PropTypes.number.isRequired,  // Unit interval to grow by.
   children: PropTypes.element.isRequired,   // Child to populate wrapper.
   timeoutDelay: PropTypes.number,           // The re-render timeout.
-  minHeight: PropTypes.number,              // The wrapper's minimum height.
-  maxHeight: PropTypes.number,              // The wrapper's maximum height.
-  uniqueId: PropTypes.string,               // A unique id (> 1 wrapper).
+  minHeight: PropTypes.number,              // The resizer's minimum height.
+  maxHeight: PropTypes.number,              // The resizer's maximum height.
+  uniqueId: PropTypes.string,               // A unique id (> 1 resizer).
   className: PropTypes.string,              // A general class (styling many).
 };
 
