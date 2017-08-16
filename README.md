@@ -52,7 +52,8 @@ to exclude the prop-types requirement.
 ## Use
 
 ### Props
-```
+
+```javascript
 growthUnit:     number          (required)      // Unit interval to grow by.
 children:       React.Component (required)      // Child to populate wrapper.
 timeoutDelay:   number          (default: none) // The re-render timeout.
@@ -62,11 +63,6 @@ uniqueId:       string          (default: none) // A unique id (> 1 resizer).
 className:      string          (default: none) // A general class.
 ```
 
-To use, extract the IntervalResizer file found in
-`src/IntervalResizer/IntervalResizer.jsx` and place it within your React project
-as needed. In order to work (as of August 15, 2017), this component requires the
-following:
-=======
 ### Best practices
 To use, extract the IntervalResizer file found in
 `src/IntervalResizer/IntervalResizer.jsx` and place it within your React project
