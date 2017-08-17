@@ -17,7 +17,7 @@ not be detected by the resizer wrapper until a window resize occurs.
 ### What is this for?
 The main usage for the *resizer* is in a Dashboard scenario, where you want your
 components to expand with their content, but you don't want a bunch of uneven
-heights. By setting your growthUnit, you give the *resizer* intervals to snap
+heights. By setting your intervalUnit, you give the *resizer* intervals to snap
 to, without losing track of the original height of the *internals*. By allowing
 the *internals* to snap back to their original height just long enough to get a
 height measurement, the *resizer* is able to calculate the next interval to size
@@ -27,16 +27,16 @@ to, before snapping the *internals* back to fill its height.
 1. On window resize, waits the amount of time set through timeoutDelay (none by
 default)
 1. Once that time passes, sets *internals* to `height: auto` and detects height
-1. Takes the next-largest multiple of your growthUnit, sets *resizer* to 
+1. Takes the next-largest multiple of your intervalUnit, sets *resizer* to 
 that height
 1. Sets the *internals* to `height: 100%`, filling *resizer* height once more
 
 With no timeoutDelay set, this happens instantaneously, causing a smooth cycle 
-of snap-resizing to a multiple of your growthUnit. With a timeoutDelay set, you
-begin to see the mechanisms at work. This will save on performance, but will
+of snap-resizing to a multiple of your intervalUnit. With a timeoutDelay set,
+you begin to see the mechanisms at work. This will save on performance, but will
 cost you in appearance, as the *internals* will wait until window resizing stops
 and the timeout delay passes before resizing to fit the new multiple of
-growthUnit.
+intervalUnit.
 
 ## Get Started
 To get the demo running:
@@ -54,13 +54,15 @@ to exclude the prop-types requirement.
 ### Props
 
 ```text
-growthUnit:     number          (required)      // Unit interval to grow by.
-children:       React.Component (required)      // Child to populate wrapper.
-timeoutDelay:   number          (default: none) // The re-render timeout.
-minHeight:      number          (default: none) // The resizer's minimum height.
-maxHeight:      number          (default: none) // The resizer's maximum height.
-uniqueId:       string          (default: none) // A unique id (> 1 resizer).
-className:      string          (default: none) // A general class.
+intervalUnit: number          - Unit interval to grow by.     (required)     
+children:     React.Component - Child to populate wrapper.    (required)     
+timeoutDelay: number          - The re-render timeout.        (default: none)
+minHeight:    number          - The resizer's minimum height. (default: none)
+maxHeight:    number          - The resizer's maximum height. (default: none)
+uniqueId:     string          - A unique id (> 1 resizer).    (default: none)
+className:    string          - A general class.              (default: none)
+instantOnReceiveProps: 
+              boolean,        - Instant resize on get props.  (default: true)
 ```
 
 ### Best practices
