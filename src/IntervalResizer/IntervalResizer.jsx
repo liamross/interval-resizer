@@ -15,22 +15,36 @@ class Resizer extends Component {
   constructor() {
     super();
     this.waitToRender = null;
-    this.renderTimeout = this.renderTimeout.bind(this);
+    this.resizeInstant = this.resizeInstant.bind(this);
+    this.resizeTimeout = this.resizeTimeout.bind(this);
     this.setWrapperHeight = this.setWrapperHeight.bind(this);
     this.getIntervalHeight = this.getIntervalHeight.bind(this);
   }
 
   componentWillReceiveProps() {
-    this.renderTimeout();
+    this.props.instantOnReceiveProps ?
+      this.resizeInstant():
+      this.resizeTimeout();
   }
 
   componentDidMount() {
-    this.renderTimeout();
-    window.addEventListener('resize', this.renderTimeout);
+    this.resizeInstant();
+    window.addEventListener('resize', this.resizeTimeout);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.renderTimeout);
+    window.removeEventListener('resize', this.resizeTimeout);
+  }
+
+  /**
+   * Calls setWrapperHeight with no delay regardless of timeoutDelay. This is
+   * only called on initial render and when props change
+   */
+  resizeInstant() {
+    clearTimeout(this.waitToRender);
+    this.waitToRender = setTimeout(() => {
+      this.setWrapperHeight();
+    });
   }
 
   /**
@@ -38,7 +52,7 @@ class Resizer extends Component {
    * expensive). If function is called while timeout is in progress, it clears
    * the timeout and begins again.
    */
-  renderTimeout() {
+  resizeTimeout() {
     clearTimeout(this.waitToRender);
     this.waitToRender = setTimeout(() => {
       this.setWrapperHeight();
@@ -97,11 +111,12 @@ class Resizer extends Component {
 }
 
 Resizer.defaultProps = {
-  timeoutDelay: 0,  // Default delay is 0, meaning instant re-rendering.
-  minHeight: null,  // No min height by default.
-  maxHeight: null,  // No max height by default.
-  uniqueId: '',     // No addition to id by default.
-  className: null,  // No class name by default.
+  timeoutDelay: 0,              // No delay by default.
+  minHeight: null,              // No min height by default.
+  maxHeight: null,              // No max height by default.
+  uniqueId: '',                 // No addition to id by default.
+  className: null,              // No class name by default.
+  instantOnReceiveProps: true,  // Instant resize on prop change by default.
 };
 
 Resizer.propTypes = {
@@ -112,6 +127,7 @@ Resizer.propTypes = {
   maxHeight: PropTypes.number,                // The resizer's maximum height.
   uniqueId: PropTypes.string,                 // A unique id (> 1 resizer).
   className: PropTypes.string,                // A general class.
+  instantOnReceiveProps: PropTypes.bool,      // Instant resize on get props.
 };
 
 export default Resizer;

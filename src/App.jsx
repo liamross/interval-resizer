@@ -10,6 +10,7 @@ class App extends Component {
       timeoutDelay: null,
       minHeight: null,
       maxHeight: null,
+      instantOnReceiveProps: true,
     };
   }
 
@@ -52,7 +53,7 @@ class App extends Component {
               value={this.state.minHeight || ''}
               onChange={e => this.setState({
                 ...this.state,
-                minHeight: Number(e.target.value),
+                minHeight: Number(e.target.value) || undefined,
               })}
             />
           </label>
@@ -64,8 +65,19 @@ class App extends Component {
               value={this.state.maxHeight || ''}
               onChange={e => this.setState({
                 ...this.state,
-                maxHeight: Number(e.target.value),
+                maxHeight: Number(e.target.value) || undefined,
               })}
+            />
+          </label>
+          <label>
+            No delay on prop change:
+            <input
+              checked={this.state.instantOnReceiveProps}
+              onChange={e => this.setState({
+                ...this.state,
+                instantOnReceiveProps: e.target.checked,
+              })}
+              type="checkbox"
             />
           </label>
         </div>
@@ -84,6 +96,7 @@ class App extends Component {
             maxHeight={this.state.maxHeight}
             uniqueId="test"
             className="resizing-widget"
+            instantOnReceiveProps={this.state.instantOnReceiveProps}
           >
             <div className="Outer">
               <div className="Inner Inner--one">
