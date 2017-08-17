@@ -4,20 +4,24 @@
  *
  * Copyright (C) 2017 Liam Ross
  *
- * This software may be modified and distributed under the terms
- * of the MIT license.  See the LICENSE file for details.
+ * This software may be modified and distributed under the terms of the MIT
+ * license.  See the LICENSE file for details.
  */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Resizer extends Component {
-  constructor(props) {
-    super(props);
-
+  constructor() {
+    super();
     this.waitToRender = null;
     this.renderTimeout = this.renderTimeout.bind(this);
     this.setWrapperHeight = this.setWrapperHeight.bind(this);
+    this.getIntervalHeight = this.getIntervalHeight.bind(this);
+  }
+
+  componentWillReceiveProps() {
+    this.renderTimeout();
   }
 
   componentDidMount() {
@@ -43,36 +47,42 @@ class Resizer extends Component {
 
   /**
    * Detects the internal wrapper height and sets the resize wrapper to the next
-   * larger growthUnit multiple. It then adjusts the content to fit that height.
+   * larger intervalUnit multiple, then adjusts the content to fit that height.
    */
   setWrapperHeight() {
-    const { growthUnit, uniqueId, minHeight, maxHeight } = this.props;
+    const { uniqueId } = this.props;
     const resizeWrapper = document.getElementById(`_intervalResize${uniqueId}`);
     const internalWrapper = resizeWrapper.firstChild;
-    // 1. Set height of content to auto, allowing detection of content height.
     internalWrapper.style.height = 'auto';
-    // 2. Store height of content.
     const contentHeight = internalWrapper.offsetHeight;
-    // 3. Find the next larger growthUnit multiple.
-    let newHeight = Math.ceil(contentHeight / growthUnit) * growthUnit;
-    // 4. Make sure it's larger than min if min exists.
+    const newHeight = this.getIntervalHeight(contentHeight);
+    resizeWrapper.style.height = `${String(newHeight)}px`;
+    internalWrapper.style.height = '100%';
+  }
+
+  /**
+   * Sets the height to a multiple of the intervalUnit unit, while accounting
+   * for the minHeight and maxHeight. Will override minHeight with maxHeight if
+   * maxHeight is smaller than minHeight.
+   * @param {number} contentHeight - The 'auto' height of the content.
+   * @returns {number} - Returns a multiple of your intervalUnit.
+   */
+  getIntervalHeight(contentHeight) {
+    const { intervalUnit, minHeight, maxHeight } = this.props;
+    let newHeight = Math.ceil(contentHeight / intervalUnit) * intervalUnit;
     if (minHeight !== null) {
       newHeight = Math.max(
         newHeight,
-        Math.ceil(minHeight / growthUnit) * growthUnit,
+        Math.ceil(minHeight / intervalUnit) * intervalUnit,
       );
     }
-    // 5. Make sure it's smaller than max if max exists.
     if (maxHeight !== null) {
       newHeight = Math.min(
         newHeight,
-        Math.floor(maxHeight / growthUnit) * growthUnit,
+        Math.floor(maxHeight / intervalUnit) * intervalUnit,
       );
     }
-    // 6. Set height of resizeWrapper to growthUnit multiple newHeight.
-    resizeWrapper.style.height = `${String(newHeight)}px`;
-    // 7. Set height of internals to 100% again.
-    internalWrapper.style.height = '100%';
+    return newHeight;
   }
 
   render() {
@@ -95,13 +105,13 @@ Resizer.defaultProps = {
 };
 
 Resizer.propTypes = {
-  growthUnit: PropTypes.number.isRequired,  // Unit interval to grow by.
-  children: PropTypes.element.isRequired,   // Child to populate wrapper.
-  timeoutDelay: PropTypes.number,           // The re-render timeout.
-  minHeight: PropTypes.number,              // The resizer's minimum height.
-  maxHeight: PropTypes.number,              // The resizer's maximum height.
-  uniqueId: PropTypes.string,               // A unique id (> 1 resizer).
-  className: PropTypes.string,              // A general class.
+  intervalUnit: PropTypes.number.isRequired,  // Unit interval to grow by.
+  children: PropTypes.element.isRequired,     // Child to populate wrapper.
+  timeoutDelay: PropTypes.number,             // The re-render timeout.
+  minHeight: PropTypes.number,                // The resizer's minimum height.
+  maxHeight: PropTypes.number,                // The resizer's maximum height.
+  uniqueId: PropTypes.string,                 // A unique id (> 1 resizer).
+  className: PropTypes.string,                // A general class.
 };
 
 export default Resizer;

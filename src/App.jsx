@@ -6,12 +6,13 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      growthUnit: null,
+      intervalUnit: 50,
       timeoutDelay: null,
       minHeight: null,
       maxHeight: null,
-    }
+    };
   }
+
   render() {
     return (
       <div>
@@ -20,14 +21,14 @@ class App extends Component {
         </h3>
         <div className="resizeDemo-settings">
           <label>
-            Growth Units:
+            Interval Unit:
             <input
               type="number"
               placeholder="Minimum: 50"
-              value={this.state.growthUnit || ''}
+              value={this.state.intervalUnit}
               onChange={e => this.setState({
                 ...this.state,
-                growthUnit: Number(e.target.value),
+                intervalUnit: Math.max(Number(e.target.value), 1),
               })}
             />
           </label>
@@ -69,18 +70,15 @@ class App extends Component {
           </label>
         </div>
         <div className="resizeDemo-body">
-          {Array(20).fill(0).map((x, index) =>
-            <div
-              key={index}
-              className="line"
-              style={{ top: `${String((this.state.growthUnit ?
-                Math.max(this.state.growthUnit, 50) : 50) * index)}px` }}
-            />
-          )}
+          {Array(Math.round(3240 / this.state.intervalUnit))
+            .fill(0).map((x, i) => {
+            const top = `${String(Math.max(this.state.intervalUnit, 1) * i)}px`;
+              return <div key={i} className="line" style={{ top }}>
+                {top}
+                </div>
+            })}
           <IntervalResizer
-            growthUnit={ this.state.growthUnit ?
-              Math.max(this.state.growthUnit, 50) : 50
-            }
+            intervalUnit={Math.max(this.state.intervalUnit, 1)}
             timeoutDelay={this.state.timeoutDelay}
             minHeight={this.state.minHeight}
             maxHeight={this.state.maxHeight}
