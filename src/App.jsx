@@ -71,7 +71,7 @@ class App extends Component {
                 ...this.state,
                 intervalUnit: e.target.value === '' ?
                   '' : Math.max(Number(e.target.value), 0),
-              }, () => console.log(this.state))}
+              })}
             />
           </div>
           <div>
