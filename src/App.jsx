@@ -39,6 +39,7 @@ class App extends Component {
         {this.state.isSettingsPanelOpen &&
           <div className="resizeDemo-settings">
             <a
+              className="close-panel"
               onClick={() => this.setState({
                 ...this.state,
                 isSettingsPanelOpen: false,
@@ -46,6 +47,7 @@ class App extends Component {
             >
               Close panel
             </a>
+            <h4>Test Variables</h4>
             <div>
               <span className="nowrapLabel">Blue words:</span>
               <input
@@ -85,6 +87,7 @@ class App extends Component {
                 })}
               />
             </div>
+            <h4>Component Props</h4>
             <div>
               <span className="nowrapLabel">Interval Unit:</span>
               <input

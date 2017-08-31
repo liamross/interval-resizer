@@ -33,11 +33,11 @@ class IntervalResizer extends Component {
 
   componentDidMount() {
     this.resizeTimeout(true);
-    window.addEventListener('resize', () => this.resizeTimeout());
+    window.addEventListener('resize', () => this.resizeTimeout(false));
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', () => this.resizeTimeout());
+    window.removeEventListener('resize', () => this.resizeTimeout(false));
   }
 
   /**
@@ -45,15 +45,15 @@ class IntervalResizer extends Component {
    * expensive). If function is called while timeout is in progress, it clears
    * the timeout and begins again. Takes a boolean to determine whether it will
    * call instantly.
-   * @param {boolean} instant
+   * @param {boolean} instant - True to call setWrapperHeight instantly, false
+   * to wait for timeoutDelay.
    * @memberof IntervalResizer
    */
-  resizeTimeout(instant = false) {
-    const delay = instant ? 0 : this.props.timeoutDelay;
+  resizeTimeout(instant) {
     clearTimeout(this.waitToRender);
     this.waitToRender = setTimeout(() => {
       this.setWrapperHeight();
-    }, delay);
+    }, instant ? 0 : this.props.timeoutDelay);
   }
 
   /**
