@@ -6,11 +6,15 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      blueWords: 46,
+      redWords: 60,
+      greenWords: 37,
       intervalUnit: 50,
       timeoutDelay: null,
       minHeight: null,
       maxHeight: null,
       instantOnReceiveProps: true,
+      screenWidthCutoff: null,
     };
   }
 
@@ -21,20 +25,57 @@ class App extends Component {
           Interval Resize Demo
         </h3>
         <div className="resizeDemo-settings">
-          <label>
-            Interval Unit:
+          <div>
+            <span className="nowrapLabel">Blue words:</span>
             <input
               type="number"
-              placeholder="Minimum: 50"
+              value={this.state.blueWords}
+              onChange={e => this.setState({
+                ...this.state,
+                blueWords: e.target.value === '' ?
+                  '' : Math.max(Number(e.target.value), 0),
+              })}
+            />
+          </div>
+          <div>
+            <span className="nowrapLabel">Red words:</span>
+            <input
+              type="number"
+              value={this.state.redWords}
+              onChange={e => this.setState({
+                ...this.state,
+                redWords: e.target.value === '' ?
+                  '' : Math.max(Number(e.target.value), 0),
+              })}
+            />
+          </div>
+          <div>
+            <span className="nowrapLabel">Green words:</span>
+            <input
+              type="number"
+              value={this.state.greenWords}
+              onChange={e => this.setState({
+                ...this.state,
+                greenWords: e.target.value === '' ?
+                  '' : Math.max(Number(e.target.value), 0),
+              })}
+            />
+          </div>
+          <div>
+            <span className="nowrapLabel">Interval Unit:</span>
+            <input
+              type="number"
+              placeholder="Minimum 20"
               value={this.state.intervalUnit}
               onChange={e => this.setState({
                 ...this.state,
-                intervalUnit: Math.max(Number(e.target.value), 1),
-              })}
+                intervalUnit: e.target.value === '' ?
+                  '' : Math.max(Number(e.target.value), 0),
+              }, () => console.log(this.state))}
             />
-          </label>
-          <label>
-            Resize Delay:
+          </div>
+          <div>
+            <span className="nowrapLabel">Resize Delay:</span>
             <input
               type="number"
               placeholder="Empty is no delay"
@@ -44,9 +85,9 @@ class App extends Component {
                 timeoutDelay: Number(e.target.value),
               })}
             />
-          </label>
-          <label>
-            Min Height:
+          </div>
+          <div>
+            <span className="nowrapLabel">Min Height:</span>
             <input
               type="number"
               placeholder="Empty is no min"
@@ -56,9 +97,9 @@ class App extends Component {
                 minHeight: Number(e.target.value) || undefined,
               })}
             />
-          </label>
-          <label>
-            Max Height:
+          </div>
+          <div>
+            <span className="nowrapLabel">Max Height:</span>
             <input
               type="number"
               placeholder="Empty is no max"
@@ -68,9 +109,9 @@ class App extends Component {
                 maxHeight: Number(e.target.value) || undefined,
               })}
             />
-          </label>
-          <label>
-            No delay on prop change:
+          </div>
+          <div>
+            <span className="nowrapLabel">No delay on prop change:</span>
             <input
               checked={this.state.instantOnReceiveProps}
               onChange={e => this.setState({
@@ -79,72 +120,55 @@ class App extends Component {
               })}
               type="checkbox"
             />
-          </label>
+          </div>
+          <div>
+            <span className="nowrapLabel">Min width for intervals:</span>
+            <input
+              type="number"
+              placeholder="Empty is no min"
+              value={this.state.screenWidthCutoff || ''}
+              onChange={e => this.setState({
+                ...this.state,
+                screenWidthCutoff: Number(e.target.value) || undefined,
+              })}
+            />
+          </div>
         </div>
         <div className="resizeDemo-body">
-          {Array(Math.round(3240 / this.state.intervalUnit))
+          {Array(Math.round(3240 / (this.state.intervalUnit === '' ? 
+              20 : Math.max(Number(this.state.intervalUnit), 20))))
             .fill(0).map((x, i) => {
-            const top = `${String(Math.max(this.state.intervalUnit, 1) * i)}px`;
+            const top = `${String((this.state.intervalUnit === '' ? 
+              20 : Math.max(Number(this.state.intervalUnit), 20)) * i)}px`;
               return <div key={i} className="line" style={{ top }}>
                 {top}
                 </div>
             })}
           <IntervalResizer
-            intervalUnit={Math.max(this.state.intervalUnit, 1)}
+            intervalUnit={this.state.intervalUnit === '' ? 
+              20 : Math.max(Number(this.state.intervalUnit), 20)}
             timeoutDelay={this.state.timeoutDelay}
             minHeight={this.state.minHeight}
             maxHeight={this.state.maxHeight}
             uniqueId="test"
             className="resizing-widget"
             instantOnReceiveProps={this.state.instantOnReceiveProps}
+            screenWidthCutoff={this.state.screenWidthCutoff}
           >
             <div className="Outer">
               <div className="Inner Inner--one">
                 <div>
-                  One One One One One One One One One One One One One One One
-                  One One One One One One One One One One One One One One One
-                  One One One One One One One One One One One One One One One
-                  One One One One One One One One One One One One One One One
-                  One One One One One One One One One One One One One One One
-                  One One One One One One One One One One One One One One One
-                  One One One One One One One One One One One One One One One
-                  One One One One One One One One One One One One One One One
-                  One One One One One One One One One One One One One One One
-                  One One One One One One One One One One One One One One One
-                  One One One One One One One One One One One One One One One
-                  One One One One One One One One One One One One One One One
+                  {'blue '.repeat(this.state.blueWords || 0)}
                 </div>
               </div>
               <div className="Inner Inner--two">
                 <div>
-                  Two Two Two Two Two Two Two Two Two Two Two Two Two Two Two
-                  Two Two Two Two Two Two Two Two Two Two Two Two Two Two Two
-                  Two Two Two Two Two Two Two Two Two Two Two Two Two Two Two
-                  Two Two Two Two Two Two Two Two Two Two Two Two Two Two Two
-                  Two Two Two Two Two Two Two Two Two Two Two Two Two Two Two
-                  Two Two Two Two Two Two Two Two Two Two Two Two Two Two Two
-                  Two Two Two Two Two Two Two Two Two Two Two Two Two Two Two
-                  Two Two Two Two Two Two Two Two Two Two Two Two Two Two Two
-                  Two Two Two Two Two Two Two Two Two Two Two Two Two Two Two
-                  Two Two Two Two Two Two Two Two Two Two Two Two Two Two Two
-                  Two Two Two Two Two Two Two Two Two Two Two Two Two Two Two
-                  Two Two Two Two Two Two Two Two Two Two Two Two Two Two Two
+                  {'red '.repeat(this.state.redWords || 0)}
                 </div>
               </div>
               <div className="Inner Inner--three">
                 <div>
-                  Three Three Three Three Three Three Three Three Three Three
-                  Three Three Three Three Three Three Three Three Three Three
-                  Three Three Three Three Three Three Three Three Three Three
-                  Three Three Three Three Three Three Three Three Three Three
-                  Three Three Three Three Three Three Three Three Three Three
-                  Three Three Three Three Three Three Three Three Three Three
-                  Three Three Three Three Three Three Three Three Three Three
-                  Three Three Three Three Three Three Three Three Three Three
-                  Three Three Three Three Three Three Three Three Three Three
-                  Three Three Three Three Three Three Three Three Three Three
-                  Three Three Three Three Three Three Three Three Three Three
-                  Three Three Three Three Three Three Three Three Three Three
+                  {'green '.repeat(this.state.greenWords || 0)}
                 </div>
               </div>
             </div>
