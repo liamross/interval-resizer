@@ -5,13 +5,6 @@
 A React *resizer* which detects the height of its *internals*, then expands them
 to the nearest multiple of a pre-defined interval.
 
-> Note: A future change will implement
-[guitarino's resize-sensor](https://github.com/guitarino/resize-sensor),
-allowing for the event listener to fire on internal resizing, rather than window
-resizing. This change will allow for much more flexibility while dealing with
-dynamic internals, as currently a change in the height of the internal div would
-not be detected by the resizer wrapper until a window resize occurs.
-
 ## About the Component
 
 ### What is this for?
@@ -63,6 +56,8 @@ uniqueId:     string          - A unique id (> 1 resizer).    (default: none)
 className:    string          - A general class.              (default: none)
 instantOnReceiveProps: 
               boolean,        - Instant resize on get props.  (default: true)
+screenWidthCutoff: 
+              number,         - Stop intervals at this width. (default: 0)
 ```
 
 ### Best practices
