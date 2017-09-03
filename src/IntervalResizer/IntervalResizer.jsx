@@ -22,9 +22,7 @@ class IntervalResizer extends Component {
   constructor() {
     super();
     this.waitToRender = null;
-    this.resizeTimeout = this.resizeTimeout.bind(this);
-    this.setWrapperHeight = this.setWrapperHeight.bind(this);
-    this.getIntervalHeight = this.getIntervalHeight.bind(this);
+    this.listenerFunction = this.listenerFunction.bind(this);
   }
   
   componentWillReceiveProps() {
@@ -33,21 +31,27 @@ class IntervalResizer extends Component {
 
   componentDidMount() {
     this.resizeTimeout(true);
-    window.addEventListener('resize', () => this.resizeTimeout(false));
+    window.addEventListener('resize', this.listenerFunction);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', () => this.resizeTimeout(false));
+    window.removeEventListener('resize', this.listenerFunction);
   }
 
   /**
-   * Starts a timeout based off of timeoutDelay prop (makes the resize op less
-   * expensive). If function is called while timeout is in progress, it clears
-   * the timeout and begins again. Takes a boolean to determine whether it will
-   * call instantly.
+   * Necessary to discard passed information from event listener binding and
+   * pass false instead to resizeTimeout. Bound to 'this'.
+   */
+  listenerFunction() {
+    this.resizeTimeout(false);
+  }
+
+  /**
+   * Starts a timeout based off of timeoutDelay prop. If function is called
+   * while timeout is in progress, it clears the timeout and begins again. Takes
+   * a boolean to determine whether it will call instantly.
    * @param {boolean} instant - True to call setWrapperHeight instantly, false
    * to wait for timeoutDelay.
-   * @memberof IntervalResizer
    */
   resizeTimeout(instant) {
     clearTimeout(this.waitToRender);
@@ -61,7 +65,6 @@ class IntervalResizer extends Component {
    * larger intervalUnit multiple, then adjusts the content to fit that height.
    * If the window is smaller than the screenWidthCutoff, then the component
    * will match the height of the internals with no intervals.
-   * @memberof IntervalResizer
    */
   setWrapperHeight() {
     const { uniqueId, screenWidthCutoff } = this.props;
@@ -85,7 +88,6 @@ class IntervalResizer extends Component {
    * maxHeight is smaller than minHeight.
    * @param {number} contentHeight - The 'auto' height of the content.
    * @returns {number} - Returns a multiple of your intervalUnit.
-   * @memberof IntervalResizer
    */
   getIntervalHeight(contentHeight) {
     const { intervalUnit, minHeight, maxHeight } = this.props;

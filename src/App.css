@@ -73,7 +73,7 @@ a:hover {
 }
 
 .resizeDemo-settings>*>input {
-  margin: 0 0 0 4px;
+  margin: 0;
 }
 
 .resizing-widget {

@@ -6,6 +6,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      componentMounted: true,
       blueWords: 40,
       redWords: 52,
       greenWords: 32,
@@ -47,6 +48,19 @@ class App extends Component {
             >
               Close panel
             </a>
+            <div>
+              <span className="nowrapLabel">
+                Component mounted:
+              </span>
+              <input
+                checked={this.state.componentMounted}
+                onChange={e => this.setState({
+                  ...this.state,
+                  componentMounted: e.target.checked,
+                })}
+                type="checkbox"
+              />
+            </div>
             <h4>Test Variables</h4>
             <div>
               <span className="nowrapLabel">Blue words:</span>
@@ -89,7 +103,7 @@ class App extends Component {
             </div>
             <h4>Component Props</h4>
             <div>
-              <span className="nowrapLabel">Interval Unit:</span>
+              <span className="nowrapLabel">Interval Unit (px):</span>
               <input
                 type="number"
                 placeholder="Minimum 20"
@@ -102,7 +116,7 @@ class App extends Component {
               />
             </div>
             <div>
-              <span className="nowrapLabel">Resize Delay:</span>
+              <span className="nowrapLabel">Resize Delay (ms):</span>
               <input
                 type="number"
                 placeholder="No delay"
@@ -114,32 +128,8 @@ class App extends Component {
               />
             </div>
             <div>
-              <span className="nowrapLabel">Min Height:</span>
-              <input
-                type="number"
-                placeholder="No min"
-                value={this.state.minHeight || ''}
-                onChange={e => this.setState({
-                  ...this.state,
-                  minHeight: Number(e.target.value) || undefined,
-                })}
-              />
-            </div>
-            <div>
-              <span className="nowrapLabel">Max Height:</span>
-              <input
-                type="number"
-                placeholder="No max"
-                value={this.state.maxHeight || ''}
-                onChange={e => this.setState({
-                  ...this.state,
-                  maxHeight: Number(e.target.value) || undefined,
-                })}
-              />
-            </div>
-            <div>
               <span className="nowrapLabel">
-                Override delay if prop change:
+                Override delay on prop change:
               </span>
               <input
                 checked={this.state.instantOnReceiveProps}
@@ -151,7 +141,31 @@ class App extends Component {
               />
             </div>
             <div>
-              <span className="nowrapLabel">Min width for intervals:</span>
+              <span className="nowrapLabel">Min Height (px):</span>
+              <input
+                type="number"
+                placeholder="No min"
+                value={this.state.minHeight || ''}
+                onChange={e => this.setState({
+                  ...this.state,
+                  minHeight: Number(e.target.value) || undefined,
+                })}
+              />
+            </div>
+            <div>
+              <span className="nowrapLabel">Max Height (px):</span>
+              <input
+                type="number"
+                placeholder="No max"
+                value={this.state.maxHeight || ''}
+                onChange={e => this.setState({
+                  ...this.state,
+                  maxHeight: Number(e.target.value) || undefined,
+                })}
+              />
+            </div>
+            <div>
+              <span className="nowrapLabel">Stop intervals at width (px):</span>
               <input
                 type="number"
                 placeholder="No min"
@@ -174,35 +188,37 @@ class App extends Component {
                 {top}
               </div>
             })}
-          <IntervalResizer
-            intervalUnit={this.state.intervalUnit === '' ?
-              20 : Math.max(Number(this.state.intervalUnit), 20)}
-            timeoutDelay={this.state.timeoutDelay}
-            minHeight={this.state.minHeight}
-            maxHeight={this.state.maxHeight}
-            uniqueId="test"
-            className="resizing-widget"
-            instantOnReceiveProps={this.state.instantOnReceiveProps}
-            screenWidthCutoff={this.state.screenWidthCutoff}
-          >
-            <div className="Outer">
-              <div className="Inner Inner--one">
-                <div>
-                  {'blue '.repeat(this.state.blueWords || 0)}
+          {this.state.componentMounted &&
+            <IntervalResizer
+              intervalUnit={this.state.intervalUnit === '' ?
+                20 : Math.max(Number(this.state.intervalUnit), 20)}
+              timeoutDelay={this.state.timeoutDelay}
+              minHeight={this.state.minHeight}
+              maxHeight={this.state.maxHeight}
+              uniqueId="test"
+              className="resizing-widget"
+              instantOnReceiveProps={this.state.instantOnReceiveProps}
+              screenWidthCutoff={this.state.screenWidthCutoff}
+            >
+              <div className="Outer">
+                <div className="Inner Inner--one">
+                  <div>
+                    {'blue '.repeat(this.state.blueWords || 0)}
+                  </div>
+                </div>
+                <div className="Inner Inner--two">
+                  <div>
+                    {'red '.repeat(this.state.redWords || 0)}
+                  </div>
+                </div>
+                <div className="Inner Inner--three">
+                  <div>
+                    {'green '.repeat(this.state.greenWords || 0)}
+                  </div>
                 </div>
               </div>
-              <div className="Inner Inner--two">
-                <div>
-                  {'red '.repeat(this.state.redWords || 0)}
-                </div>
-              </div>
-              <div className="Inner Inner--three">
-                <div>
-                  {'green '.repeat(this.state.greenWords || 0)}
-                </div>
-              </div>
-            </div>
-          </IntervalResizer>
+            </IntervalResizer>
+          }
         </div>
       </div>
     );
