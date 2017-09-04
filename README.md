@@ -52,7 +52,7 @@ children:     React.Component - Child to populate wrapper.    (required)
 timeoutDelay: number          - The re-render timeout.        (default: none)
 minHeight:    number          - The resizer's minimum height. (default: none)
 maxHeight:    number          - The resizer's maximum height. (default: none)
-uniqueId:     string          - A unique id (> 1 resizer).    (default: none)
+uniqueId:     string          - A unique id (> 1 resizer).    (default: 'noUID')
 className:    string          - A general class.              (default: none)
 instantOnReceiveProps: 
               boolean,        - Instant resize on get props.  (default: true)

@@ -7,7 +7,6 @@
  * This software may be modified and distributed under the terms of the MIT
  * license. See the LICENSE file for details.
  */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -15,27 +14,27 @@ class IntervalResizer extends Component {
   constructor() {
     super();
     this.waitToRender = null;
-    this.listenerFunction = this.listenerFunction.bind(this);
+    this.windowResizeListener = this.windowResizeListener.bind(this);
   }
-  
+
   componentWillReceiveProps() {
-      this.resizeTimeout(this.props.instantOnReceiveProps);
+    this.resizeTimeout(this.props.instantOnReceiveProps);
   }
 
   componentDidMount() {
     this.resizeTimeout(true);
-    window.addEventListener('resize', this.listenerFunction);
+    window.addEventListener('resize', this.windowResizeListener);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.listenerFunction);
+    window.removeEventListener('resize', this.windowResizeListener);
   }
 
   /**
-   * Necessary to discard passed information from event listener binding and
-   * pass false instead to resizeTimeout. Bound to 'this'.
+   * Necessary to discard arguments passed from event listener binding and
+   * pass false instead as resizeTimeout's 'instant' parameter.
    */
-  listenerFunction() {
+  windowResizeListener() {
     this.resizeTimeout(false);
   }
 
