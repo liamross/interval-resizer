@@ -38,9 +38,9 @@ To get the demo running:
 1. `npm start` or `yarn start`
 
 The component itself is found in `src/IntervalResizer/IntervalResizer.jsx`. This
-component can be extracted from its file It is entirely self-contained and
-depends only on the React and PropTypes libraries. It can easily be refactored
-to exclude the prop-types requirement.
+component can be extracted from its folder and used as is. It is entirely
+self-contained and depends only on the React and PropTypes libraries. It can
+easily be refactored to exclude the prop-types requirement.
 
 ## Use
 
