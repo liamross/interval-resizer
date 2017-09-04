@@ -11,13 +11,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-/**
- * Returns a resizer component, which detects the height of a single child
- * component and resizes to a multiple of an intervalUnit prop. Also accounts
- * for a min and max size, and a re-render timeout delay on window resize.
- * @class IntervalResizer
- * @extends {Component}
- */
 class IntervalResizer extends Component {
   constructor() {
     super();
