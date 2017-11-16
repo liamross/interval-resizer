@@ -10,6 +10,28 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+const propTypes = {
+  intervalUnit: PropTypes.number.isRequired,  // Unit interval to grow by.
+  children: PropTypes.element.isRequired,     // Child to populate wrapper.
+  timeoutDelay: PropTypes.number,             // The re-render timeout.
+  minHeight: PropTypes.number,                // The resizer's minimum height.
+  maxHeight: PropTypes.number,                // The resizer's maximum height.
+  uniqueId: PropTypes.string,                 // A unique id (> 1 resizer).
+  className: PropTypes.string,                // A general class.
+  instantOnReceiveProps: PropTypes.bool,      // Instant resize on get props.
+  screenWidthCutoff: PropTypes.number,        // Stop intervals at this width.
+};
+
+const defaultProps = {
+  timeoutDelay: 0,              // No delay by default.
+  minHeight: null,              // No min height by default.
+  maxHeight: null,              // No max height by default.
+  uniqueId: 'noUID',            // 'noUID' by default.
+  className: null,              // No class name by default.
+  instantOnReceiveProps: true,  // Instant resize on prop change by default.
+  screenWidthCutoff: 0,         // Cutoff at 0 width by default.
+};
+
 class IntervalResizer extends Component {
   constructor() {
     super();
@@ -17,13 +39,13 @@ class IntervalResizer extends Component {
     this.windowResizeListener = this.windowResizeListener.bind(this);
   }
 
-  componentWillReceiveProps() {
-    this.resizeTimeout(this.props.instantOnReceiveProps);
-  }
-
   componentDidMount() {
     this.resizeTimeout(true);
     window.addEventListener('resize', this.windowResizeListener);
+  }
+
+  componentWillReceiveProps() {
+    this.resizeTimeout(this.props.instantOnReceiveProps);
   }
 
   componentWillUnmount() {
@@ -110,26 +132,7 @@ class IntervalResizer extends Component {
   }
 }
 
-IntervalResizer.defaultProps = {
-  timeoutDelay: 0,              // No delay by default.
-  minHeight: null,              // No min height by default.
-  maxHeight: null,              // No max height by default.
-  uniqueId: 'noUID',            // 'noUID' by default.
-  className: null,              // No class name by default.
-  instantOnReceiveProps: true,  // Instant resize on prop change by default.
-  screenWidthCutoff: 0,         // Cutoff at 0 width by default.
-};
-
-IntervalResizer.propTypes = {
-  intervalUnit: PropTypes.number.isRequired,  // Unit interval to grow by.
-  children: PropTypes.element.isRequired,     // Child to populate wrapper.
-  timeoutDelay: PropTypes.number,             // The re-render timeout.
-  minHeight: PropTypes.number,                // The resizer's minimum height.
-  maxHeight: PropTypes.number,                // The resizer's maximum height.
-  uniqueId: PropTypes.string,                 // A unique id (> 1 resizer).
-  className: PropTypes.string,                // A general class.
-  instantOnReceiveProps: PropTypes.bool,      // Instant resize on get props.
-  screenWidthCutoff: PropTypes.number,        // Stop intervals at this width.
-};
+IntervalResizer.propTypes = propTypes;
+IntervalResizer.defaultProps = defaultProps;
 
 export default IntervalResizer;
