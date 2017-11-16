@@ -16,7 +16,7 @@ const propTypes = {
   timeoutDelay: PropTypes.number,             // The re-render timeout.
   minHeight: PropTypes.number,                // The resizer's minimum height.
   maxHeight: PropTypes.number,                // The resizer's maximum height.
-  uniqueId: PropTypes.string,                 // A unique id (> 1 resizer).
+  uniqueId: PropTypes.string,                 // A unique id (if > 1 resizer).
   className: PropTypes.string,                // A general class.
   instantOnReceiveProps: PropTypes.bool,      // Instant resize on get props.
   screenWidthCutoff: PropTypes.number,        // Stop intervals at this width.
