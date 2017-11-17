@@ -2,9 +2,14 @@
 
 # dependencies
 /node_modules
+/demo/node_modules
 
 # testing
 /coverage
+/demo/coverage
+
+# production
+/demo/build
 
 # misc
 .DS_Store
@@ -12,10 +17,19 @@
 .env.development.local
 .env.test.local
 .env.production.local
+/demo/.DS_Store
+/demo/.env.local
+/demo/.env.development.local
+/demo/.env.test.local
+/demo/.env.production.local
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/demo/npm-debug.log*
+/demo/yarn-debug.log*
+/demo/yarn-error.log*
 
 # idea
 /.idea
+/demo/.idea
