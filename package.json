@@ -4,6 +4,8 @@
   "description": "A React resizer which detects the height of its internals, then expands them to the nearest multiple of a pre-defined interval.",
   "main": "./build/IntervalResizer.js",
   "scripts": {
+    "build": "babel ./src --out-dir ./build --source-maps --no-comments --minified && npm run buildDemo",
+    "buildDemo": "babel ./src --out-dir ./demo/src --no-comments --minified",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +17,11 @@
   "peerDependencies": {
     "prop-types": "^15.6.0",
     "react": "^16.1.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1"
   }
 }
