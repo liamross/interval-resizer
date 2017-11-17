@@ -2,6 +2,12 @@
 
 [Click here to see a working demo](https://liamross.github.io/interval-resizer/)
 
+[GitHub](https://github.com/liamross/interval-resizer) -
+`git clone https://github.com/liamross/interval-resizer.git`
+
+[npm](https://www.npmjs.com/package/interval-resizer) -
+`npm i interval-resizer`
+
 A React *resizer* which detects the height of its *internals*, then expands them
 to the nearest multiple of a pre-defined interval.
 
@@ -32,12 +38,17 @@ and the timeout delay passes before resizing to fit the new multiple of
 intervalUnit.
 
 ## Get Started
-To get the demo running:
-1. `git clone https://github.com/liamross/interval-resizer.git`
-1. `npm install` or `yarn`
-1. `npm start` or `yarn start`
+Options:
+1. Install the npm package  
+  `npm i interval-resizer`
+1. [Click here to see a working demo](https://liamross.github.io/interval-resizer/)
+1. Download the github yourself, along with the original component:  
+  `git clone https://github.com/liamross/interval-resizer.git`  
+  `cd .\demo\`  
+  `npm install` or `yarn`  
+  `npm start` or `yarn start`
 
-The component itself is found in `src/IntervalResizer/IntervalResizer.jsx`. This
+The component itself is found in `src/IntervalResizer.jsx` in GitHub. This
 component can be extracted from its folder and used as is. It is entirely
 self-contained and depends only on the React and PropTypes libraries. It can
 easily be refactored to exclude the prop-types requirement.
