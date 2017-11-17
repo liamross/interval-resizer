@@ -27,7 +27,10 @@ class App extends Component {
           <h3>
             Interval Resize Demo
           </h3>
-          <br />
+          <p>
+            Resize window to see the interval resizing, or open the panel to
+            edit the props received by the IntervalResizer component.
+          </p>
           <a
             onClick={() => this.setState({
               ...this.state,
