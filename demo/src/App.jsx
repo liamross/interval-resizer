@@ -195,6 +195,7 @@ class App extends Component {
             <IntervalResizer
               intervalUnit={this.state.intervalUnit === '' ?
                 20 : Math.max(Number(this.state.intervalUnit), 20)}
+              documentRef={document}
               timeoutDelay={this.state.timeoutDelay}
               minHeight={this.state.minHeight}
               maxHeight={this.state.maxHeight}

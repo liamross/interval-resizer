@@ -66,6 +66,7 @@ import IntervalResizer from 'interval-resizer';
 // to use:
 <IntervalResizer
   intervalUnit={intervalUnit}
+  documentRef={document}
   timeoutDelay={timeoutDelay}
   minHeight={minHeight}
   maxHeight={maxHeight}
@@ -91,6 +92,7 @@ import IntervalResizer from 'interval-resizer';
 |-----------------------|---------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | intervalUnit          | number        | *required     | Defines the interval in pixels to adjust height by when resizing.                                                                                                                                                                                                                                                              |
 | children              | React element | *required     | The internal content wrapped by the IntervalResizer.                                                                                                                                                                                                                                                                           |
+| documentRef           | object        | *required     | Reference to the document object.                                                                                                                                                                                                                                                                                              |
 | timeoutDelay          | number        | 0             | Set a re-render timeout to wait for all prop changes and resizing. This does not apply to props if instantOnReceiveProps is true.                                                                                                                                                                                              |
 | minHeight             | number        | null          | The minimum height in pixels of the IntervalResizer. If given, will now allow the component to become smaller than the provided height.                                                                                                                                                                                        |
 | maxHeight             | number        | null          | The maximum height in pixels of the IntervalResizer. If given, will now,allow the component to become larger than the provided height.                                                                                                                                                                                         |

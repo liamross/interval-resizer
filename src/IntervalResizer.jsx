@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 const propTypes = {
   intervalUnit: PropTypes.number.isRequired,  // Unit interval to grow by.
   children: PropTypes.element.isRequired,     // Child to populate wrapper.
+  documentRef: PropTypes.object.isRequired,   // Reference to the document.
   timeoutDelay: PropTypes.number,             // The re-render timeout.
   minHeight: PropTypes.number,                // The resizer's minimum height.
   maxHeight: PropTypes.number,                // The resizer's maximum height.
@@ -26,7 +27,7 @@ const defaultProps = {
   timeoutDelay: 0,              // No delay by default.
   minHeight: null,              // No min height by default.
   maxHeight: null,              // No max height by default.
-  uniqueId: null,               // No id by default.
+  uniqueId: '',                 // No extra id string by default.
   className: null,              // No class by default.
   instantOnReceiveProps: true,  // Instant resize on prop change by default.
   screenWidthCutoff: 0,         // Cutoff at 0 width by default.
@@ -81,10 +82,10 @@ class IntervalResizer extends Component {
    * will match the height of the internals with no intervals.
    */
   setWrapperHeight() {
-    const { uniqueId, screenWidthCutoff } = this.props;
-    const resizeWrapper = document.getElementById(`intervalResize_${uniqueId}`);
+    const { uniqueId, screenWidthCutoff, documentRef } = this.props;
+    const resizeWrapper = documentRef.getElementById(`interval_${uniqueId}`);
     const internalWrapper = resizeWrapper.firstChild;
-    if (document.documentElement.clientWidth > screenWidthCutoff) {
+    if (documentRef.documentElement.clientWidth > screenWidthCutoff) {
       internalWrapper.style.height = 'auto';
       const contentHeight = internalWrapper.offsetHeight;
       const newHeight = this.getIntervalHeight(contentHeight);
@@ -124,7 +125,7 @@ class IntervalResizer extends Component {
   render() {
     return (
       <div
-        id={this.props.uniqueId}
+        id={`interval_${this.props.uniqueId}`}
         className={this.props.className}>
         {this.props.children}
       </div>
