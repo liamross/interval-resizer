@@ -55,6 +55,36 @@ easily be refactored to exclude the prop-types requirement.
 
 ## Use
 
+### Importing and syntax
+
+```jsx
+import React, {Component} from 'react'
+import IntervalResizer from 'interval-resizer';
+
+// ...
+
+// to use:
+<IntervalResizer
+  intervalUnit={intervalUnit}
+  timeoutDelay={timeoutDelay}
+  minHeight={minHeight}
+  maxHeight={maxHeight}
+  uniqueId={uniqueId}
+  className={className}
+  instantOnReceiveProps={instantOnReceiveProps}
+  screenWidthCutoff={screenWidthCutoff}
+>
+  <div className="internals-wrapper">
+    <div className="internals-content internals-content--one">
+      // content
+    </div>
+    <div className="internals-content internals-content--two">
+      // content
+    </div>
+  </div>
+</IntervalResizer>
+```
+
 ### Props
 
 | Name                  | Type          | Default       | Description                                                                                                                                                                                                                                                                                                                    |
