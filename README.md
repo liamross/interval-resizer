@@ -23,8 +23,8 @@ height measurement, the *resizer* is able to calculate the next interval to size
 to, before snapping the *internals* back to fill its height.
 
 ### Logic flow within program
-1. On window resize, waits the amount of time set through timeoutDelay (none by
-default)
+1. On window resize or prop change (including internals changing), waits the
+amount of time set through timeoutDelay (none by default)
 1. Once that time passes, sets *internals* to `height: auto` and detects height
 1. Takes the next-largest multiple of your intervalUnit, sets *resizer* to 
 that height
