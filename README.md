@@ -1,15 +1,15 @@
 # Interval Resizer
 
-[Click here to see a working demo](https://liamross.github.io/interval-resizer/)
-
-[GitHub](https://github.com/liamross/interval-resizer) -
-`git clone https://github.com/liamross/interval-resizer.git`
-
-[npm](https://www.npmjs.com/package/interval-resizer) -
-`npm i interval-resizer`
-
 A React *resizer* which detects the height of its *internals*, then expands them
 to the nearest multiple of a pre-defined interval.
+
+[Click here to see a working demo](https://liamross.github.io/interval-resizer/)
+
+| Site                                                   | Install command                                              |
+|--------------------------------------------------------|--------------------------------------------------------------|
+| [GitHub](https://github.com/liamross/interval-resizer) | `git clone https://github.com/liamross/interval-resizer.git` |
+| [npm](https://www.npmjs.com/package/interval-resizer)  | `npm i interval-resizer`                                     |
+| [yarn](https://yarn.pm/interval-resizer)               | `yarn add interval-resizer`                                  |
 
 ## About the Component
 
@@ -57,44 +57,68 @@ easily be refactored to exclude the prop-types requirement.
 
 ### Props
 
-```text
-intervalUnit:          number          - Unit interval to grow by.     (required)     
-children:              React.Component - Child to populate wrapper.    (required)     
-timeoutDelay:          number          - The re-render timeout.        (default: none)
-minHeight:             number          - The resizer's minimum height. (default: none)
-maxHeight:             number          - The resizer's maximum height. (default: none)
-uniqueId:              string          - A unique id (> 1 resizer).    (default: 'noUID')
-className:             string          - A general class.              (default: none)
-instantOnReceiveProps: boolean,        - Instant resize on get props.  (default: true)
-screenWidthCutoff:     number,         - Stop intervals at this width. (default: 0)
-```
+| Name                  | Type          | Default       | Description                                                                                                                                                                                                                                                                                                                    |
+|-----------------------|---------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| intervalUnit          | number        | *required     | Defines the interval in pixels to adjust height by when resizing.                                                                                                                                                                                                                                                              |
+| children              | React element | *required     | The internal content wrapped by the IntervalResizer.                                                                                                                                                                                                                                                                           |
+| timeoutDelay          | number        | 0             | Set a re-render timeout to wait for all prop changes and resizing. This does not apply to props if instantOnReceiveProps is true.                                                                                                                                                                                              |
+| minHeight             | number        | null          | The minimum height in pixels of the IntervalResizer. If given, will now allow the component to become smaller than the provided height.                                                                                                                                                                                        |
+| maxHeight             | number        | null          | The maximum height in pixels of the IntervalResizer. If given, will now,allow the component to become larger than the provided height.                                                                                                                                                                                         |
+| uniqueId              | string        | null          | A value for the id attribute on the component. Useful if differentiating between multiple IntervalResizer components.                                                                                                                                                                                                          |
+| className             | string        | null          | A value for the class attribute on the component.                                                                                                                                                                                                                                                                              |
+| instantOnReceiveProps | boolean       | true          | Causes any timeoutDelay to be ignored for cases where the props are updated. This allows for instant resizing when the content height changes (a single set height call from componentWillReceiveProps) while still allowing for timeoutDelay to wait for the browser to stop resizing before calling the set height function. |
+| screenWidthCutoff     | number        | 0             | Defined the minimum width in pixels for interval resizing. Any browser window width below this amount will be resized normally with content (height: auto).                                                                                                                                                                    |
+
 
 ### Best practices
-To use, extract the IntervalResizer file found in
-`src/IntervalResizer/IntervalResizer.jsx` and place it within your React project
-as needed. In order to work (as of August 15, 2017), this component requires the
-following:
+To use, add it to your project using npm or yarn, or to customize extract the
+IntervalResizer file found in `src/IntervalResizer.jsx` and place it within your
+React project as needed. This will allow you to remove PropTypes if you don't
+want them as a dependency in your project. In order to work (as of November 18,
+2017), this component requires the following:
 - A single child *internals*, which wraps all of the things rendered into the
 *resizer*
-- To benefit from the *resizer*, content within the *internals* wrapper must be
+
+To benefit from the *resizer*, content within the *internals* wrapper must be
 set in a way to fill the wrapper's height. This allows the interaction where the
-wrapper becomes `height: auto`. The easiest way is with flexbox (I'll use 
-scss):  
-    ```scss
-    .internals-wrapper {
-        display: flex;
-        flex-direction: column;
-        
-        .internals-content {
-            flex: 1 1 auto; 
-            // Or flex: 1 1 0; for all even heights.
-            // (Shorthand for flex-grow, flex-shrink, flex-basis)
-            // Technically, only one of the internal components has to have any
-            // flex properties, and if you set it to flex: 1 1 auto; it will
-            // fill the remaining height in the wrapper.
-        }
-    }
-    ```  
-    Of course you can always use percentages, or have hard-coded height and just
-    ensure they float or position how you want. The best method is the one that
-    fits your use case!
+wrapper becomes `height: auto`. The easiest way is with flexbox, as demonstrated
+in the following examples (obviously the class names can be whatever you want,
+I just use these for the example).
+
+**SCSS**
+```scss
+.internals-wrapper {
+  display: flex;
+  flex-direction: column;
+    
+  > .internals-content {
+    flex: 1 1 auto; 
+    // Or flex: 1 1 0; for all even heights.
+    // (Shorthand for flex-grow, flex-shrink, flex-basis)
+    // Technically, only one of the internal components has to have any
+    // flex properties, and if you set it to flex: 1 1 auto; it will
+    // fill the remaining height in the wrapper.
+  }
+}
+```
+
+**CSS**
+```css
+.internals-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.internals-wrapper > .internals-content {
+  flex: 1 1 auto; 
+  /* Or flex: 1 1 0; for all even heights.
+  (Shorthand for flex-grow, flex-shrink, flex-basis)
+  Technically, only one of the internal components has to have any
+  flex properties, and if you set it to flex: 1 1 auto; it will
+  fill the remaining height in the wrapper. */
+}
+```
+
+Of course you can always use percentages, or have hard-coded height and just
+ensure they float or position how you want. The best method is the one that
+fits your use case!

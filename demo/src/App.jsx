@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import IntervalResizer from './IntervalResizer.js';
+import IntervalResizer from './IntervalResizer';
 import './App.css';
 
 class App extends Component {

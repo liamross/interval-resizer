@@ -26,8 +26,8 @@ const defaultProps = {
   timeoutDelay: 0,              // No delay by default.
   minHeight: null,              // No min height by default.
   maxHeight: null,              // No max height by default.
-  uniqueId: 'noUID',            // 'noUID' by default.
-  className: null,              // No class name by default.
+  uniqueId: null,               // No id by default.
+  className: null,              // No class by default.
   instantOnReceiveProps: true,  // Instant resize on prop change by default.
   screenWidthCutoff: 0,         // Cutoff at 0 width by default.
 };
@@ -124,7 +124,7 @@ class IntervalResizer extends Component {
   render() {
     return (
       <div
-        id={`intervalResize_${this.props.uniqueId}`}
+        id={this.props.uniqueId}
         className={this.props.className}>
         {this.props.children}
       </div>
