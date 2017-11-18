@@ -25,7 +25,7 @@ class App extends Component {
       <div>
         <div className="resizeDemo-header">
           <h3>
-            Interval Resize Demo
+            Interval Resize Demo (interval-resizer v. 2.0.0)
           </h3>
           <p>
             Resize window to see the interval resizing, or open the panel to
