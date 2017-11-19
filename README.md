@@ -60,11 +60,6 @@ Options:
   `npm install` or `yarn`  
   `npm start` or `yarn start`
 
-The component itself is found in `src/IntervalResizer.jsx` in GitHub. This
-component can be extracted from its folder and used as is. It is entirely
-self-contained and depends only on the React and PropTypes libraries. It can
-easily be refactored to exclude the prop-types requirement.
-
 ## Use
 
 ### Importing and syntax
@@ -120,6 +115,9 @@ want them as a dependency in your project. In order to work (as of November 18,
 2017), this component requires the following:
 - A single child *internals*, which wraps all of the things rendered into the
 *resizer*
+- The prop-types package installed (the only dependency, besides a peer
+dependency on react - or refactor to remove PropTypes, they're just there for
+throwing helpful warnings)
 
 To benefit from the *resizer*, content within the *internals* wrapper must be
 set in a way to fill the wrapper's height. This allows the interaction where the
