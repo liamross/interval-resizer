@@ -228,8 +228,4 @@ class App extends Component {
   }
 }
 
-App.defaultProps = {};
-
-App.propTypes = {};
-
 export default App;
