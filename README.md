@@ -67,29 +67,35 @@ Options:
 ```jsx
 import React, {Component} from 'react'
 import IntervalResizer from 'interval-resizer';
-
 // ...
 
-// to use:
-<IntervalResizer
-  intervalUnit={intervalUnit}
-  documentRef={document}
-  timeoutDelay={timeoutDelay}
-  minHeight={minHeight}
-  maxHeight={maxHeight}
-  className={className}
-  instantOnReceiveProps={instantOnReceiveProps}
-  screenWidthCutoff={screenWidthCutoff}
->
-  <div className="internals-wrapper">
-    <div className="internals-content internals-content--one">
-      // content
-    </div>
-    <div className="internals-content internals-content--two">
-      // content
-    </div>
-  </div>
-</IntervalResizer>
+export default class App extends Component {
+  // ...
+  render() {
+    return (
+      <IntervalResizer
+        intervalUnit={intervalUnit}
+        documentRef={document}      // Must pass reference to DOM document
+        timeoutDelay={timeoutDelay}
+        minHeight={minHeight}
+        maxHeight={maxHeight}
+        className={className}
+        instantOnReceiveProps={instantOnReceiveProps}
+        screenWidthCutoff={screenWidthCutoff}
+      >
+        <div className="internals-wrapper">
+          <div className="internals-content internals-content--one">
+            {/*content*/}
+          </div>
+          <div className="internals-content internals-content--two">
+            {/*content*/}
+          </div>
+        </div>
+      </IntervalResizer>
+    )
+  }
+}
+
 ```
 
 ### Props
