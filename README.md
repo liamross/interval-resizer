@@ -11,6 +11,16 @@ to the nearest multiple of a pre-defined interval.
 | [npm](https://www.npmjs.com/package/interval-resizer)  | `npm i interval-resizer`                                     |
 | [yarn](https://yarn.pm/interval-resizer)               | `yarn add interval-resizer`                                  |
 
+## Updates
+
+> Upcoming:
+> - Callbacks for changed height
+
+*18/11/2017* | **2.1.0**  - Now generates unique ID, no need for it to be passed.
+
+*18/11/2017* | **2.0.2**  - NOW WORKS! Had no reference to document when used as
+npm package, now passed as prop.
+
 ## About the Component
 
 ### What is this for?
@@ -20,7 +30,9 @@ heights. By setting your intervalUnit, you give the *resizer* intervals to snap
 to, without losing track of the original height of the *internals*. By allowing
 the *internals* to snap back to their original height just long enough to get a
 height measurement, the *resizer* is able to calculate the next interval to size
-to, before snapping the *internals* back to fill its height.
+to, before snapping the *internals* back to fill its height. This all happens
+without any visual indication, meaning to the end user it appears to be cleanly
+snapping between intervals whenever its content or the window width change.
 
 ### Logic flow within program
 1. On window resize or prop change (including internals changing), waits the
@@ -70,7 +82,6 @@ import IntervalResizer from 'interval-resizer';
   timeoutDelay={timeoutDelay}
   minHeight={minHeight}
   maxHeight={maxHeight}
-  uniqueId={uniqueId}
   className={className}
   instantOnReceiveProps={instantOnReceiveProps}
   screenWidthCutoff={screenWidthCutoff}
@@ -96,7 +107,6 @@ import IntervalResizer from 'interval-resizer';
 | timeoutDelay          | number        | 0             | Set a re-render timeout to wait for all prop changes and resizing. This does not apply to props if instantOnReceiveProps is true.                                                                                                                                                                                              |
 | minHeight             | number        | null          | The minimum height in pixels of the IntervalResizer. If given, will now allow the component to become smaller than the provided height.                                                                                                                                                                                        |
 | maxHeight             | number        | null          | The maximum height in pixels of the IntervalResizer. If given, will now,allow the component to become larger than the provided height.                                                                                                                                                                                         |
-| uniqueId              | string        | ''            | A value for the id attribute on the component. Useful if differentiating between multiple IntervalResizer components. This is appended onto the pre-existing id 'interval_', which is necessary for the detection of the component within the DOM document object.                                                             |
 | className             | string        | null          | A value for the class attribute on the component.                                                                                                                                                                                                                                                                              |
 | instantOnReceiveProps | boolean       | true          | Causes any timeoutDelay to be ignored for cases where the props are updated. This allows for instant resizing when the content height changes (a single set height call from componentWillReceiveProps) while still allowing for timeoutDelay to wait for the browser to stop resizing before calling the set height function. |
 | screenWidthCutoff     | number        | 0             | Defined the minimum width in pixels for interval resizing. Any browser window width below this amount will be resized normally with content (height: auto).                                                                                                                                                                    |

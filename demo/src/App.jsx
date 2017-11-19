@@ -199,7 +199,6 @@ class App extends Component {
               timeoutDelay={this.state.timeoutDelay}
               minHeight={this.state.minHeight}
               maxHeight={this.state.maxHeight}
-              uniqueId="test"
               className="resizing-widget"
               instantOnReceiveProps={this.state.instantOnReceiveProps}
               screenWidthCutoff={this.state.screenWidthCutoff}

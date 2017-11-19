@@ -1,3 +1,4 @@
+
 /* IntervalResizer.jsx -- A React resizer which detects the height of its
  * internals, then expands them to the next-biggest multiple of a pre-defined
  * interval.
@@ -17,7 +18,6 @@ const propTypes = {
   timeoutDelay: PropTypes.number,             // The re-render timeout.
   minHeight: PropTypes.number,                // The resizer's minimum height.
   maxHeight: PropTypes.number,                // The resizer's maximum height.
-  uniqueId: PropTypes.string,                 // A unique id (if > 1 resizer).
   className: PropTypes.string,                // A general class.
   instantOnReceiveProps: PropTypes.bool,      // Instant resize on get props.
   screenWidthCutoff: PropTypes.number,        // Stop intervals at this width.
@@ -27,7 +27,6 @@ const defaultProps = {
   timeoutDelay: 0,              // No delay by default.
   minHeight: null,              // No min height by default.
   maxHeight: null,              // No max height by default.
-  uniqueId: '',                 // No extra id string by default.
   className: null,              // No class by default.
   instantOnReceiveProps: true,  // Instant resize on prop change by default.
   screenWidthCutoff: 0,         // Cutoff at 0 width by default.
@@ -37,6 +36,7 @@ class IntervalResizer extends Component {
   constructor() {
     super();
     this.waitToRender = null;
+    this.uid = new Date().valueOf() + '-' + Math.ceil(Math.random() * 10000000);
     this.windowResizeListener = this.windowResizeListener.bind(this);
   }
 
@@ -82,8 +82,8 @@ class IntervalResizer extends Component {
    * will match the height of the internals with no intervals.
    */
   setWrapperHeight() {
-    const { uniqueId, screenWidthCutoff, documentRef } = this.props;
-    const resizeWrapper = documentRef.getElementById(`interval_${uniqueId}`);
+    const { screenWidthCutoff, documentRef } = this.props;
+    const resizeWrapper = documentRef.getElementById(this.uid);
     const internalWrapper = resizeWrapper.firstChild;
     if (documentRef.documentElement.clientWidth > screenWidthCutoff) {
       internalWrapper.style.height = 'auto';
@@ -125,7 +125,7 @@ class IntervalResizer extends Component {
   render() {
     return (
       <div
-        id={`interval_${this.props.uniqueId}`}
+        id={this.uid}
         className={this.props.className}>
         {this.props.children}
       </div>
