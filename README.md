@@ -106,8 +106,8 @@ export default class App extends Component {
 | children              | React element | *required     | The internal content wrapped by the IntervalResizer.                                                                                                                                                                                                                                                                           |
 | documentRef           | object        | *required     | Reference to the document object.                                                                                                                                                                                                                                                                                              |
 | timeoutDelay          | number        | 0             | Set a re-render timeout to wait for all prop changes and resizing. This does not apply to props if instantOnReceiveProps is true.                                                                                                                                                                                              |
-| minHeight             | number        | null          | The minimum height in pixels of the IntervalResizer. If given, will now allow the component to become smaller than the provided height.                                                                                                                                                                                        |
-| maxHeight             | number        | null          | The maximum height in pixels of the IntervalResizer. If given, will now,allow the component to become larger than the provided height.                                                                                                                                                                                         |
+| minHeight             | number        | null          | The minimum height in pixels of the IntervalResizer. If given, will not allow the component to become smaller than the provided height.                                                                                                                                                                                        |
+| maxHeight             | number        | null          | The maximum height in pixels of the IntervalResizer. If given, will not allow the component to become larger than the provided height.                                                                                                                                                                                         |
 | className             | string        | null          | A value for the class attribute on the component.                                                                                                                                                                                                                                                                              |
 | instantOnReceiveProps | boolean       | true          | Causes any timeoutDelay to be ignored for cases where the props are updated. This allows for instant resizing when the content height changes (a single set height call from componentWillReceiveProps) while still allowing for timeoutDelay to wait for the browser to stop resizing before calling the set height function. |
 | screenWidthCutoff     | number        | 0             | Defined the minimum width in pixels for interval resizing. Any browser window width below this amount will be resized normally with content (height: auto).                                                                                                                                                                    |
@@ -131,24 +131,27 @@ wrapper becomes `height: auto`. The easiest way is with flexbox, as demonstrated
 in the following examples (obviously the class names can be whatever you want,
 I just use these for the example).
 
-**SCSS**
+#### SCSS
+
 ```scss
 .internals-wrapper {
   display: flex;
   flex-direction: column;
-    
+
   > .internals-content {
-    flex: 1 1 auto; 
+    flex: 1 1 auto;
     // Or flex: 1 1 0; for all even heights.
     // (Shorthand for flex-grow, flex-shrink, flex-basis)
-    // Technically, only one of the internal components has to have any
-    // flex properties, and if you set it to flex: 1 1 auto; it will
-    // fill the remaining height in the wrapper.
+    // Technically, only one of the internal components has
+    // to have any flex properties, and if you set it to
+    // flex: 1 1 auto; it will fill the remaining height
+    // in the wrapper.
   }
 }
 ```
 
-**CSS**
+#### CSS
+
 ```css
 .internals-wrapper {
   display: flex;
@@ -156,12 +159,13 @@ I just use these for the example).
 }
 
 .internals-wrapper > .internals-content {
-  flex: 1 1 auto; 
+  flex: 1 1 auto;
   /* Or flex: 1 1 0; for all even heights.
   (Shorthand for flex-grow, flex-shrink, flex-basis)
-  Technically, only one of the internal components has to have any
-  flex properties, and if you set it to flex: 1 1 auto; it will
-  fill the remaining height in the wrapper. */
+  Technically, only one of the internal components has
+  to have any flex properties, and if you set it to
+  flex: 1 1 auto; it will fill the remaining height
+  in the wrapper. */
 }
 ```
 
