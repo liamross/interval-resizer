@@ -75,7 +75,7 @@ export default class App extends Component {
     return (
       <IntervalResizer
         intervalUnit={intervalUnit}
-        documentRef={document}      // Must pass reference to DOM document
+        documentRef={document}  // Must pass reference to DOM document
         timeoutDelay={timeoutDelay}
         minHeight={minHeight}
         maxHeight={maxHeight}
