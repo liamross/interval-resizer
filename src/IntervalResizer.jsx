@@ -14,7 +14,6 @@ import PropTypes from 'prop-types';
 const propTypes = {
   intervalUnit: PropTypes.number.isRequired,  // Unit interval to grow by.
   children: PropTypes.element.isRequired,     // Child to populate wrapper.
-  documentRef: PropTypes.object.isRequired,   // Reference to the document.
   timeoutDelay: PropTypes.number,             // The re-render timeout.
   minHeight: PropTypes.number,                // The resizer's minimum height.
   maxHeight: PropTypes.number,                // The resizer's maximum height.
@@ -33,11 +32,15 @@ const defaultProps = {
 };
 
 class IntervalResizer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.waitToRender = null;
     this.uid = new Date().valueOf() + '-' + Math.ceil(Math.random() * 10000000);
     this.windowResizeListener = this.windowResizeListener.bind(this);
+    props.uniqueId && console.warn('uniqueId is depreciated as of 2.1.0,'
+      + ' and is no longer used, you can remove the prop from your code.');
+    props.documentRef && console.warn('documentRef is depreciated as of 2.2.0,'
+      + ' and is no longer used, you can remove the prop from your code.');
   }
 
   componentDidMount() {
@@ -82,10 +85,10 @@ class IntervalResizer extends Component {
    * will match the height of the internals with no intervals.
    */
   setWrapperHeight() {
-    const { screenWidthCutoff, documentRef } = this.props;
-    const resizeWrapper = documentRef.getElementById(this.uid);
+    const { screenWidthCutoff } = this.props;
+    const resizeWrapper = window.document.getElementById(this.uid);
     const internalWrapper = resizeWrapper.firstChild;
-    if (documentRef.documentElement.clientWidth > screenWidthCutoff) {
+    if (window.document.documentElement.clientWidth > screenWidthCutoff) {
       internalWrapper.style.height = 'auto';
       const contentHeight = internalWrapper.offsetHeight;
       const newHeight = this.getIntervalHeight(contentHeight);

@@ -11,16 +11,6 @@ to the nearest multiple of a pre-defined interval.
 | [npm](https://www.npmjs.com/package/interval-resizer)  | `npm i interval-resizer`                                     |
 | [yarn](https://yarn.pm/interval-resizer)               | `yarn add interval-resizer`                                  |
 
-## Updates
-
-> Upcoming:
-> - Callbacks for changed height
-
-*18/11/2017* | **2.1.0**  - Now generates unique ID, no need for it to be passed.
-
-*18/11/2017* | **2.0.2**  - NOW WORKS! Had no reference to document when used as
-npm package, now passed as prop.
-
 ## About the Component
 
 ### What is this for?
@@ -75,7 +65,6 @@ export default class App extends Component {
     return (
       <IntervalResizer
         intervalUnit={intervalUnit}
-        documentRef={document}  // Must pass reference to DOM document
         timeoutDelay={timeoutDelay}
         minHeight={minHeight}
         maxHeight={maxHeight}
@@ -104,7 +93,6 @@ export default class App extends Component {
 |-----------------------|---------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | intervalUnit          | number        | *required     | Defines the interval in pixels to adjust height by when resizing.                                                                                                                                                                                                                                                              |
 | children              | React element | *required     | The internal content wrapped by the IntervalResizer.                                                                                                                                                                                                                                                                           |
-| documentRef           | object        | *required     | Reference to the document object.                                                                                                                                                                                                                                                                                              |
 | timeoutDelay          | number        | 0             | Set a re-render timeout to wait for all prop changes and resizing. This does not apply to props if instantOnReceiveProps is true.                                                                                                                                                                                              |
 | minHeight             | number        | null          | The minimum height in pixels of the IntervalResizer. If given, will not allow the component to become smaller than the provided height.                                                                                                                                                                                        |
 | maxHeight             | number        | null          | The maximum height in pixels of the IntervalResizer. If given, will not allow the component to become larger than the provided height.                                                                                                                                                                                         |

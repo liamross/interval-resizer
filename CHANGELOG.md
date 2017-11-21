@@ -1,3 +1,9 @@
+## **2.2.0**
+- [Refactor] Somehow it can now reference document, no need for the prop... I
+made it window.document just to be safe.
+- [Removed] Prop `documentRef` - no longer needed, can reference document.
+- [New] Warnings for depreciated props.
+
 ## **2.1.0**
 - [Refactor] Now self-generates unique-ID to differentiate components within the
 DOM.
@@ -7,6 +13,9 @@ DOM.
 - [New] Prop `documentRef` - allows the user to pass in a reference to the
 document object, interval-resizer now works as installed as an npm package.
 
+> NOTE: versions prior to 2.0.0 may have been fine... I am unable to reproduce
+> the issue with no DOM document reference, however most recent version is still
+> safest bet, and has self-produced ID which simplifies code.
 > ***WARNING***: do not use npm versions prior to `2.0.0`, as they were unable
 > to access the DOM document object. Versions prior to `2.0.0` can still have
 > the IntervalResizer.jsx extracted from the src folder and used in a project,

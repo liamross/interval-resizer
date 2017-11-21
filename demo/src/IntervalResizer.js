@@ -35,7 +35,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var propTypes = {
   intervalUnit: _propTypes2.default.number.isRequired, // Unit interval to grow by.
   children: _propTypes2.default.element.isRequired, // Child to populate wrapper.
-  documentRef: _propTypes2.default.object.isRequired, // Reference to the document.
   timeoutDelay: _propTypes2.default.number, // The re-render timeout.
   minHeight: _propTypes2.default.number, // The resizer's minimum height.
   maxHeight: _propTypes2.default.number, // The resizer's maximum height.
@@ -56,14 +55,16 @@ var defaultProps = {
 var IntervalResizer = function (_Component) {
   _inherits(IntervalResizer, _Component);
 
-  function IntervalResizer() {
+  function IntervalResizer(props) {
     _classCallCheck(this, IntervalResizer);
 
-    var _this = _possibleConstructorReturn(this, (IntervalResizer.__proto__ || Object.getPrototypeOf(IntervalResizer)).call(this));
+    var _this = _possibleConstructorReturn(this, (IntervalResizer.__proto__ || Object.getPrototypeOf(IntervalResizer)).call(this, props));
 
     _this.waitToRender = null;
     _this.uid = new Date().valueOf() + '-' + Math.ceil(Math.random() * 10000000);
     _this.windowResizeListener = _this.windowResizeListener.bind(_this);
+    props.uniqueId && console.warn('uniqueId is depreciated as of 2.1.0,' + ' and is no longer used, you can remove the prop from your code.');
+    props.documentRef && console.warn('documentRef is depreciated as of 2.2.0,' + ' and is no longer used, you can remove the prop from your code.');
     return _this;
   }
 
@@ -124,13 +125,11 @@ var IntervalResizer = function (_Component) {
   }, {
     key: 'setWrapperHeight',
     value: function setWrapperHeight() {
-      var _props = this.props,
-          screenWidthCutoff = _props.screenWidthCutoff,
-          documentRef = _props.documentRef;
+      var screenWidthCutoff = this.props.screenWidthCutoff;
 
-      var resizeWrapper = documentRef.getElementById(this.uid);
+      var resizeWrapper = window.document.getElementById(this.uid);
       var internalWrapper = resizeWrapper.firstChild;
-      if (documentRef.documentElement.clientWidth > screenWidthCutoff) {
+      if (window.document.documentElement.clientWidth > screenWidthCutoff) {
         internalWrapper.style.height = 'auto';
         var contentHeight = internalWrapper.offsetHeight;
         var newHeight = this.getIntervalHeight(contentHeight);
@@ -153,10 +152,10 @@ var IntervalResizer = function (_Component) {
   }, {
     key: 'getIntervalHeight',
     value: function getIntervalHeight(contentHeight) {
-      var _props2 = this.props,
-          intervalUnit = _props2.intervalUnit,
-          minHeight = _props2.minHeight,
-          maxHeight = _props2.maxHeight;
+      var _props = this.props,
+          intervalUnit = _props.intervalUnit,
+          minHeight = _props.minHeight,
+          maxHeight = _props.maxHeight;
 
       var newHeight = Math.ceil(contentHeight / intervalUnit) * intervalUnit;
       if (minHeight !== null) {
