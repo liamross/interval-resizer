@@ -5,11 +5,16 @@ to the nearest multiple of a pre-defined interval.
 
 [Click here to see a working demo](https://liamross.github.io/interval-resizer/)
 
-| Site                                                   | Install command                                              |
+| Site (click to open)                                   | Install command                                              |
 |--------------------------------------------------------|--------------------------------------------------------------|
 | [GitHub](https://github.com/liamross/interval-resizer) | `git clone https://github.com/liamross/interval-resizer.git` |
 | [npm](https://www.npmjs.com/package/interval-resizer)  | `npm i interval-resizer`                                     |
 | [yarn](https://yarn.pm/interval-resizer)               | `yarn add interval-resizer`                                  |
+
+[![npm version](https://badge.fury.io/js/interval-resizer.svg)](https://www.npmjs.com/package/interval-resizer)
+[![dependencies Status](https://david-dm.org/liamross/interval-resizer/status.svg)](https://david-dm.org/liamross/interval-resizer)
+[![devDependencies Status](https://david-dm.org/liamross/interval-resizer/dev-status.svg)](https://david-dm.org/liamross/interval-resizer?type=dev)
+[![peerDependencies Status](https://david-dm.org/liamross/interval-resizer/peer-status.svg)](https://david-dm.org/liamross/interval-resizer?type=peer)
 
 ## About the Component
 
