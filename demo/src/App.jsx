@@ -1,221 +1,66 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import IntervalResizer from 'interval-resizer';
 import './App.css';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      componentMounted: true,
-      blueWords: 40,
-      redWords: 52,
-      greenWords: 32,
-      intervalUnit: 50,
-      timeoutDelay: null,
-      minHeight: null,
-      maxHeight: null,
-      instantOnReceiveProps: true,
-      screenWidthCutoff: null,
-      isSettingsPanelOpen: false,
-    };
-  }
+const propTypes = {
+  componentMounted: PropTypes.bool.isRequired,
+  blueWords: PropTypes.number.isRequired,
+  redWords: PropTypes.number.isRequired,
+  greenWords: PropTypes.number.isRequired,
+  intervalUnit: PropTypes.number.isRequired,
+  timeoutDelay: PropTypes.number.isRequired,
+  minHeight: PropTypes.number.isRequired,
+  maxHeight: PropTypes.number.isRequired,
+  instantOnReceiveProps: PropTypes.bool.isRequired,
+  screenWidthCutoff: PropTypes.number.isRequired,
+};
 
+class App extends Component {
   render() {
     return (
       <div>
         <div className="resizeDemo-header">
-          <h3>
-            Interval Resize Demo (interval-resizer v. 2.2.1)
-          </h3>
           <p>
-            Resize window to see the interval resizing, or open the panel to
-            edit the props received by the IntervalResizer component.
+            Resize window with draggable border on right side, or adjust the
+            Props in the 'Knobs' panel to see interval resizing in action!
           </p>
-          <a
-            onClick={() => this.setState({
-              ...this.state,
-              isSettingsPanelOpen: !this.state.isSettingsPanelOpen,
-            })}
-          >
-            Toggle settings/props panel
-          </a>
         </div>
-        {this.state.isSettingsPanelOpen &&
-          <div className="resizeDemo-settings">
-            <a
-              className="close-panel"
-              onClick={() => this.setState({
-                ...this.state,
-                isSettingsPanelOpen: false,
-              })}
-            >
-              Close panel
-            </a>
-            <div>
-              <span className="nowrapLabel">
-                Component mounted:
-              </span>
-              <input
-                checked={this.state.componentMounted}
-                onChange={e => this.setState({
-                  ...this.state,
-                  componentMounted: e.target.checked,
-                })}
-                type="checkbox"
-              />
-            </div>
-            <h4>Test Variables</h4>
-            <div>
-              <span className="nowrapLabel">Blue words:</span>
-              <input
-                type="number"
-                placeholder="0 words"
-                value={this.state.blueWords}
-                onChange={e => this.setState({
-                  ...this.state,
-                  blueWords: e.target.value === '' ?
-                    '' : Math.max(Number(e.target.value), 0),
-                })}
-              />
-            </div>
-            <div>
-              <span className="nowrapLabel">Red words:</span>
-              <input
-                type="number"
-                placeholder="0 words"
-                value={this.state.redWords}
-                onChange={e => this.setState({
-                  ...this.state,
-                  redWords: e.target.value === '' ?
-                    '' : Math.max(Number(e.target.value), 0),
-                })}
-              />
-            </div>
-            <div>
-              <span className="nowrapLabel">Green words:</span>
-              <input
-                type="number"
-                placeholder="0 words"
-                value={this.state.greenWords}
-                onChange={e => this.setState({
-                  ...this.state,
-                  greenWords: e.target.value === '' ?
-                    '' : Math.max(Number(e.target.value), 0),
-                })}
-              />
-            </div>
-            <h4>Component Props</h4>
-            <div>
-              <span className="nowrapLabel">Interval Unit (px):</span>
-              <input
-                type="number"
-                placeholder="Minimum 20"
-                value={this.state.intervalUnit}
-                onChange={e => this.setState({
-                  ...this.state,
-                  intervalUnit: e.target.value === '' ?
-                    '' : Math.max(Number(e.target.value), 0),
-                })}
-              />
-            </div>
-            <div>
-              <span className="nowrapLabel">Resize Delay (ms):</span>
-              <input
-                type="number"
-                placeholder="No delay"
-                value={this.state.timeoutDelay || ''}
-                onChange={e => this.setState({
-                  ...this.state,
-                  timeoutDelay: Number(e.target.value),
-                })}
-              />
-            </div>
-            <div>
-              <span className="nowrapLabel">
-                Override delay on prop change:
-              </span>
-              <input
-                checked={this.state.instantOnReceiveProps}
-                onChange={e => this.setState({
-                  ...this.state,
-                  instantOnReceiveProps: e.target.checked,
-                })}
-                type="checkbox"
-              />
-            </div>
-            <div>
-              <span className="nowrapLabel">Min Height (px):</span>
-              <input
-                type="number"
-                placeholder="No min"
-                value={this.state.minHeight || ''}
-                onChange={e => this.setState({
-                  ...this.state,
-                  minHeight: Number(e.target.value) || undefined,
-                })}
-              />
-            </div>
-            <div>
-              <span className="nowrapLabel">Max Height (px):</span>
-              <input
-                type="number"
-                placeholder="No max"
-                value={this.state.maxHeight || ''}
-                onChange={e => this.setState({
-                  ...this.state,
-                  maxHeight: Number(e.target.value) || undefined,
-                })}
-              />
-            </div>
-            <div>
-              <span className="nowrapLabel">Stop intervals at width (px):</span>
-              <input
-                type="number"
-                placeholder="No min"
-                value={this.state.screenWidthCutoff || ''}
-                onChange={e => this.setState({
-                  ...this.state,
-                  screenWidthCutoff: Number(e.target.value) || undefined,
-                })}
-              />
-            </div>
-          </div>
-        }
         <div className="resizeDemo-body">
-          {Array(Math.round(3240 / (this.state.intervalUnit === '' ?
-            20 : Math.max(Number(this.state.intervalUnit), 20))))
+          {Array(Math.round(3240 / (this.props.intervalUnit === '' ?
+            20 : Math.max(Number(this.props.intervalUnit), 20))))
             .fill(0).map((x, i) => {
-              const top = `${String((this.state.intervalUnit === '' ?
-                20 : Math.max(Number(this.state.intervalUnit), 20)) * i)}px`;
+              const top = `${String((this.props.intervalUnit === '' ?
+                20 : Math.max(Number(this.props.intervalUnit), 20)) * i)}px`;
               return <div key={i} className="line" style={{ top }}>
                 {top}
               </div>
             })}
-          {this.state.componentMounted &&
+          {this.props.componentMounted &&
             <IntervalResizer
-              intervalUnit={this.state.intervalUnit === '' ?
-                20 : Math.max(Number(this.state.intervalUnit), 20)}
-              timeoutDelay={this.state.timeoutDelay}
-              minHeight={this.state.minHeight}
-              maxHeight={this.state.maxHeight}
+              intervalUnit={this.props.intervalUnit === '' ?
+                20 : Math.max(Number(this.props.intervalUnit), 20)}
+              timeoutDelay={this.props.timeoutDelay}
+              minHeight={this.props.minHeight}
+              maxHeight={this.props.maxHeight}
               className="resizing-widget"
-              instantOnReceiveProps={this.state.instantOnReceiveProps}
-              screenWidthCutoff={this.state.screenWidthCutoff}
+              instantOnReceiveProps={this.props.instantOnReceiveProps}
+              screenWidthCutoff={this.props.screenWidthCutoff}
             >
               <div className="Outer">
                 <div className="Inner Inner--one">
                   <div>
-                    {'blue '.repeat(this.state.blueWords || 0)}
+                    {'blue '.repeat(this.props.blueWords || 0)}
                   </div>
                 </div>
                 <div className="Inner Inner--two">
                   <div>
-                    {'red '.repeat(this.state.redWords || 0)}
+                    {'red '.repeat(this.props.redWords || 0)}
                   </div>
                 </div>
                 <div className="Inner Inner--three">
                   <div>
-                    {'green '.repeat(this.state.greenWords || 0)}
+                    {'green '.repeat(this.props.greenWords || 0)}
                   </div>
                 </div>
               </div>
@@ -227,4 +72,5 @@ class App extends Component {
   }
 }
 
+App.propTypes = propTypes;
 export default App;
