@@ -6,8 +6,10 @@
 /coverage
 /demo/coverage
 
-# production
+# builds
 /demo/build
+/demo/.out
+/demo/out*
 
 # misc
 .DS_Store

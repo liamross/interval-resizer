@@ -25,7 +25,7 @@ to the nearest multiple of a pre-defined interval.
 
 The source IntervalResizer.jsx file is actually outside of demo, in the root
 ~\interval-resizer\src folder, and is compiled down into minified javascript
-within the ~\interval-resizer\demo\src folder for use by this demo. As a result,
-any changes made to the original IntervalResizer.jsx won't be reflected in the
-demo until you run `npm run build` or `yarn run build` while in
-~\interval-resizer. This triggers babel to compile the jsx.
+within the ~\interval-resizer\src folder. This demo uses the latest npm package
+version of interval-resizer, and so any changes you make in the jsx will not be
+reflected in the demo. Instead, try changing the demo reference to a copy of the
+jsx that you make within the demo folder, or just use it in your own program!
