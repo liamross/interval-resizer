@@ -15,19 +15,19 @@ const propTypes = {
   intervalUnit: PropTypes.number.isRequired,  // Unit interval to grow by.
   children: PropTypes.element.isRequired,     // Child to populate wrapper.
   timeoutDelay: PropTypes.number,             // The re-render timeout.
+  instantOnReceiveProps: PropTypes.bool,      // Instant resize on get props.
   minHeight: PropTypes.number,                // The resizer's minimum height.
   maxHeight: PropTypes.number,                // The resizer's maximum height.
   className: PropTypes.string,                // A general class.
-  instantOnReceiveProps: PropTypes.bool,      // Instant resize on get props.
   screenWidthCutoff: PropTypes.number,        // Stop intervals at this width.
 };
 
 const defaultProps = {
   timeoutDelay: 0,              // No delay by default.
+  instantOnReceiveProps: true,  // Instant resize on prop change by default.
   minHeight: null,              // No min height by default.
   maxHeight: null,              // No max height by default.
   className: null,              // No class by default.
-  instantOnReceiveProps: true,  // Instant resize on prop change by default.
   screenWidthCutoff: 0,         // Cutoff at 0 width by default.
 };
 
