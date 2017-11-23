@@ -8,12 +8,20 @@ const propTypes = {
   blueWords: PropTypes.number.isRequired,
   redWords: PropTypes.number.isRequired,
   greenWords: PropTypes.number.isRequired,
-  intervalUnit: PropTypes.number.isRequired,
-  timeoutDelay: PropTypes.number.isRequired,
-  minHeight: PropTypes.number.isRequired,
-  maxHeight: PropTypes.number.isRequired,
+  intervalUnit: PropTypes.number,
+  timeoutDelay: PropTypes.number,
+  minHeight: PropTypes.number,
+  maxHeight: PropTypes.number,
   instantOnReceiveProps: PropTypes.bool.isRequired,
-  screenWidthCutoff: PropTypes.number.isRequired,
+  screenWidthCutoff: PropTypes.number,
+};
+
+const defaultProps = {
+  intervalUnit: null,
+  timeoutDelay: null,
+  minHeight: null,
+  maxHeight: null,
+  screenWidthCutoff: null,
 };
 
 class App extends Component {
@@ -73,4 +81,5 @@ class App extends Component {
 }
 
 App.propTypes = propTypes;
+App.defaultProps = defaultProps;
 export default App;

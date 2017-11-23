@@ -33,15 +33,15 @@ stories.add('Component Demo', () => {
         max: 1000,
         step: 5,
       })}
-      intervalUnit={number('intervalUnit (px)', 50)}
-      timeoutDelay={number('timeoutDelay (ms)', 0)}
-      minHeight={number('minHeight (px)', null)}
-      maxHeight={number('maxHeight (px)', null)}
+      intervalUnit={number('intervalUnit (px)', 50) || null}
+      timeoutDelay={number('timeoutDelay (ms)', 0) || null}
+      minHeight={number('minHeight (px)', null) || null}
+      maxHeight={number('maxHeight (px)', null) || null}
       instantOnReceiveProps={
-        boolean('instantOnReceiveProps', true)
+        boolean('instantOnReceiveProps', true) || null
       }
       screenWidthCutoff={
-        number('screenWidthCutoff (px)', null)
+        number('screenWidthCutoff (px)', null) || null
       }
     />
   );
