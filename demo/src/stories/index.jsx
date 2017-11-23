@@ -4,7 +4,7 @@ import { boolean, number, withKnobs } from '@storybook/addon-knobs';
 
 import App from '../App';
 
-const stories = storiesOf('2.2.1', module);
+const stories = storiesOf('2.2.3', module);
 
 // Add the `withKnobs` decorator to add knobs support to your stories.
 // You can also configure `withKnobs` as a global decorator.
@@ -38,7 +38,7 @@ stories.add('Component Demo', () => {
       minHeight={number('minHeight (px)', null) || null}
       maxHeight={number('maxHeight (px)', null) || null}
       instantOnReceiveProps={
-        boolean('instantOnReceiveProps', true) || null
+        boolean('instantOnReceiveProps', true)
       }
       screenWidthCutoff={
         number('screenWidthCutoff (px)', null) || null
