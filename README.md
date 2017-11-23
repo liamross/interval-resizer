@@ -161,7 +161,7 @@ the *internals*.
 
 **Description**: Set a re-render timeout to wait for all prop changes and
 resizing. This does not apply to props if
-[instantOnReceiveProps](#instantonreceiveprops) is true.
+[instantOnReceiveProps](#instantonreceiveprops-boolean) is true.
 
 **Use**: This exists solely to reduce the expense of watching the window for
 resize events. Setting even a small value (i.e `150`) causes the component to
