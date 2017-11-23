@@ -132,7 +132,7 @@ your use case.
 
 ## Props
 
-### intervalUnit `number`
+### intervalUnit - `number`
 
 **Default**  
 none - required Prop
@@ -151,7 +151,7 @@ but less guarantee that your components will round to the same height.
 
 ---
 
-### children `JSX.Element`
+### children - `JSX.Element`
 
 **Default**  
 none - required Prop
@@ -165,7 +165,7 @@ the *internals*.
 
 ---
 
-### timeoutDelay `number`
+### timeoutDelay - `number`
 
 **Default**  
 0
@@ -183,7 +183,7 @@ subsequently the new interval height.
 
 ---
 
-### instantOnReceiveProps `boolean`
+### instantOnReceiveProps - `boolean`
 
 **Default**  
 true
@@ -203,7 +203,7 @@ remain true for most use cases.
 
 ---
 
-### minHeight `number`
+### minHeight - `number`
 
 **Default**  
 null
@@ -215,9 +215,10 @@ will not allow the component to become smaller than the provided height.
 
 ---
 
-### maxHeight `number`
+### maxHeight - `number`
 
-**Default**: null
+**Default**  
+null
 
 **Description**  
 The maximum height in pixels of the interval-resizer. If given,
@@ -228,7 +229,7 @@ For if you don't want your component to grow beyond a certain height.
 
 ---
 
-### className `string`
+### className - `string`
 
 **Default**  
 null
@@ -241,7 +242,7 @@ For applying styling to the component, as it has no inherent styling.
 
 ---
 
-### screenWidthCutoff `number`
+### screenWidthCutoff - `number`
 
 **Default**  
 0
