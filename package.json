@@ -1,7 +1,7 @@
 {
   "name": "interval-resizer",
   "version": "2.2.1",
-  "description": "A React resizer which detects the height of its internals, then expands them to the nearest multiple of a pre-defined interval.",
+  "description": "Interval Resizer is a React package for resizing components along pre-defined intervals.",
   "main": "./build/IntervalResizer.js",
   "scripts": {
     "build": "babel ./src --out-dir ./build --source-maps",

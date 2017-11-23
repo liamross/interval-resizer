@@ -1,15 +1,15 @@
 # Interval Resizer
 
-A React *resizer* which detects the height of its *internals*, then expands them
-to the nearest multiple of a pre-defined interval.
+Interval Resizer is a React package for resizing components along pre-defined
+intervals.
 
 [Click here to see a working demo](https://liamross.github.io/interval-resizer/)
 
 | Site (click to open)                                   | Install command                                              |
 |--------------------------------------------------------|--------------------------------------------------------------|
-| [GitHub](https://github.com/liamross/interval-resizer) | `git clone https://github.com/liamross/interval-resizer.git` |
 | [npm](https://www.npmjs.com/package/interval-resizer)  | `npm i interval-resizer`                                     |
 | [yarn](https://yarn.pm/interval-resizer)               | `yarn add interval-resizer`                                  |
+| [GitHub](https://github.com/liamross/interval-resizer) | `git clone https://github.com/liamross/interval-resizer.git` |
 
 [![npm version](https://badge.fury.io/js/interval-resizer.svg)](https://www.npmjs.com/package/interval-resizer)
 [![dependencies Status](https://david-dm.org/liamross/interval-resizer/status.svg)](https://david-dm.org/liamross/interval-resizer)
@@ -19,45 +19,34 @@ to the nearest multiple of a pre-defined interval.
 ## About the Component
 
 ### What is this for?
-The main usage for the *resizer* is in a Dashboard scenario, where you want your
+Interval-resizer is useful in a dashboard widget scenario, where you want your
 components to expand with their content, but you don't want a bunch of uneven
-heights. By setting your intervalUnit, you give the *resizer* intervals to snap
-to, without losing track of the original height of the *internals*. By allowing
-the *internals* to snap back to their original height just long enough to get a
-height measurement, the *resizer* is able to calculate the next interval to size
-to, before snapping the *internals* back to fill its height. This all happens
-without any visual indication, meaning to the end user it appears to be cleanly
-snapping between intervals whenever its content or the window width change.
+heights. By setting your intervalUnit, you give the interval-resizer intervals
+to snap to, which means nice even heights among all your widget components, and
+a good end-user visual experience.
 
-### Logic flow within program
-1. On window resize or prop change (including internals changing), waits the
-amount of time set through timeoutDelay (none by default)
-1. Once that time passes, sets *internals* to `height: auto` and detects height
-1. Takes the next-largest multiple of your intervalUnit, sets *resizer* to 
-that height
-1. Sets the *internals* to `height: 100%`, filling *resizer* height once more
-
-With no timeoutDelay set, this happens instantaneously, causing a smooth cycle 
-of snap-resizing to a multiple of your intervalUnit. With a timeoutDelay set,
-you begin to see the mechanisms at work. This will save on performance, but will
-cost you in appearance, as the *internals* will wait until window resizing stops
-and the timeout delay passes before resizing to fit the new multiple of
-intervalUnit.
+### How does it do this?
+By allowing the *internals* to return to their original height just long enough
+to get a height measurement, the interval-resizer is able to calculate the next
+interval to size to, before reverting the *internals* back to fill the height.
+This all happens without any visual indication, meaning to the end-user it
+appears to be cleanly snapping between intervals whenever its content or the
+window width change.
 
 ## Get Started
 Options:
-1. Install the npm package  
+1. Install the npm package and use it in your application  
   `npm i interval-resizer`
-1. [Click here to see a working demo](https://liamross.github.io/interval-resizer/)
-1. Download the github yourself, along with the original component:  
-  `git clone https://github.com/liamross/interval-resizer.git`  
-  `cd .\demo\`  
-  `npm install` or `yarn`  
-  `npm start` or `yarn start`
+1. View the working demo [here](https://liamross.github.io/interval-resizer/)
+to play around with functionality and props
+1. Download from GitHub, and customize the original component:  
+  `git clone https://github.com/liamross/interval-resizer.git`
 
 ## Use
 
-### Importing and syntax
+### Inside your component
+
+> See [Props](#props) for explanation and use for each prop.
 
 ```jsx
 import React, {Component} from 'react'
@@ -89,40 +78,15 @@ export default class App extends Component {
     )
   }
 }
-
 ```
 
-### Props
+### Styling
 
-| Name                  | Type          | Default       | Description                                                                                                                                                                                                                                                                                                                    |
-|-----------------------|---------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| intervalUnit          | number        | *required     | Defines the interval in pixels to adjust height by when resizing.                                                                                                                                                                                                                                                              |
-| children              | React element | *required     | The internal content wrapped by the IntervalResizer.                                                                                                                                                                                                                                                                           |
-| timeoutDelay          | number        | 0             | Set a re-render timeout to wait for all prop changes and resizing. This does not apply to props if instantOnReceiveProps is true.                                                                                                                                                                                              |
-| minHeight             | number        | null          | The minimum height in pixels of the IntervalResizer. If given, will not allow the component to become smaller than the provided height.                                                                                                                                                                                        |
-| maxHeight             | number        | null          | The maximum height in pixels of the IntervalResizer. If given, will not allow the component to become larger than the provided height.                                                                                                                                                                                         |
-| className             | string        | null          | A value for the class attribute on the component.                                                                                                                                                                                                                                                                              |
-| instantOnReceiveProps | boolean       | true          | Causes any timeoutDelay to be ignored for cases where the props are updated. This allows for instant resizing when the content height changes (a single set height call from componentWillReceiveProps) while still allowing for timeoutDelay to wait for the browser to stop resizing before calling the set height function. |
-| screenWidthCutoff     | number        | 0             | Defined the minimum width in pixels for interval resizing. Any browser window width below this amount will be resized normally with content (height: auto).                                                                                                                                                                    |
-
-
-### Best practices
-To use, add it to your project using npm or yarn, or to customize extract the
-IntervalResizer file found in `src/IntervalResizer.jsx` and place it within your
-React project as needed. This will allow you to remove PropTypes if you don't
-want them as a dependency in your project. In order to work (as of November 18,
-2017), this component requires the following:
-- A single child *internals*, which wraps all of the things rendered into the
-*resizer*
-- The prop-types package installed (the only dependency, besides a peer
-dependency on react - or refactor to remove PropTypes, they're just there for
-throwing helpful warnings)
-
-To benefit from the *resizer*, content within the *internals* wrapper must be
-set in a way to fill the wrapper's height. This allows the interaction where the
-wrapper becomes `height: auto`. The easiest way is with flexbox, as demonstrated
-in the following examples (obviously the class names can be whatever you want,
-I just use these for the example).
+To benefit from the interval-resizer, content within the *internals* wrapper
+must be set in a way to fill the wrapper's height. This allows the interaction
+where the wrapper becomes `height: auto`. The easiest way is with flexbox, as
+demonstrated in the following examples (obviously the class names can be
+whatever you want, I just use these for the example).
 
 #### SCSS
 
@@ -163,5 +127,102 @@ I just use these for the example).
 ```
 
 Of course you can always use percentages, or have hard-coded height and just
-ensure they float or position how you want. The best method is the one that
-fits your use case!
+ensure they float or position how you want. The best method is the one that fits
+your use case.
+
+## Props
+
+### intervalUnit `number`
+
+**Default**: none - required Prop
+
+**Description**: Defines the interval in pixels to adjust height by when
+resizing.
+
+**Use**: This is the main feature of the component; it allows for your component
+to resize to a clean pixel height, at intervals defined using intervalUnit. A
+large value for intervalUnit means nice clean sizing, but the downside is lots
+of unused space within the component once it resizes to a larger height.
+Alternatively, a small value for intervalUnit will cause more accurate resizing,
+but less guarantee that your components will round to the same height.
+
+### children `JSX.Element`
+
+**Default**: none - required Prop
+
+**Description**: The internal content wrapped by the IntervalResizer.
+
+**Use**: See [Styling](#styling) for a detailed explanation of how to structure
+the *internals*.
+
+### timeoutDelay `number`
+
+**Default**: 0
+
+**Description**: Set a re-render timeout to wait for all prop changes and
+resizing. This does not apply to props if
+[instantOnReceiveProps](#instantonreceiveprops) is true.
+
+**Use**: This exists solely to reduce the expense of watching the window for
+resize events. Setting even a small value (i.e `150`) causes the component to
+wait for resizing to stop before calculating the new *internals* height and
+subsequently the new interval height.
+
+### instantOnReceiveProps `boolean`
+
+**Default**: true
+
+**Description**: Causes any `timeoutDelay` to be ignored for cases where the
+props are updated. `timeoutDelay` will still fire on window resize events.
+
+**Use**: When props change, it triggers a single fire of React's
+`componentWillReceiveProps`. This is not expensive, and presumably will fire
+infrequently unless new props are always being passed. However, window resizing
+will rapid-fire calls to the resizer as the window is adjusted, which is the
+reason for `timeoutDelay`. Since in most use cases the prop change is
+inexpensive, `instantOnReceiveProps` is defaulted to true, and probably should
+remain true for most use cases.
+
+### minHeight `number`
+
+**Default**: null
+
+**Description**: The minimum height in pixels of the interval-resizer. If given,
+will not allow the component to become smaller than the provided height.
+
+**Use**: For if you don't want your component to shrink beyond a certain height.
+
+### maxHeight `number`
+
+**Default**: null
+
+**Description**: The maximum height in pixels of the interval-resizer. If given,
+will not allow the component to become larger than the provided height.
+
+**Use**: For if you don't want your component to grow beyond a certain height.
+
+### className `string`
+
+**Default**: null
+
+**Description**: A value for the class attribute on the component.
+
+**Use**: For applying styling to the component, as it has no inherent styling.
+
+### screenWidthCutoff `number`
+
+**Default**: 0
+
+**Description**: Defined the minimum width in pixels for interval resizing. Any
+browser window width below this amount will be resized normally with content
+(height: auto).
+
+**Use**: Used in tandem with styling breakpoints, this allows you to stop
+interval resizing below a certain screen width. The main use case is when you
+only have one column of dashboard widgets and you no longer need the heights to
+round off as the components fall one after another in a scrolling UI.
+
+## Additional notes
+If you want to remove the PropTypes depedency from interval-resizer, extract the
+IntervalResizer file found in `src/IntervalResizer.jsx` and place it within your
+React project as needed. However, you should use PropTypes, they're great!

@@ -36,19 +36,19 @@ var propTypes = {
   intervalUnit: _propTypes2.default.number.isRequired, // Unit interval to grow by.
   children: _propTypes2.default.element.isRequired, // Child to populate wrapper.
   timeoutDelay: _propTypes2.default.number, // The re-render timeout.
+  instantOnReceiveProps: _propTypes2.default.bool, // Instant resize on get props.
   minHeight: _propTypes2.default.number, // The resizer's minimum height.
   maxHeight: _propTypes2.default.number, // The resizer's maximum height.
   className: _propTypes2.default.string, // A general class.
-  instantOnReceiveProps: _propTypes2.default.bool, // Instant resize on get props.
   screenWidthCutoff: _propTypes2.default.number // Stop intervals at this width.
 };
 
 var defaultProps = {
   timeoutDelay: 0, // No delay by default.
+  instantOnReceiveProps: true, // Instant resize on prop change by default.
   minHeight: null, // No min height by default.
   maxHeight: null, // No max height by default.
   className: null, // No class by default.
-  instantOnReceiveProps: true, // Instant resize on prop change by default.
   screenWidthCutoff: 0 // Cutoff at 0 width by default.
 };
 
