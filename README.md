@@ -84,9 +84,10 @@ export default class App extends Component {
 
 To benefit from the interval-resizer, content within the *internals* wrapper
 must be set in a way to fill the wrapper's height. This allows the interaction
-where the wrapper becomes `height: auto`. The easiest way is with flexbox, as
-demonstrated in the following examples (obviously the class names can be
-whatever you want, I just use these for the example).
+where the wrapper becomes `height: auto`, and the internal height is measured.
+The easiest way is with flexbox, as demonstrated in the following examples
+(obviously the class names can be whatever you want, I just use these for the
+example).
 
 #### SCSS
 
@@ -132,16 +133,31 @@ your use case.
 
 ## Props
 
+Required
+
+- [intervalUnit](#intervalunit---number)
+- [children](#children---jsxelement)
+
+Not Required
+
+- [timeoutDelay](#timeoutdelay---number)
+- [instantOnReceiveProps](#instantonreceiveprops---boolean)
+- [minHeight](#minheight---number)
+- [maxHeight](#maxheight---number)
+- [className](#classname---string)
+- [screenWidthCutoff](#screenwidthcutoff---number)
+
+---
+
 ### intervalUnit - `number`
 
-**Default**  
-none - required Prop
+**Default**: *none* - required Prop
 
-**Description**  
+**Description**:  
 Defines the interval in pixels to adjust height by when
 resizing.
 
-**Use**  
+**Use**:  
 This is the main feature of the component; it allows for your component
 to resize to a clean pixel height, at intervals defined using intervalUnit. A
 large value for intervalUnit means nice clean sizing, but the downside is lots
@@ -153,13 +169,12 @@ but less guarantee that your components will round to the same height.
 
 ### children - `JSX.Element`
 
-**Default**  
-none - required Prop
+**Default**: *none* - required Prop
 
-**Description**  
+**Description**:  
 The internal content wrapped by the IntervalResizer.
 
-**Use**  
+**Use**:  
 See [Styling](#styling) for a detailed explanation of how to structure
 the *internals*.
 
@@ -167,15 +182,13 @@ the *internals*.
 
 ### timeoutDelay - `number`
 
-**Default**  
-0
+**Default**: `0`
 
-**Description**  
+**Description**:  
 Set a re-render timeout to wait for all prop changes and
-resizing. This does not apply to props if
-[instantOnReceiveProps](#instantonreceiveprops-boolean) is true.
+resizing. This does not apply to props if instantOnReceiveProps is true.
 
-**Use**  
+**Use**:  
 This exists solely to reduce the expense of watching the window for
 resize events. Setting even a small value (i.e `150`) causes the component to
 wait for resizing to stop before calculating the new *internals* height and
@@ -185,14 +198,13 @@ subsequently the new interval height.
 
 ### instantOnReceiveProps - `boolean`
 
-**Default**  
-true
+**Default**: `true`
 
-**Description**  
+**Description**:  
 Causes any `timeoutDelay` to be ignored for cases where the
 props are updated. `timeoutDelay` will still fire on window resize events.
 
-**Use**  
+**Use**:  
 When props change, it triggers a single fire of React's
 `componentWillReceiveProps`. This is not expensive, and presumably will fire
 infrequently unless new props are always being passed. However, window resizing
@@ -205,8 +217,7 @@ remain true for most use cases.
 
 ### minHeight - `number`
 
-**Default**  
-null
+**Default**: `null`
 
 **Description**: The minimum height in pixels of the interval-resizer. If given,
 will not allow the component to become smaller than the provided height.
@@ -217,48 +228,49 @@ will not allow the component to become smaller than the provided height.
 
 ### maxHeight - `number`
 
-**Default**  
-null
+**Default**: `null`
 
-**Description**  
+**Description**:  
 The maximum height in pixels of the interval-resizer. If given,
 will not allow the component to become larger than the provided height.
 
-**Use**  
+**Use**:  
 For if you don't want your component to grow beyond a certain height.
 
 ---
 
 ### className - `string`
 
-**Default**  
-null
+**Default**: `null`
 
-**Description**  
+**Description**:  
 A value for the class attribute on the component.
 
-**Use**  
+**Use**:  
 For applying styling to the component, as it has no inherent styling.
 
 ---
 
 ### screenWidthCutoff - `number`
 
-**Default**  
-0
+**Default**: `0`
 
-**Description**  
+**Description**:  
 Defined the minimum width in pixels for interval resizing. Any
 browser window width below this amount will be resized normally with content
 (height: auto).
 
-**Use**  
+**Use**:  
 Used in tandem with styling breakpoints, this allows you to stop
 interval resizing below a certain screen width. The main use case is when you
 only have one column of dashboard widgets and you no longer need the heights to
 round off as the components fall one after another in a scrolling UI.
 
-## Additional notes
-If you want to remove the PropTypes depedency from interval-resizer, extract the
-IntervalResizer file found in `src/IntervalResizer.jsx` and place it within your
-React project as needed. However, you should use PropTypes, they're great!
+---
+
+## Removing the prop-types dependency
+If you want to remove the PropTypes dependency from interval-resizer, extract
+the IntervalResizer file found in `src/IntervalResizer.jsx` and place it within
+your React project as needed. Then remove all references to propTypes and
+defaultProps. However, the prop-types package provides this function with useful
+warnings, and it is recommended that it remains in.
