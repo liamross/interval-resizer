@@ -1,6 +1,6 @@
 {
   "name": "interval-resizer",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "description": "Interval Resizer is a React package for resizing components along pre-defined intervals.",
   "main": "./build/IntervalResizer.js",
   "scripts": {
