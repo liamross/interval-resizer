@@ -1,3 +1,13 @@
+## **2.2.7**
+- [Fix] changes from 2.2.5 are now reflected in npm package, previously was not
+built into npm package properly.
+
+## **2.2.5**
+- [Refactor] componentWillReceiveProps now gives resizeTimeout the nextProps
+version of instantOnReceiveProps. Previously took in the outdated props, meaning
+you could run into issues where changing instantOnReceiveProps may not take
+effect until the next prop or window size change.
+
 ## **2.2.0**
 - [Refactor] npm package now has reference to the window.document object, no
 longer a need for it to be passed as a prop.

@@ -48,8 +48,8 @@ class IntervalResizer extends Component {
     window.addEventListener('resize', this.windowResizeListener);
   }
 
-  componentWillReceiveProps() {
-    this.resizeTimeout(this.props.instantOnReceiveProps);
+  componentWillReceiveProps(nextProps) {
+    this.resizeTimeout(nextProps.instantOnReceiveProps);
   }
 
   componentWillUnmount() {

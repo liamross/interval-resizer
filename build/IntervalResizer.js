@@ -76,8 +76,8 @@ var IntervalResizer = function (_Component) {
     }
   }, {
     key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps() {
-      this.resizeTimeout(this.props.instantOnReceiveProps);
+    value: function componentWillReceiveProps(nextProps) {
+      this.resizeTimeout(nextProps.instantOnReceiveProps);
     }
   }, {
     key: 'componentWillUnmount',
