@@ -1,4 +1,8 @@
-## **2.2.4**
+## **2.2.6**
+- [Fix] changes from 2.2.5 are now reflected in npm package, previously was not
+built into npm package properly.
+
+## **2.2.5**
 - [Refactor] componentWillReceiveProps now gives resizeTimeout the nextProps
 version of instantOnReceiveProps. Previously took in the outdated props, meaning
 you could run into issues where changing instantOnReceiveProps may not take
