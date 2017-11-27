@@ -1,3 +1,6 @@
+> Note: Only code changes are listed below, all other releases are documentation
+updates.
+
 ## **2.2.7**
 - [Fix] changes from 2.2.5 are now reflected in npm package, previously was not
 built into npm package properly.
