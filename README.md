@@ -11,10 +11,10 @@ intervals.
 | [yarn](https://yarn.pm/interval-resizer)               | `yarn add interval-resizer`                                  |
 | [GitHub](https://github.com/liamross/interval-resizer) | `git clone https://github.com/liamross/interval-resizer.git` |
 
+[![license](https://img.shields.io/npm/l/interval-resizer.svg)](https://github.com/liamross/interval-resizer/blob/master/LICENSE)
 [![npm version](https://badge.fury.io/js/interval-resizer.svg)](https://www.npmjs.com/package/interval-resizer)
-[![dependencies Status](https://david-dm.org/liamross/interval-resizer/status.svg)](https://david-dm.org/liamross/interval-resizer)
-[![devDependencies Status](https://david-dm.org/liamross/interval-resizer/dev-status.svg)](https://david-dm.org/liamross/interval-resizer?type=dev)
-[![peerDependencies Status](https://david-dm.org/liamross/interval-resizer/peer-status.svg)](https://david-dm.org/liamross/interval-resizer?type=peer)
+[![npm downloads monthly](https://img.shields.io/npm/dm/interval-resizer.svg)](https://www.npmjs.com/package/interval-resizer)
+[![dependencies status](https://david-dm.org/liamross/interval-resizer/status.svg)](https://david-dm.org/liamross/interval-resizer)
 
 ## About the Component
 
