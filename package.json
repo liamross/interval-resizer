@@ -1,6 +1,6 @@
 {
   "name": "interval-resizer-typescript-do-not-use",
-  "version": "2.2.11",
+  "version": "2.2.12",
   "description": "DO NOT USE.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
