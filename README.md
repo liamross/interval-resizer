@@ -67,11 +67,14 @@ export default class App extends Component {
         screenWidthCutoff={screenWidthCutoff}
       >
         <div className="internals-wrapper">
-          <div className="internals-content internals-content--one">
-            {/*content*/}
+          <div className="some-header">
+            I'm a header
           </div>
-          <div className="internals-content internals-content--two">
-            {/*content*/}
+          <div className="internals-content">
+            {/* see 'Styling' below for more info* /}
+          </div>
+          <div className="some-footer">
+            I'm a footer
           </div>
         </div>
       </IntervalResizer>
@@ -82,48 +85,36 @@ export default class App extends Component {
 
 ### Styling
 
-To benefit from the interval-resizer, content within the *internals* wrapper
-must be set in a way to fill the wrapper's height. This allows the interaction
-where the wrapper becomes `height: auto`, and the internal height is measured.
-The easiest way is with flexbox, as demonstrated in the following examples
-(obviously the class names can be whatever you want, I just use these for the
-example).
+Style the internals of this component however you'd style any div that resizes
+with its content. However, keep in mind that the div will snap to a height that
+is larger than its internals. As such, it is probably best if something inside
+is able to grow and fill the extra space. I personally do this with flex box,
+as shown in the following example:
 
 #### SCSS
 
 ```scss
+// This is the child you give to the interval-resizer component. The styling can
+// be anything, but keep in mind that the height attribute will be overwritten
+// by the interval-resizer in order to switch between measuring the height and
+// snapping to an interval, so it's best to not put a height in here.
 .internals-wrapper {
   display: flex;
   flex-direction: column;
 
+  // This is an example of how to style at least one of the children inside of
+  // your internals-wrapper. By allowing it to flex-grow and flex-shrink, and
+  // making the flex-basis auto, this component will fill any remaining height
+  // after the component expands to the next-biggest interval.
   > .internals-content {
     flex: 1 1 auto;
-    // Or flex: 1 1 0; for all even heights.
-    // (Shorthand for flex-grow, flex-shrink, flex-basis)
-    // Technically, only one of the internal components has
-    // to have any flex properties, and if you set it to
-    // flex: 1 1 auto; it will fill the remaining height
-    // in the wrapper.
+    /*
+    same as:
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    */
   }
-}
-```
-
-#### CSS
-
-```css
-.internals-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.internals-wrapper > .internals-content {
-  flex: 1 1 auto;
-  /* Or flex: 1 1 0; for all even heights.
-  (Shorthand for flex-grow, flex-shrink, flex-basis)
-  Technically, only one of the internal components has
-  to have any flex properties, and if you set it to
-  flex: 1 1 auto; it will fill the remaining height
-  in the wrapper. */
 }
 ```
 
