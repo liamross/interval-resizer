@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IIntervalResizerProps} from "./IntervalResizer.types";
+import {IIntervalResizerProps} from "./IntervalResizer.Props";
 
 export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> {
   public static defaultProps = {

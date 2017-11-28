@@ -1,15 +1,12 @@
 {
-  "name": "interval-resizer",
-  "version": "2.2.11",
-  "description": "Interval Resizer is a React package for resizing components along pre-defined intervals.",
-  "main": "./build/IntervalResizer.js",
-  "scripts": {
-    "build": "babel ./src --out-dir ./build --source-maps",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "name": "interval-resizer-typescript-test",
+  "version": "1.0.0",
+  "description": "DO NOT USE - SHOULD BE UNPUBLISHED.",
+  "main": "./lib/IntervalResizer.js",
+  "typings": "lib/IntervalResizer.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liamross/interval-resizer.git"
+    "url": "git+https://github.com/liamross/interval-resizer.git#typescript-version"
   },
   "author": "Liam Ross",
   "license": "MIT",
@@ -18,13 +15,9 @@
   },
   "devDependencies": {
     "@types/react": "^16.0.25",
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
     "react": "^16.1.1"
   },
   "dependencies": {
-    "prop-types": ">=15.6.0"
+    "tslib": "^1.8.0"
   }
 }
