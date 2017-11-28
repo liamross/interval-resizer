@@ -50,7 +50,7 @@ to play around with functionality and props
 
 ```jsx
 import React, {Component} from 'react'
-import IntervalResizer from 'interval-resizer';
+import {IntervalResizer} from 'interval-resizer';
 // ...
 
 export default class App extends Component {
@@ -258,12 +258,3 @@ Used in tandem with styling breakpoints, this allows you to stop
 interval resizing below a certain screen width. The main use case is when you
 only have one column of dashboard widgets and you no longer need the heights to
 round off as the components fall one after another in a scrolling UI.
-
----
-
-## Removing the prop-types dependency
-If you want to remove the PropTypes dependency from interval-resizer, extract
-the IntervalResizer file found in `src/IntervalResizer.jsx` and place it within
-your React project as needed. Then remove all references to propTypes. However,
-the prop-types package provides this function with useful warnings, and it is
-recommended that it remains in.
