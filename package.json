@@ -6,7 +6,7 @@
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liamross/interval-resizer.git"
+    "url": "git+https://github.com/liamross/interval-resizer.git#typescript-version"
   },
   "author": "Liam Ross",
   "license": "MIT",
