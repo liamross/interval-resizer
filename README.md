@@ -33,6 +33,12 @@ This all happens without any visual indication, meaning to the end-user it
 appears to be cleanly snapping between intervals whenever its content or the
 window width change.
 
+### Why is it in TypeScript?
+It is written in TypeScript but is built into JavaScript for the npm package,
+which allows for easy integration into any React project, whether it uses
+TypeScript or not. It also has the added benefit of improving IDE correction and
+suggestions!
+
 ## Get Started
 Options:
 1. Install the npm package and use it in your application  
