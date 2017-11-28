@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "gh-pages": "^1.0.0",
-    "interval-resizer-typescript-test": "^1.0.2",
+    "interval-resizer-typescript-do-not-use": "^2.2.12",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",

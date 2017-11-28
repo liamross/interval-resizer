@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { IntervalResizer } from 'interval-resizer-typescript-test';
+import IntervalResizer from 'interval-resizer-typescript-do-not-use';
 import './App.css';
 
 const propTypes = {

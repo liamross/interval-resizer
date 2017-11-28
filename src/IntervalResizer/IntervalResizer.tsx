@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {IIntervalResizerProps} from "./IntervalResizer.Props";
 
-export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> {
+export default class IntervalResizer extends React.Component<IIntervalResizerProps, {}> {
   public static defaultProps = {
     timeoutDelay: 0,
     instantOnReceiveProps: true,
