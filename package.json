@@ -2,8 +2,8 @@
   "name": "interval-resizer-typescript-test",
   "version": "1.0.1",
   "description": "DO NOT USE - SHOULD BE UNPUBLISHED.",
-  "main": "./lib/IntervalResizer.js",
-  "typings": "lib/IntervalResizer.d.ts",
+  "main": "./lib/index.js",
+  "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/liamross/interval-resizer.git#typescript-version"
