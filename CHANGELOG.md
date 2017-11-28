@@ -6,6 +6,9 @@ updates.
 - [Removed] dependency on prop-types, as well as babel dev dependencies.
 - [Added] dependency on tslib and dev dependencies on react.
 
+> Note: for typescript integration, IntervalResizer is no longer default export,
+and must be imported using curly braces from the 'interval-resizer' package.
+
 ## **2.2.7**
 - [Fix] changes from 2.2.5 are now reflected in npm package, previously was not
 built into npm package properly.
