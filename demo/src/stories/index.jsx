@@ -4,7 +4,7 @@ import { boolean, number, withKnobs } from '@storybook/addon-knobs';
 
 import App from '../App';
 
-const stories = storiesOf('2.2.8', module);
+const stories = storiesOf('2.2.11', module);
 
 // Add the `withKnobs` decorator to add knobs support to your stories.
 // You can also configure `withKnobs` as a global decorator.
@@ -15,25 +15,13 @@ stories.add('Component Demo', () => {
   return (
     <App
       componentMounted={boolean('Component mounted', true)}
-      blueWords={number('Blue words', 40, {
+      bodyWords={number('Body words', 172, {
         range: true,
         min: 0,
-        max: 1000,
+        max: 2000,
         step: 5,
       })}
-      redWords={number('Red words', 52, {
-        range: true,
-        min: 0,
-        max: 1000,
-        step: 5,
-      })}
-      greenWords={number('Green words', 32, {
-        range: true,
-        min: 0,
-        max: 1000,
-        step: 5,
-      })}
-      intervalUnit={number('intervalUnit (px)', 50) || null}
+      intervalUnit={number('intervalUnit (px)', 100) || null}
       timeoutDelay={number('timeoutDelay (ms)', 0) || null}
       minHeight={number('minHeight (px)', null) || null}
       maxHeight={number('maxHeight (px)', null) || null}

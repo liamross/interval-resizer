@@ -3,18 +3,8 @@ body {
   margin: 0;
 }
 
-h3 {
-  margin: 0 0 16px;
-  display: inline;
-}
-
-a {
-  color: blue;
-  cursor: pointer;
-}
-
-a:hover {
-  text-decoration: underline;
+h4 {
+  margin: 0;
 }
 
 .nowrapLabel {
@@ -31,9 +21,13 @@ a:hover {
   position: fixed;
   height: 60px;
   box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .resizeDemo-settings {
@@ -77,34 +71,33 @@ a:hover {
 }
 
 .resizing-widget {
-  border: 2px solid gray;
+  border: 1px solid #666;
   overflow: hidden;
   box-sizing: border-box;
 }
 
 .Outer {
-  background-color: red;
+  background-color: rgb(245, 245, 245);
   display: flex;
   flex-direction: column;
 }
 
-.Inner {
-  flex: 1 1 auto;
-  display: flex;
+.Header {
+  flex: 0 0 40px;
   align-items: center;
+  padding: 8px 4px;
+  border-bottom: 1px solid #666;
+}
+
+.Body {
+  flex: 1 1 auto;
   padding: 8px 4px;
 }
 
-.Inner--one {
-  background-color: lightblue;
-}
-
-.Inner--two {
-  background-color: lightcoral;
-}
-
-.Inner--three {
-  background-color: lightgreen;
+.Footer {
+  flex: 0 0 40px;
+  padding: 8px 4px;
+  border-top: 1px solid #666;
 }
 
 .line {

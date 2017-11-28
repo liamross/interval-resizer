@@ -5,9 +5,7 @@ import './App.css';
 
 const propTypes = {
   componentMounted: PropTypes.bool.isRequired,
-  blueWords: PropTypes.number.isRequired,
-  redWords: PropTypes.number.isRequired,
-  greenWords: PropTypes.number.isRequired,
+  bodyWords: PropTypes.number.isRequired,
   intervalUnit: PropTypes.number,
   timeoutDelay: PropTypes.number,
   minHeight: PropTypes.number,
@@ -24,7 +22,40 @@ const defaultProps = {
   screenWidthCutoff: null,
 };
 
+const lorem = ("Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
+  + " Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar"
+  + " ultricies, purus lectus malesuada libero, sit amet commodo magna eros"
+  + " quis urna. Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus."
+  + " Pellentesque habitant morbi tristique senectus et netus et malesuada"
+  + " fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci."
+  + " Aenean nec lorem. In porttitor. Donec laoreet nonummy augue. Suspendisse"
+  + " dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris"
+  + " eget neque at sem venenatis eleifend. Ut nonummy.").split(' ');
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lorem: this.setLorem(props.bodyWords),
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.bodyWords !== this.props.bodyWords) {
+      this.setState({
+        lorem: this.setLorem(nextProps.bodyWords),
+      })
+    }
+  }
+
+  setLorem(bodyWords) {
+    let returnedLorem = '';
+    for(let i = 0; i < bodyWords; i++) {
+      returnedLorem = returnedLorem + lorem[i % lorem.length] + ' ';
+    }
+    return returnedLorem;
+  }
+
   render() {
     return (
       <div>
@@ -56,20 +87,18 @@ class App extends Component {
               screenWidthCutoff={this.props.screenWidthCutoff}
             >
               <div className="Outer">
-                <div className="Inner Inner--one">
-                  <div>
-                    {'blue '.repeat(this.props.blueWords || 0)}
-                  </div>
+                <div className="Header">
+                  <h4>
+                    Dashboard Widget
+                  </h4>
                 </div>
-                <div className="Inner Inner--two">
-                  <div>
-                    {'red '.repeat(this.props.redWords || 0)}
-                  </div>
+                <div className="Body">
+                  {this.state.lorem}
                 </div>
-                <div className="Inner Inner--three">
-                  <div>
-                    {'green '.repeat(this.props.greenWords || 0)}
-                  </div>
+                <div className="Footer">
+                  <h4>
+                    Some Neat Footer
+                  </h4>
                 </div>
               </div>
             </IntervalResizer>
