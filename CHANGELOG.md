@@ -1,6 +1,11 @@
 > Note: Only code changes are listed below, all other releases are documentation
 updates.
 
+## **2.3.0**
+- [Refactor] component is now entirely written and typed to typescript.
+- [Removed] dependency on prop-types, as well as babel dev dependencies.
+- [Added] dependency on tslib and dev dependencies on react.
+
 ## **2.2.7**
 - [Fix] changes from 2.2.5 are now reflected in npm package, previously was not
 built into npm package properly.

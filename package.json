@@ -1,12 +1,12 @@
 {
-  "name": "interval-resizer-test",
-  "version": "1.1.0",
-  "description": "DO NOT USE.",
+  "name": "interval-resizer",
+  "version": "2.2.11",
+  "description": "Interval Resizer is a React package for resizing components along pre-defined intervals.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liamross/interval-resizer.git#typescript-version"
+    "url": "git+https://github.com/liamross/interval-resizer.git"
   },
   "author": "Liam Ross",
   "license": "MIT",
@@ -19,5 +19,8 @@
   },
   "dependencies": {
     "tslib": "^1.8.0"
+  },
+  "scripts": {
+    "start": "cd demo && npm run storybook"
   }
 }

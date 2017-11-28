@@ -1,6 +1,6 @@
 {
   "name": "interval-resizer-demo",
-  "version": "0.1.2",
+  "version": "0.1.0",
   "private": true,
   "homepage": "https://liamross.github.io/interval-resizer/",
   "storybook-deployer": {
@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "gh-pages": "^1.0.0",
-    "interval-resizer-typescript-do-not-use": "^2.2.14",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
