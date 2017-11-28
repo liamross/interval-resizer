@@ -1,6 +1,6 @@
 {
   "name": "interval-resizer-test",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "DO NOT USE.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -21,3 +21,4 @@
     "tslib": "^1.8.0"
   }
 }
+
