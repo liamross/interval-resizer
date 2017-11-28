@@ -4,7 +4,7 @@ import { boolean, number, withKnobs } from '@storybook/addon-knobs';
 
 import App from '../App';
 
-const stories = storiesOf('3.0.1', module);
+const stories = storiesOf('3.0.2', module);
 
 // Add the `withKnobs` decorator to add knobs support to your stories.
 // You can also configure `withKnobs` as a global decorator.
