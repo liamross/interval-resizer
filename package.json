@@ -1,6 +1,6 @@
 {
   "name": "interval-resizer-typescript-test",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "DO NOT USE - SHOULD BE UNPUBLISHED.",
   "main": "./lib/IntervalResizer.js",
   "typings": "lib/IntervalResizer.d.ts",
