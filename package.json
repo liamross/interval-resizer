@@ -1,12 +1,12 @@
 {
-  "name": "interval-resizer-typescript-test",
-  "version": "1.0.2",
-  "description": "DO NOT USE - SHOULD BE UNPUBLISHED.",
-  "main": "./lib/index.js",
+  "name": "interval-resizer-typescript-do-not-use",
+  "version": "2.2.11",
+  "description": "DO NOT USE.",
+  "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liamross/interval-resizer.git#typescript-version"
+    "url": "git+https://github.com/liamross/interval-resizer.git"
   },
   "author": "Liam Ross",
   "license": "MIT",

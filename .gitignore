@@ -37,3 +37,6 @@ yarn-error.log*
 # idea
 /.idea
 /demo/.idea
+
+# hide npm builds
+/lib

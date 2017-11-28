@@ -3888,9 +3888,9 @@ interpret@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.4.tgz#820cdd588b868ffb191a809506d6c9c8f212b1b0"
 
-interval-resizer-typescript-test@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/interval-resizer-typescript-test/-/interval-resizer-typescript-test-1.0.1.tgz#61fb8682e3e068a4a9d18d72ca4c763bf91d7b08"
+interval-resizer-typescript-test@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/interval-resizer-typescript-test/-/interval-resizer-typescript-test-1.0.2.tgz#b8455e43051ae14e77bca76a1456546c3de71ba7"
   dependencies:
     tslib "^1.8.0"
 
