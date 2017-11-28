@@ -3888,11 +3888,11 @@ interpret@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.4.tgz#820cdd588b868ffb191a809506d6c9c8f212b1b0"
 
-interval-resizer@^2.2.11:
-  version "2.2.11"
-  resolved "https://registry.yarnpkg.com/interval-resizer/-/interval-resizer-2.2.11.tgz#79edf00ba2f804202789b9f6259acec76a0b08c1"
+interval-resizer-typescript-test@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/interval-resizer-typescript-test/-/interval-resizer-typescript-test-1.0.1.tgz#61fb8682e3e068a4a9d18d72ca4c763bf91d7b08"
   dependencies:
-    prop-types ">=15.6.0"
+    tslib "^1.8.0"
 
 invariant@^2.2.2:
   version "2.2.2"
@@ -5866,7 +5866,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@>=15.6.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.5.9, prop-types@^15.6.0:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.5.9, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -7186,6 +7186,10 @@ trim-right@^1.0.1:
 tryit@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tryit/-/tryit-1.0.3.tgz#393be730a9446fd1ead6da59a014308f36c289cb"
+
+tslib@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.8.0.tgz#dc604ebad64bcbf696d613da6c954aa0e7ea1eb6"
 
 tty-browserify@0.0.0:
   version "0.0.0"
