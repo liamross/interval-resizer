@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IntervalResizer } from './IntervalResizer';
+import IntervalResizer from './IntervalResizer';
 
 export interface IIntervalResizerProps extends React.HTMLAttributes<IntervalResizer> {
   /**

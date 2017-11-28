@@ -1,6 +1,6 @@
 {
   "name": "interval-resizer-demo",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "homepage": "https://liamross.github.io/interval-resizer/",
   "storybook-deployer": {
