@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {IIntervalResizerProps} from "./IntervalResizer.types";
 
-class IntervalResizer extends React.Component<IIntervalResizerProps, {}> {
-
+export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> {
   public static defaultProps = {
     timeoutDelay: 0,
     instantOnReceiveProps: true,
@@ -15,12 +14,15 @@ class IntervalResizer extends React.Component<IIntervalResizerProps, {}> {
   private _waitToRender: number;
   private _uid: string;
 
-
-  constructor() {
-    super();
+  constructor(props: IIntervalResizerProps) {
+    super(props);
     this._waitToRender = null;
     this._uid = new Date().valueOf() + '-' + Math.ceil(Math.random() * 10000000);
     this._windowResizeListener = this._windowResizeListener.bind(this);
+    props.uniqueId && console.warn('uniqueId is depreciated as of 2.1.0,'
+      + ' and is no longer used, you can remove the prop from your code.');
+    props.documentRef && console.warn('documentRef is depreciated as of 2.2.0,'
+      + ' and is no longer used, you can remove the prop from your code.');
   }
 
   public componentDidMount(): void {
@@ -36,11 +38,21 @@ class IntervalResizer extends React.Component<IIntervalResizerProps, {}> {
     window.removeEventListener('resize', this._windowResizeListener);
   }
 
+  public render(): React.ReactNode {
+    return (
+      <div
+        id={this._uid}
+        className={this.props.className}>
+        {this.props.children}
+      </div>
+    );
+  }
+
   /**
    * Necessary to discard arguments passed from event listener binding and
    * pass false instead as _resizeTimeout's 'instant' parameter.
    */
-  _windowResizeListener(): void {
+  private _windowResizeListener(): void {
     this._resizeTimeout(false);
   }
 
@@ -51,7 +63,7 @@ class IntervalResizer extends React.Component<IIntervalResizerProps, {}> {
    * @param {boolean} instant - True to call _setWrapperHeight instantly, false
    * to wait for timeoutDelay.
    */
-  _resizeTimeout(instant: boolean): void {
+  private _resizeTimeout(instant: boolean): void {
     clearTimeout(this._waitToRender);
     this._waitToRender = setTimeout(() => {
       this._setWrapperHeight();
@@ -64,7 +76,7 @@ class IntervalResizer extends React.Component<IIntervalResizerProps, {}> {
    * If the window is smaller than the screenWidthCutoff, then the component
    * will match the height of the internals with no intervals.
    */
-  _setWrapperHeight(): void {
+  private _setWrapperHeight(): void {
     const {screenWidthCutoff} = this.props;
     const resizeWrapper: HTMLElement = window.document.getElementById(this._uid);
     const internalWrapper: HTMLElement = resizeWrapper.firstChild as HTMLElement;
@@ -87,7 +99,7 @@ class IntervalResizer extends React.Component<IIntervalResizerProps, {}> {
    * @param {number} contentHeight - The 'auto' height of the content.
    * @returns {number} - Returns a multiple of your intervalUnit.
    */
-  _getIntervalHeight(contentHeight: number): number {
+  private _getIntervalHeight(contentHeight: number): number {
     const {intervalUnit, minHeight, maxHeight} = this.props;
     let newHeight: number = Math.ceil(contentHeight / intervalUnit) * intervalUnit;
     if (minHeight !== null) {
@@ -104,17 +116,4 @@ class IntervalResizer extends React.Component<IIntervalResizerProps, {}> {
     }
     return newHeight;
   }
-
-  public render(): React.ReactNode {
-    return (
-      <div
-        id={this._uid}
-        className={this.props.className}>
-        {this.props.children}
-      </div>
-    );
-  }
-
 }
-
-export default IntervalResizer;

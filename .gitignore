@@ -6,6 +6,9 @@
 /coverage
 /demo/coverage
 
+# sandbox
+/sandbox
+
 # builds
 /demo/build
 /demo/.out
