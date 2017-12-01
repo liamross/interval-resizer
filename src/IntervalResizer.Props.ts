@@ -1,4 +1,4 @@
-/* IntervalResizer.Props.(t|j)s -- Interval Resizer is a React package for
+/* IntervalResizer.Props.ts -- Interval Resizer is a React package for
  * resizing components along pre-defined intervals.
  *
  * Copyright (C) 2017 Liam Ross

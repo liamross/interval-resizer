@@ -33,16 +33,16 @@ export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> 
   };
 
   public componentDidMount(): void {
-    this._setWrapperHeight();
-    window.addEventListener('resize', this._setWrapperHeight);
+    this._setWrapperHeight(this.props);
+    window.addEventListener('resize', this._resizeListener);
   };
 
-  public componentWillReceiveProps() {
-    this._setWrapperHeight();
+  public componentWillReceiveProps(nextProps: IIntervalResizerProps) {
+    this._setWrapperHeight(nextProps);
   };
 
   public componentWillUnmount(): void {
-    window.removeEventListener('resize', this._setWrapperHeight);
+    window.removeEventListener('resize', this._resizeListener);
   };
 
   public render(): React.ReactNode {
@@ -56,13 +56,25 @@ export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> 
   };
 
   /**
+   * A pass-through to _setWrapperHeight, allows passing props instead of
+   * event from the listener, since sometimes we would like to call
+   * _setWrapperHeight directly with nextProps or from componentDidMount.
+   * @private
+   */
+  private _resizeListener = (): void => {
+    this._setWrapperHeight(this.props);
+  };
+
+  /**
    * Detects the internal wrapper height and sets the resize wrapper to the next
    * larger intervalUnit multiple, then adjusts the content to fit that height.
    * If the window is smaller than the screenWidthCutoff, then the component
    * will match the height of the internals with no intervals.
+   * @param {IIntervalResizerProps} props - The current props.
+   * @private
    */
-  private _setWrapperHeight = (): void => {
-    const {screenWidthCutoff} = this.props;
+  private _setWrapperHeight = (props: IIntervalResizerProps): void => {
+    const {screenWidthCutoff} = props;
     const resizeWrapper = window.document.getElementById(this._uid);
     if (resizeWrapper) {
       const internalWrapper: HTMLElement = resizeWrapper.firstChild as HTMLElement;
@@ -70,7 +82,7 @@ export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> 
         || window.document.documentElement.clientWidth > screenWidthCutoff) {
         internalWrapper.style.height = 'auto';
         const contentHeight: number = internalWrapper.offsetHeight;
-        const newHeight: number = this._getIntervalHeight(contentHeight);
+        const newHeight: number = this._getIntervalHeight(contentHeight, props);
         resizeWrapper.style.height = `${String(newHeight)}px`;
         internalWrapper.style.height = '100%';
       } else {
@@ -91,10 +103,12 @@ export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> 
    * for the minHeight and maxHeight. Will override minHeight with maxHeight if
    * maxHeight is smaller than minHeight.
    * @param {number} contentHeight - The 'auto' height of the content.
+   * @param {IIntervalResizerProps} props - The current props.
    * @returns {number} - Returns a multiple of your intervalUnit.
+   * @private
    */
-  private _getIntervalHeight = (contentHeight: number): number => {
-    const {intervalUnit, minHeight, maxHeight} = this.props;
+  private _getIntervalHeight = (contentHeight: number, props: IIntervalResizerProps): number => {
+    const {intervalUnit, minHeight, maxHeight} = props;
     let newHeight: number = Math.ceil(contentHeight / intervalUnit) * intervalUnit;
     if (minHeight && minHeight > 0) {
       newHeight = Math.max(
