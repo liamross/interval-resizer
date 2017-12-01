@@ -1,23 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { IntervalResizer } from 'interval-resizer';
 import './App.css';
-
-const propTypes = {
-  componentMounted: PropTypes.bool.isRequired,
-  bodyWords: PropTypes.number.isRequired,
-  intervalUnit: PropTypes.number,
-  minHeight: PropTypes.number,
-  maxHeight: PropTypes.number,
-  screenWidthCutoff: PropTypes.number,
-};
-
-const defaultProps = {
-  intervalUnit: null,
-  minHeight: null,
-  maxHeight: null,
-  screenWidthCutoff: null,
-};
 
 const lorem = ("Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
   + " Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar"
@@ -103,7 +86,4 @@ class App extends Component {
     );
   }
 }
-
-App.propTypes = propTypes;
-App.defaultProps = defaultProps;
 export default App;
