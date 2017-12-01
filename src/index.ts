@@ -1,1 +1,2 @@
-export * from './IntervalResizer/index';
+export * from  './IntervalResizer';
+export * from './IntervalResizer.Props';
