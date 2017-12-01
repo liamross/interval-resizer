@@ -1,7 +1,10 @@
 > Note: Only code changes are listed below, all other releases are documentation
 updates.
 
-## **3.1.0**
+## **3.1.2**
+- [Refactor] Now uses nextProps for all incoming props when props change.
+
+## **3.1.1**
 - [Removed] Prop `timeoutDelay` - Listener was shown to be inexpensive even with
 multiple concurrent components. As such, this prop is rendered unnecessary.
 - [Removed] Prop `instantOnReceiveProps` - not needed since it is tightly linked
