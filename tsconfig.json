@@ -9,7 +9,9 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "noUnusedLocals": false,
     "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "lib": [
@@ -21,7 +23,7 @@
       "webpack-env"
     ],
     "paths": {
-      "office-ui-fabric-react/lib/*": [
+      "interval-resizer/lib/*": [
         "./src/*"
       ]
     }

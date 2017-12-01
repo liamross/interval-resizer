@@ -1,42 +1,49 @@
+/* IntervalResizer.(t|j)sx -- Interval Resizer is a React package for resizing
+ * components along pre-defined intervals.
+ *
+ * Copyright (C) 2017 Liam Ross
+ *
+ * This software may be modified and distributed under the terms of the MIT
+ * license. See the LICENSE file for details.
+ */
 import * as React from 'react';
 import {IIntervalResizerProps} from "./IntervalResizer.Props";
 
 export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> {
   public static defaultProps = {
-    timeoutDelay: 0,
-    instantOnReceiveProps: true,
-    minHeight: null,
-    maxHeight: null,
-    className: null,
+    minHeight: 0,
+    maxHeight: -1,
+    className: '',
     screenWidthCutoff: 0,
   };
 
-  private _waitToRender: number;
   private _uid: string;
 
   constructor(props: IIntervalResizerProps) {
     super(props);
-    this._waitToRender = null;
-    this._uid = new Date().valueOf() + '-' + Math.ceil(Math.random() * 10000000);
-    this._windowResizeListener = this._windowResizeListener.bind(this);
-    props.uniqueId && console.warn('uniqueId is depreciated as of 2.1.0,'
-      + ' and is no longer used, you can remove the prop from your code.');
-    props.documentRef && console.warn('documentRef is depreciated as of 2.2.0,'
-      + ' and is no longer used, you can remove the prop from your code.');
-  }
+    this._uid = new Date().valueOf() + '-' + Math.ceil(Math.random() * 10e10);
+    props.uniqueId && console.error('uniqueId is depreciated as of 2.1.0,'
+      + ' and is no longer used.');
+    props.documentRef && console.error('documentRef is depreciated as of 2.2.0,'
+      + ' and is no longer used.');
+    props.timeoutDelay && console.error('timeoutDelay is depreciated as of'
+      + ' 3.1.0, and is no longer used.');
+    props.instantOnReceiveProps && console.error('instantOnReceiveProps is'
+      + ' depreciated as of 3.1.0, and is no longer used.');
+  };
 
   public componentDidMount(): void {
-    this._resizeTimeout(true);
-    window.addEventListener('resize', this._windowResizeListener);
-  }
+    this._setWrapperHeight();
+    window.addEventListener('resize', this._setWrapperHeight);
+  };
 
-  public componentWillReceiveProps(newProps: IIntervalResizerProps) {
-    this._resizeTimeout(newProps.instantOnReceiveProps);
-  }
+  public componentWillReceiveProps() {
+    this._setWrapperHeight();
+  };
 
   public componentWillUnmount(): void {
-    window.removeEventListener('resize', this._windowResizeListener);
-  }
+    window.removeEventListener('resize', this._setWrapperHeight);
+  };
 
   public render(): React.ReactNode {
     return (
@@ -46,29 +53,7 @@ export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> 
         {this.props.children}
       </div>
     );
-  }
-
-  /**
-   * Necessary to discard arguments passed from event listener binding and
-   * pass false instead as _resizeTimeout's 'instant' parameter.
-   */
-  private _windowResizeListener(): void {
-    this._resizeTimeout(false);
-  }
-
-  /**
-   * Starts a timeout based off of timeoutDelay prop. If function is called
-   * while timeout is in progress, it clears the timeout and begins again. Takes
-   * a boolean to determine whether it will call instantly.
-   * @param {boolean} instant - True to call _setWrapperHeight instantly, false
-   * to wait for timeoutDelay.
-   */
-  private _resizeTimeout(instant: boolean): void {
-    clearTimeout(this._waitToRender);
-    this._waitToRender = setTimeout(() => {
-      this._setWrapperHeight();
-    }, instant ? 0 : this.props.timeoutDelay);
-  }
+  };
 
   /**
    * Detects the internal wrapper height and sets the resize wrapper to the next
@@ -76,21 +61,30 @@ export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> 
    * If the window is smaller than the screenWidthCutoff, then the component
    * will match the height of the internals with no intervals.
    */
-  private _setWrapperHeight(): void {
+  private _setWrapperHeight = (): void => {
     const {screenWidthCutoff} = this.props;
-    const resizeWrapper: HTMLElement = window.document.getElementById(this._uid);
-    const internalWrapper: HTMLElement = resizeWrapper.firstChild as HTMLElement;
-    if (window.document.documentElement.clientWidth > screenWidthCutoff) {
-      internalWrapper.style.height = 'auto';
-      const contentHeight: number = internalWrapper.offsetHeight;
-      const newHeight: number = this._getIntervalHeight(contentHeight);
-      resizeWrapper.style.height = `${String(newHeight)}px`;
-      internalWrapper.style.height = '100%';
+    const resizeWrapper = window.document.getElementById(this._uid);
+    if (resizeWrapper) {
+      const internalWrapper: HTMLElement = resizeWrapper.firstChild as HTMLElement;
+      if (!screenWidthCutoff
+        || window.document.documentElement.clientWidth > screenWidthCutoff) {
+        internalWrapper.style.height = 'auto';
+        const contentHeight: number = internalWrapper.offsetHeight;
+        const newHeight: number = this._getIntervalHeight(contentHeight);
+        resizeWrapper.style.height = `${String(newHeight)}px`;
+        internalWrapper.style.height = '100%';
+      } else {
+        resizeWrapper.style.height = 'auto';
+        internalWrapper.style.height = 'auto';
+      }
     } else {
-      resizeWrapper.style.height = 'auto';
-      internalWrapper.style.height = 'auto';
+      console.error(
+        'Error: unable to find interval resizer in DOM.\n'
+        + 'ID of resizer: ' + this._uid + '\n'
+        + 'Component may have been unmounted without detection by React.',
+      );
     }
-  }
+  };
 
   /**
    * Sets the height to a multiple of the intervalUnit unit, while accounting
@@ -99,21 +93,21 @@ export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> 
    * @param {number} contentHeight - The 'auto' height of the content.
    * @returns {number} - Returns a multiple of your intervalUnit.
    */
-  private _getIntervalHeight(contentHeight: number): number {
+  private _getIntervalHeight = (contentHeight: number): number => {
     const {intervalUnit, minHeight, maxHeight} = this.props;
     let newHeight: number = Math.ceil(contentHeight / intervalUnit) * intervalUnit;
-    if (minHeight !== null) {
+    if (minHeight && minHeight > 0) {
       newHeight = Math.max(
         newHeight,
         Math.ceil(minHeight / intervalUnit) * intervalUnit,
       );
     }
-    if (maxHeight !== null) {
+    if (maxHeight && maxHeight > -1) {
       newHeight = Math.min(
         newHeight,
         Math.floor(maxHeight / intervalUnit) * intervalUnit,
       );
     }
     return newHeight;
-  }
+  };
 }

@@ -23,5 +23,5 @@ yarn-error.log*
 /.idea
 
 # hide unnecessary original files
-src/**/*
-!src/**/*.Props.ts
+src/*
+!src/*.Props.ts

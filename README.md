@@ -34,10 +34,9 @@ appears to be cleanly snapping between intervals whenever its content or the
 window width change.
 
 ### Why is it in TypeScript?
-It is written in TypeScript but is built into JavaScript for the npm package,
-which allows for easy integration into any React project, whether it uses
-TypeScript or not. It also has the added benefit of improving IDE correction and
-suggestions!
+To allow for greater IDE correction, as well as built-in typing in the npm
+package. Don't worry, it works in both JavaScript and TypeScript projects, as it
+is compiled down into highly-compatible ES5.
 
 ## Get Started
 Options:
@@ -65,11 +64,9 @@ export default class App extends Component {
     return (
       <IntervalResizer
         intervalUnit={intervalUnit}
-        timeoutDelay={timeoutDelay}
         minHeight={minHeight}
         maxHeight={maxHeight}
         className={className}
-        instantOnReceiveProps={instantOnReceiveProps}
         screenWidthCutoff={screenWidthCutoff}
       >
         <div className="internals-wrapper">
@@ -139,8 +136,6 @@ Required
 
 Not Required
 
-- [timeoutDelay](#timeoutdelay---number)
-- [instantOnReceiveProps](#instantonreceiveprops---boolean)
 - [minHeight](#minheight---number)
 - [maxHeight](#maxheight---number)
 - [className](#classname---string)
@@ -176,41 +171,6 @@ The internal content wrapped by the IntervalResizer.
 **Use**:  
 See [Styling](#styling) for a detailed explanation of how to structure
 the *internals*.
-
----
-
-### timeoutDelay - `number`
-
-**Default**: `0`
-
-**Description**:  
-Set a re-render timeout to wait for all prop changes and
-resizing. This does not apply to props if instantOnReceiveProps is true.
-
-**Use**:  
-This exists solely to reduce the expense of watching the window for
-resize events. Setting even a small value (i.e `150`) causes the component to
-wait for resizing to stop before calculating the new *internals* height and
-subsequently the new interval height.
-
----
-
-### instantOnReceiveProps - `boolean`
-
-**Default**: `true`
-
-**Description**:  
-Causes any `timeoutDelay` to be ignored for cases where the
-props are updated. `timeoutDelay` will still fire on window resize events.
-
-**Use**:  
-When props change, it triggers a single fire of React's
-`componentWillReceiveProps`. This is not expensive, and presumably will fire
-infrequently unless new props are always being passed. However, window resizing
-will rapid-fire calls to the resizer as the window is adjusted, which is the
-reason for `timeoutDelay`. Since in most use cases the prop change is
-inexpensive, `instantOnReceiveProps` is defaulted to true, and probably should
-remain true for most use cases.
 
 ---
 

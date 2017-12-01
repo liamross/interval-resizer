@@ -1,23 +1,29 @@
 > Note: Only code changes are listed below, all other releases are documentation
 updates.
 
-## **3.0.0**
-- [Refactor] component is now entirely written and typed to typescript.
-- [Removed] dependency on prop-types, as well as babel dev dependencies.
-- [Added] dependency on tslib and dev dependencies on react.
+## **3.1.0**
+- [Removed] Prop `timeoutDelay` - Listener was shown to be inexpensive even with
+multiple concurrent components. As such, this prop is rendered unnecessary.
+- [Removed] Prop `instantOnReceiveProps` - not needed since it is tightly linked
+to timeoutDelay.
+- [Refactor] Code refactored to maintain static typing, more error handling and
+double-checking props in breaking areas.
 
-> Note: for typescript integration, IntervalResizer is no longer default export,
-and must be imported using curly braces from the 'interval-resizer' package.
+## **3.0.0**
+- [Refactor] Component is now entirely written and typed to typescript.
+- [Removed] Dependency on prop-types, as well as babel dev dependencies.
+- [Added] Dependency on tslib and dev dependencies on react.
+- [Note] **MUST now import using curly braces, no longer default export.**
 
 ## **2.2.7**
-- [Fix] changes from 2.2.5 are now reflected in npm package, previously was not
+- [Fix] Changes from 2.2.5 are now reflected in npm package, previously was not
 built into npm package properly.
 
 ## **2.2.5**
-- [Refactor] componentWillReceiveProps now gives resizeTimeout the nextProps
-version of instantOnReceiveProps. Previously took in the outdated props, meaning
-you could run into issues where changing instantOnReceiveProps may not take
-effect until the next prop or window size change.
+- [Refactor] `componentWillReceiveProps` now gives resizeTimeout the nextProps
+version of `instantOnReceiveProps`. Previously took in the outdated props,
+meaning you could run into issues where changing instantOnReceiveProps may not
+take effect until the next prop or window size change.
 
 ## **2.2.0**
 - [Refactor] npm package now has reference to the window.document object, no
@@ -34,10 +40,6 @@ DOM.
 ## **2.0.0**
 - [New] Prop `documentRef` - allows the user to pass in a reference to the
 document object, interval-resizer now works as installed as an npm package.
-
-> Note: the Props uniqueId and documentRef in this version are both removed in
-versions 2.1.0 and 2.2.0 respectively, as fixes to that code remove the need for
-these props.
 
 ## **<2.0.0**
 
