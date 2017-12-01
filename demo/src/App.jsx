@@ -7,16 +7,13 @@ const propTypes = {
   componentMounted: PropTypes.bool.isRequired,
   bodyWords: PropTypes.number.isRequired,
   intervalUnit: PropTypes.number,
-  timeoutDelay: PropTypes.number,
   minHeight: PropTypes.number,
   maxHeight: PropTypes.number,
-  instantOnReceiveProps: PropTypes.bool.isRequired,
   screenWidthCutoff: PropTypes.number,
 };
 
 const defaultProps = {
   intervalUnit: null,
-  timeoutDelay: null,
   minHeight: null,
   maxHeight: null,
   screenWidthCutoff: null,
@@ -79,11 +76,9 @@ class App extends Component {
             <IntervalResizer
               intervalUnit={this.props.intervalUnit === '' ?
                 20 : Math.max(Number(this.props.intervalUnit), 20)}
-              timeoutDelay={this.props.timeoutDelay}
               minHeight={this.props.minHeight}
               maxHeight={this.props.maxHeight}
               className="resizing-widget"
-              instantOnReceiveProps={this.props.instantOnReceiveProps}
               screenWidthCutoff={this.props.screenWidthCutoff}
             >
               <div className="Outer">
