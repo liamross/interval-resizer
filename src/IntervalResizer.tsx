@@ -7,7 +7,7 @@
  * license. See the LICENSE file for details.
  */
 import * as React from 'react';
-import {IIntervalResizerProps} from "./IntervalResizer.Props";
+import {IIntervalResizerProps} from './IntervalResizer.Props';
 
 export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> {
   public static defaultProps = {
