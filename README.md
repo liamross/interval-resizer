@@ -176,7 +176,7 @@ the *internals*.
 
 ### minHeight - `number`
 
-**Default**: `null`
+**Default**: `0` (not applied)
 
 **Description**: The minimum height in pixels of the interval-resizer. If given,
 will not allow the component to become smaller than the provided height.
@@ -187,7 +187,7 @@ will not allow the component to become smaller than the provided height.
 
 ### maxHeight - `number`
 
-**Default**: `null`
+**Default**: `-1` (not applied)
 
 **Description**:  
 The maximum height in pixels of the interval-resizer. If given,
@@ -200,7 +200,7 @@ For if you don't want your component to grow beyond a certain height.
 
 ### className - `string`
 
-**Default**: `null`
+**Default**: `''` (no class)
 
 **Description**:  
 A value for the class attribute on the component.
@@ -212,7 +212,7 @@ For applying styling to the component, as it has no inherent styling.
 
 ### screenWidthCutoff - `number`
 
-**Default**: `0`
+**Default**: `0` (not applied)
 
 **Description**:  
 Defined the minimum width in pixels for interval resizing. Any
