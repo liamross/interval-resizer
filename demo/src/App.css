@@ -92,7 +92,7 @@ p {
 .Body {
   flex: 1 1 auto;
   padding: 8px 4px;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .Footer {

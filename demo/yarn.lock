@@ -3888,9 +3888,9 @@ interpret@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.4.tgz#820cdd588b868ffb191a809506d6c9c8f212b1b0"
 
-interval-resizer@^3.1.4:
-  version "3.1.4"
-  resolved "https://registry.yarnpkg.com/interval-resizer/-/interval-resizer-3.1.4.tgz#cb8f93b6f50e4d1bf3ebd80013ce535ca7ed8927"
+interval-resizer@^3.1.5:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/interval-resizer/-/interval-resizer-3.1.5.tgz#e75c5bf30bc710e94c7073b1018ddd3d804a9f2d"
   dependencies:
     tslib "^1.8.0"
 
