@@ -15,20 +15,20 @@ stories.add('Component Demo', () => {
   return (
     <App
       componentMounted={boolean('Component mounted', true)}
-      bodyWords={number('Body words', 172, {
+      bodyWords={number('Body words', 126, {
         range: true,
         min: 0,
         max: 2000,
         step: 5,
       })}
-      intervalUnit={number('intervalUnit (px)', 100, {
+      intervalUnit={number('intervalUnit (px)', 75, {
         range: true,
         min: 0,
         max: 1000,
         step: 1,
       })}
       minHeight={number('minHeight (px)', 0) || undefined}
-      maxHeight={number('maxHeight (px)', 0) || undefined}
+      maxHeight={number('maxHeight (px)', -1) || undefined}
       screenWidthCutoff={number('screenWidthCutoff (px)', 0) || undefined}
     />
   );

@@ -49,7 +49,7 @@ export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> 
     return (
       <div
         id={this._uid}
-        className={this.props.className}>
+        className={this.props.className || ''}>
         {this.props.children}
       </div>
     );
@@ -110,13 +110,13 @@ export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> 
   private _getIntervalHeight = (contentHeight: number, props: IIntervalResizerProps): number => {
     const {intervalUnit, minHeight, maxHeight} = props;
     let newHeight: number = Math.ceil(contentHeight / intervalUnit) * intervalUnit;
-    if (minHeight && minHeight > 0) {
+    if (typeof minHeight === 'number' && minHeight > 0) {
       newHeight = Math.max(
         newHeight,
         Math.ceil(minHeight / intervalUnit) * intervalUnit,
       );
     }
-    if (maxHeight && maxHeight > -1) {
+    if (typeof maxHeight === 'number' && maxHeight > -1) {
       newHeight = Math.min(
         newHeight,
         Math.floor(maxHeight / intervalUnit) * intervalUnit,
