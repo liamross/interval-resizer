@@ -1,5 +1,11 @@
-> Note: Only code changes are listed below, all other releases are documentation
-updates.
+# Change Log
+
+> Note: only changes to code are documented in this changelog. Any other changes
+are changes to documentation.
+
+## **3.1.5**
+- [Refactor] Fixed maxHeight (0 is now allowed - component max height will be
+limited to 0).
 
 ## **3.1.2**
 - [Refactor] Now uses nextProps for all incoming props when props change.
