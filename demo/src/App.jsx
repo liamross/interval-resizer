@@ -2,16 +2,7 @@ import React, { Component } from 'react';
 import { IntervalResizer } from 'interval-resizer';
 import './App.css';
 
-const lorem = ('Man oh man this is a pretty sweet demo. I bet whoever'
-  + ' made this really wanted to demo this application in an easy-to-use'
-  + ' way, and boy does it pay off. I mean look at this stuff! Granted, he'
-  + ' used an awesome open source thing called storybook because he saw AirBnB'
-  + ' use it for their datepicker component and thought it looked pretty cool.'
-  + ' Anyways this is an example dashboard component and as you can see, when'
-  + ' you add more text, it grows to the next-largest interval! Check this'
-  + ' project out on GitHub or use it in your next Dashboard Project! Make sure'
-  + ' you open an issue if you find any mistakes, or maybe even star it if you'
-  + ' like it, but hey I\'d never say that myself.').split(' ');
+const lorem = ('Try playing around with the word count to see how this component grows with a change to its internals. Also try adjusting the width by sliding the dividers within this demo to constrain the width of the component. If you find any issues with the component or the documentation, open an issue in the GitHub repository. If you have any improvement suggestions, either email me at the email listed on GitHub, or open an issue. If you’ve used this component in a project and are ok with me posting it as an example (or you just want to tell me about it), email me, I’d love to hear about it. I’m running out of things to say. I guess I’ll just have to start repeating.').split(' ');
 
 class App extends Component {
   constructor(props) {

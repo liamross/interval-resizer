@@ -15,7 +15,7 @@ stories.add('Component Demo', () => {
   return (
     <App
       componentMounted={boolean('Component mounted', true)}
-      bodyWords={number('Body words', 126, {
+      bodyWords={number('Body words', 125, {
         range: true,
         min: 0,
         max: 2000,
