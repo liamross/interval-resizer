@@ -39,4 +39,5 @@ yarn-error.log*
 /demo/.idea
 
 # hide npm builds
-/lib
+lib/*
+!lib/IntervalResizer.js
