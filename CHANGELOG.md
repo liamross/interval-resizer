@@ -1,7 +1,11 @@
-# Change Log
+Only versions where code functionality changed are documented in this log. All
+unmentioned versions are to documentation or are code cleanup.
 
-> Note: only changes to code are documented in this changelog. Any other changes
-are changes to documentation.
+## **3.2.0**
+- [Refactor] No longer relies on randomly generated ID, now uses refs.
+- [Refactor] Uses componentDidUpdate in order to adjust height on child prop
+change once component update is in the DOM, rather than using stale DOM when
+called from componentWillReceiveProps.
 
 ## **3.1.5**
 - [Refactor] Fixed maxHeight (0 is now allowed - component max height will be
@@ -51,8 +55,9 @@ DOM.
 document object, interval-resizer now works as installed as an npm package.
 
 ## **<2.0.0**
-
-- Versions prior to 2.0.0 had some issues referencing the DOM window.document
-object. However, I now have difficulty reproducing the bug, so they may actually
-be fine. However, many improvements have been made since prior to 2.0's release,
-so it is highly encouraged that you use the latest version.
+- [DEPRECATED] - Versions prior to 2.0.0 have been deprecated on NPM.
+- [Note] Versions prior to 2.0.0 had some issues referencing the DOM
+window.document object. However, I now have difficulty reproducing the bug, so
+they may actually be fine. Nevertheless, many improvements have been made since
+prior to 2.0's release, so it is highly encouraged that you use the latest
+version.

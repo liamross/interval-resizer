@@ -25,11 +25,11 @@ stories.add('Component Demo', () => {
         range: true,
         min: 0,
         max: 1000,
-        step: 1,
+        step: 5,
       })}
-      minHeight={number('minHeight (px)', 0) || undefined}
-      maxHeight={number('maxHeight (px)', -1) || undefined}
-      screenWidthCutoff={number('screenWidthCutoff (px)', 0) || undefined}
+      minHeight={number('minHeight (px)', 0)}
+      maxHeight={number('maxHeight (px)', -1)}
+      screenWidthCutoff={number('screenWidthCutoff (px)', 0)}
     />
   );
 });

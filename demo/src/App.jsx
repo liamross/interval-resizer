@@ -51,10 +51,10 @@ class App extends Component {
             <IntervalResizer
               intervalUnit={this.props.intervalUnit === '' ?
                 20 : Math.max(Number(this.props.intervalUnit), 20)}
-              minHeight={this.props.minHeight}
-              maxHeight={this.props.maxHeight}
+              minHeight={typeof this.props.minHeight === 'number' ? this.props.minHeight : 0}
+              maxHeight={typeof this.props.maxHeight === 'number' ? this.props.maxHeight : -1}
               className="resizing-widget"
-              screenWidthCutoff={this.props.screenWidthCutoff}
+              screenWidthCutoff={typeof this.props.screenWidthCutoff === 'number' ? this.props.screenWidthCutoff : 0}
             >
               <div className="Outer">
                 <div className="Header">

@@ -17,11 +17,10 @@ export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> 
     screenWidthCutoff: 0,
   };
 
-  private _uid: string;
+  private _resizerRef: HTMLDivElement | null;
 
   constructor(props: IIntervalResizerProps) {
     super(props);
-    this._uid = new Date().valueOf() + '-' + Math.ceil(Math.random() * 10e10);
     props.uniqueId && console.error('uniqueId is depreciated as of 2.1.0,'
       + ' and is no longer used.');
     props.documentRef && console.error('documentRef is depreciated as of 2.2.0,'
@@ -37,9 +36,9 @@ export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> 
     window.addEventListener('resize', this._resizeListener);
   };
 
-  public componentWillReceiveProps(nextProps: IIntervalResizerProps) {
-    this._setWrapperHeight(nextProps);
-  };
+  public componentDidUpdate(): void {
+    this._setWrapperHeight(this.props);
+  }
 
   public componentWillUnmount(): void {
     window.removeEventListener('resize', this._resizeListener);
@@ -48,8 +47,8 @@ export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> 
   public render(): React.ReactNode {
     return (
       <div
-        id={this._uid}
-        className={this.props.className || ''}>
+        className={this.props.className}
+        ref={ref => this._resizerRef = ref}>
         {this.props.children}
       </div>
     );
@@ -75,26 +74,20 @@ export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> 
    */
   private _setWrapperHeight = (props: IIntervalResizerProps): void => {
     const {screenWidthCutoff} = props;
-    const resizeWrapper = window.document.getElementById(this._uid);
-    if (resizeWrapper) {
-      const internalWrapper: HTMLElement = resizeWrapper.firstChild as HTMLElement;
-      if (!screenWidthCutoff
-        || window.document.documentElement.clientWidth > screenWidthCutoff) {
+    if (this._resizerRef) {
+      const internalWrapper = this._resizerRef.firstChild as HTMLElement;
+      if (!screenWidthCutoff || window.document.documentElement.clientWidth > screenWidthCutoff) {
         internalWrapper.style.height = 'auto';
         const contentHeight: number = internalWrapper.offsetHeight;
         const newHeight: number = this._getIntervalHeight(contentHeight, props);
-        resizeWrapper.style.height = `${String(newHeight)}px`;
+        this._resizerRef.style.height = `${String(newHeight)}px`;
         internalWrapper.style.height = '100%';
       } else {
-        resizeWrapper.style.height = 'auto';
+        this._resizerRef.style.height = 'auto';
         internalWrapper.style.height = 'auto';
       }
     } else {
-      console.error(
-        'Error: unable to find interval resizer in DOM.\n'
-        + 'ID of resizer: ' + this._uid + '\n'
-        + 'Component may have been unmounted without detection by React.',
-      );
+      console.error('Error: unable to find interval resizer in DOM.');
     }
   };
 
@@ -111,16 +104,10 @@ export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> 
     const {intervalUnit, minHeight, maxHeight} = props;
     let newHeight: number = Math.ceil(contentHeight / intervalUnit) * intervalUnit;
     if (typeof minHeight === 'number' && minHeight > 0) {
-      newHeight = Math.max(
-        newHeight,
-        Math.ceil(minHeight / intervalUnit) * intervalUnit,
-      );
+      newHeight = Math.max(newHeight, Math.ceil(minHeight / intervalUnit) * intervalUnit);
     }
-    if (typeof maxHeight === 'number' && maxHeight > -1) {
-      newHeight = Math.min(
-        newHeight,
-        Math.floor(maxHeight / intervalUnit) * intervalUnit,
-      );
+    if (typeof maxHeight === 'number' && maxHeight >= 0) {
+      newHeight = Math.min(newHeight, Math.floor(maxHeight / intervalUnit) * intervalUnit);
     }
     return newHeight;
   };
