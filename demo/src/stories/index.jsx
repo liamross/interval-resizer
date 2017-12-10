@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean, number, withKnobs } from '@storybook/addon-knobs';
 
-import App from '../App';
+import App, { demoTextLength } from '../App';
 
 const stories = storiesOf('3.2.2', module);
 
@@ -15,7 +15,7 @@ stories.add('Component Demo', () => {
   return (
     <App
       componentMounted={boolean('Component mounted', true)}
-      bodyWords={number('Body words', 125, {
+      bodyWords={number('Body words', demoTextLength, {
         range: true,
         min: 0,
         max: 2000,
