@@ -13,9 +13,8 @@ intervals.
 
 [![license](https://img.shields.io/npm/l/interval-resizer.svg)](https://github.com/liamross/interval-resizer/blob/master/LICENSE)
 [![npm version](https://badge.fury.io/js/interval-resizer.svg)](https://www.npmjs.com/package/interval-resizer)
-[![npm downloads monthly](https://img.shields.io/npm/dm/interval-resizer.svg)](https://www.npmjs.com/package/interval-resizer)
 [![dependencies status](https://david-dm.org/liamross/interval-resizer/status.svg)](https://david-dm.org/liamross/interval-resizer)
-[![gzip size](http://img.badgesize.io/liamross/interval-resizer/master/lib/IntervalResizer.js.svg?compression=gzip)](https://cdn.jsdelivr.net/npm/interval-resizer@3.2.1/)
+
 ## About the Component
 
 ### What is this for?
