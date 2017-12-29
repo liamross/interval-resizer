@@ -19,7 +19,7 @@
   "scripts": {
     "start": "start-storybook -p 9009 -s public",
     "build": "build-storybook -s public -o .out",
-    "deploy": "npm run build && storybook-to-ghpages",
+    "deploy": "npm run build && storybook-to-ghpages"
   },
   "devDependencies": {
     "@storybook/addon-knobs": "^3.2.16",
