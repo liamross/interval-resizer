@@ -73,7 +73,7 @@ export default class App extends Component {
             I'm a header
           </div>
           <div className="internals-content">
-            {/* see 'Styling' below for more info* /}
+            {/* see 'Styling' below for more info */}
           </div>
           <div className="some-footer">
             I'm a footer
