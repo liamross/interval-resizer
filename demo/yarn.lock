@@ -3888,9 +3888,9 @@ interpret@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.4.tgz#820cdd588b868ffb191a809506d6c9c8f212b1b0"
 
-interval-resizer@^3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/interval-resizer/-/interval-resizer-3.2.2.tgz#b500e63cc5ef4c2aa01cad5445874f3a6520a379"
+interval-resizer@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/interval-resizer/-/interval-resizer-3.2.3.tgz#1905974b68aca2a3855486eaa665dee0d2aac9bc"
   dependencies:
     tslib "^1.8.0"
 
@@ -7188,8 +7188,8 @@ tryit@^1.0.1:
   resolved "https://registry.yarnpkg.com/tryit/-/tryit-1.0.3.tgz#393be730a9446fd1ead6da59a014308f36c289cb"
 
 tslib@^1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.8.0.tgz#dc604ebad64bcbf696d613da6c954aa0e7ea1eb6"
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.8.1.tgz#6946af2d1d651a7b1863b531d6e5afa41aa44eac"
 
 tty-browserify@0.0.0:
   version "0.0.0"
