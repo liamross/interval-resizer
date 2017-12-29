@@ -9,24 +9,16 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lorem: this.setLorem(props.bodyWords),
+      lorem: App.setLorem(props.bodyWords),
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.bodyWords !== this.props.bodyWords) {
       this.setState({
-        lorem: this.setLorem(nextProps.bodyWords),
+        lorem: App.setLorem(nextProps.bodyWords),
       })
     }
-  }
-
-  setLorem(bodyWords) {
-    let returnedLorem = '';
-    for(let i = 0; i < bodyWords; i++) {
-      returnedLorem = returnedLorem + lorem[i % lorem.length] + ' ';
-    }
-    return returnedLorem;
   }
 
   render() {
@@ -77,6 +69,14 @@ class App extends Component {
         </div>
       </div>
     );
+  }
+
+  static setLorem(bodyWords) {
+    let returnedLorem = '';
+    for(let i = 0; i < bodyWords; i++) {
+      returnedLorem = returnedLorem + lorem[i % demoTextLength] + ' ';
+    }
+    return returnedLorem;
   }
 }
 export default App;

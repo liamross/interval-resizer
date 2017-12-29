@@ -1,7 +1,6 @@
 # Interval Resizer
 
-Interval Resizer is a React package for resizing components along pre-defined
-intervals.
+Interval Resizer is a React component for resizing along pre-defined intervals.
 
 [Click here to see a working demo](https://liamross.github.io/interval-resizer/)
 
@@ -52,8 +51,8 @@ to play around with functionality and props
 
 > See [Props](#props) for explanation and use for each prop.
 
-```jsx
-import React, {Component} from 'react'
+```jsx harmony
+import React, {Component} from 'react';
 import {IntervalResizer} from 'interval-resizer';
 // ...
 
