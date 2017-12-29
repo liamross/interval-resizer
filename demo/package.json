@@ -20,12 +20,6 @@
     "start": "npm run storybook",
     "build": "npm run build-storybook",
     "deploy": "npm run build-storybook && npm run deploy-storybook",
-    "react-predeploy": "npm run build",
-    "react-deploy": "gh-pages -d build",
-    "react-start": "react-scripts start",
-    "react-build": "react-scripts build",
-    "react-test": "react-scripts test --env=jsdom",
-    "react-eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public -o .out",
     "deploy-storybook": "storybook-to-ghpages"
