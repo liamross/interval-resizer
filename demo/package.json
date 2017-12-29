@@ -17,12 +17,9 @@
     "react-scripts": "1.0.17"
   },
   "scripts": {
-    "start": "npm run storybook",
-    "build": "npm run build-storybook",
-    "deploy": "npm run build-storybook && npm run deploy-storybook",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public -o .out",
-    "deploy-storybook": "storybook-to-ghpages"
+    "start": "start-storybook -p 9009 -s public",
+    "build": "build-storybook -s public -o .out",
+    "deploy": "npm run build && storybook-to-ghpages",
   },
   "devDependencies": {
     "@storybook/addon-knobs": "^3.2.16",
