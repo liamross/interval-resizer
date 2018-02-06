@@ -16,12 +16,13 @@
 </p>
 
 ---
-
+  
 | Site (click to open)                                   | Install command                                              |
-|--------------------------------------------------------|--------------------------------------------------------------|
+|:------------------------------------------------------:|--------------------------------------------------------------|
 | [npm](https://www.npmjs.com/package/interval-resizer)  | `npm i interval-resizer`                                     |
 | [yarn](https://yarn.pm/interval-resizer)               | `yarn add interval-resizer`                                  |
 | [GitHub](https://github.com/liamross/interval-resizer) | `git clone https://github.com/liamross/interval-resizer.git` |
+
 
 ## About the Component
 
