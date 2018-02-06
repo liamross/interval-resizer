@@ -139,19 +139,17 @@ your use case.
 
 Required
 
-- [intervalUnit](#intervalunit---number)
-- [children](#children---jsxelement)
+- [intervalUnit](#intervalunit)
+- [children](#children)
 
 Not Required
 
-- [minHeight](#minheight---number)
-- [maxHeight](#maxheight---number)
-- [className](#classname---string)
-- [screenWidthCutoff](#screenwidthcutoff---number)
+- [minHeight](#minheight)
+- [maxHeight](#maxheight)
+- [className](#classname)
+- [screenWidthCutoff](#screenwidthcutoff)
 
----
-
-### intervalUnit - `number`
+<h3><a name="intervalunit" href="#intervalunit">#</a> <b>intervalUnit</b> - <code>number</code></h3>
 
 **Default**: *none* - required Prop
 
@@ -167,9 +165,7 @@ of unused space within the component once it resizes to a larger height.
 Alternatively, a small value for intervalUnit will cause more accurate resizing,
 but less guarantee that your components will round to the same height.
 
----
-
-### children - `JSX.Element`
+<h3><a name="children" href="#children">#</a> <b>children</b> - <code>JSX.Element</code></h3>
 
 **Default**: *none* - required Prop
 
@@ -180,9 +176,7 @@ The internal content wrapped by the IntervalResizer.
 See [Styling](#styling) for a detailed explanation of how to structure
 the *internals*.
 
----
-
-### minHeight - `number`
+<h3><a name="minheight" href="#minheight">#</a> <b>minHeight</b> - <code>number</code></h3>
 
 **Default**: `0` (not applied)
 
@@ -191,9 +185,7 @@ will not allow the component to become smaller than the provided height.
 
 **Use**: For if you don't want your component to shrink beyond a certain height.
 
----
-
-### maxHeight - `number`
+<h3><a name="maxheight" href="#maxheight">#</a> <b>maxHeight</b> - <code>number</code></h3>
 
 **Default**: `-1` (not applied)
 
@@ -204,9 +196,7 @@ will not allow the component to become larger than the provided height.
 **Use**:  
 For if you don't want your component to grow beyond a certain height.
 
----
-
-### className - `string`
+<h3><a name="classname" href="#classname">#</a> <b>className</b> - <code>string</code></h3>
 
 **Default**: `''` (no class)
 
@@ -216,9 +206,7 @@ A value for the class attribute on the component.
 **Use**:  
 For applying styling to the component, as it has no inherent styling.
 
----
-
-### screenWidthCutoff - `number`
+<h3><a name="screenwidthcutoff" href="#screenwidthcutoff">#</a> <b>screenWidthCutoff</b> - <code>number</code></h3>
 
 **Default**: `0` (not applied)
 
