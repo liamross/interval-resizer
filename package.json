@@ -1,6 +1,6 @@
 {
   "name": "interval-resizer",
-  "version": "3.2.3",
+  "version": "3.2.4",
   "description": "Interval Resizer is a React wrapper for resizing components at pre-defined intervals.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
