@@ -25,6 +25,9 @@ yarn-error.log*
 # idea
 /.idea
 
+# assets
+/assets
+
 # hide unnecessary original files
 src/*
 !src/*.Props.ts

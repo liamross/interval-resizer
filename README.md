@@ -1,6 +1,8 @@
-# Interval Resizer
+<p align="center">
+  <img alt="Interval Resizer" src="assets/interval-resizer-header.png?raw=true" width="800">
+</p>
 
-Interval Resizer is a React component for resizing along pre-defined intervals.
+A React wrapper for resizing components at pre-defined intervals.
 
 [Click here to see a working demo](https://liamross.github.io/interval-resizer/)
 
