@@ -2,19 +2,26 @@
   <img alt="Interval Resizer" src="assets/interval-resizer-header.png?raw=true" width="800">
 </p>
 
-A React wrapper for resizing components at pre-defined intervals.
+<p align="center">
+  A React wrapper for resizing components at pre-defined intervals.<br />
+  <a href="https://liamross.github.io/interval-resizer/">
+    Click here to see a working demo
+  </a>
+</p>
 
-[Click here to see a working demo](https://liamross.github.io/interval-resizer/)
+<p align="center">
+  <a href="https://github.com/liamross/interval-resizer/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/npm/l/interval-resizer.svg"></a>
+  <a href="https://www.npmjs.com/package/interval-resizer"><img alt="NPM Version" src="https://badge.fury.io/js/interval-resizer.svg"></a>
+  <a href="https://david-dm.org/liamross/interval-resizer"><img alt="Dependencies" src="https://david-dm.org/liamross/interval-resizer/status.svg"></a>
+</p>
+
+---
 
 | Site (click to open)                                   | Install command                                              |
 |--------------------------------------------------------|--------------------------------------------------------------|
 | [npm](https://www.npmjs.com/package/interval-resizer)  | `npm i interval-resizer`                                     |
 | [yarn](https://yarn.pm/interval-resizer)               | `yarn add interval-resizer`                                  |
 | [GitHub](https://github.com/liamross/interval-resizer) | `git clone https://github.com/liamross/interval-resizer.git` |
-
-[![license](https://img.shields.io/npm/l/interval-resizer.svg)](https://github.com/liamross/interval-resizer/blob/master/LICENSE)
-[![npm version](https://badge.fury.io/js/interval-resizer.svg)](https://www.npmjs.com/package/interval-resizer)
-[![dependencies status](https://david-dm.org/liamross/interval-resizer/status.svg)](https://david-dm.org/liamross/interval-resizer)
 
 ## About the Component
 
