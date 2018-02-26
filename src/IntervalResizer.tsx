@@ -1,4 +1,4 @@
-/* IntervalResizer.(t|j)sx -- Interval Resizer is a React package for resizing
+/* IntervalResizer.(tsx|js) -- Interval Resizer is a React package for resizing
  * components along pre-defined intervals.
  *
  * Copyright (C) 2017 Liam Ross

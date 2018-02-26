@@ -1,6 +1,10 @@
 Only versions where code functionality changed are documented in this log. All
 unmentioned versions are to documentation or are code cleanup.
 
+## **3.3.0**
+- [Removed] Dependency on tslib, now defines `extends` within file. Now has
+zero dependencies besides React!
+
 ## **3.2.0**
 - [Refactor] No longer relies on randomly generated ID, now uses refs.
 - [Refactor] Uses componentDidUpdate in order to adjust height on child prop

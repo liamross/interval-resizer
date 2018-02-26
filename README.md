@@ -12,7 +12,6 @@
 <p align="center">
   <a href="https://github.com/liamross/interval-resizer/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/npm/l/interval-resizer.svg"></a>
   <a href="https://www.npmjs.com/package/interval-resizer"><img alt="NPM Version" src="https://badge.fury.io/js/interval-resizer.svg"></a>
-  <a href="https://david-dm.org/liamross/interval-resizer"><img alt="Dependencies" src="https://david-dm.org/liamross/interval-resizer/status.svg"></a>
 </p>
 
 ---
