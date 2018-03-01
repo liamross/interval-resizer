@@ -60,7 +60,7 @@ their corrective hinting, so it's just nice to have.
 
 > See [Props](#props) for explanation and use for each prop.
 
-```jsx harmony
+```jsx
 import React, { Component } from 'react';
 import { IntervalResizer } from 'interval-resizer';
 
