@@ -1,5 +1,7 @@
 <p align="center">
-  <img alt="Interval Resizer" src="assets/interval-resizer-header.png?raw=true" width="800">
+  <a href="https://www.npmjs.com/package/interval-resizer">
+    <img alt="Interval Resizer" src="assets/interval-resizer-header.png?raw=true" width="800">
+  </a>
 </p>
 
 <p align="center">
@@ -28,31 +30,29 @@
 ### What is this for?
 Interval-resizer is useful in a dashboard widget scenario, where you want your
 components to expand with their content, but you don't want a bunch of uneven
-heights. By setting your intervalUnit, you give the interval-resizer intervals
-to snap to, which means nice even heights among all your widget components, and
-a good end-user visual experience.
+heights. By setting your [intervalUnit](#intervalunit), you give the
+interval-resizer intervals to snap to, which means nice even heights among all
+your widget components, and a good end-user visual experience.
 
-### How does it do this?
-By allowing the *internals* to return to their original height just long enough
-to get a height measurement, the interval-resizer is able to calculate the next
-interval to size to, before reverting the *internals* back to fill the height.
-This all happens without any visual indication, meaning to the end-user it
-appears to be cleanly snapping between intervals whenever its content or the
-window width change.
+### How does it work?
+Whenever there is a change in the width of the window or a component update
+(triggered by prop changes or by any changes to the child wrapped in the
+interval-resizer), the interval-resizer will evaluate what the natural height of
+the *internals*. Then, the interval-resizer calculates the next interval to size
+to. This allows the *internals* to resize naturally, while still rounding to a
+clean interval height.
 
 ### Why is it in TypeScript?
-To allow for greater IDE correction, as well as built-in typing in the npm
-package. Don't worry, it works in both JavaScript and TypeScript projects, as it
-is compiled down into highly-compatible ES5.
+Don't worry, the npm package is in ES5 JavaScript! The source is written in
+TypeScript to generate a typings file just in case someone uses
+interval-resizer in a TypeScript project. Additionally some IDEs use typing in
+their corrective hinting, so it's just nice to have.
 
-## Get Started
-Options:
-1. Install the npm package and use it in your application  
-  `npm i interval-resizer`
-1. View the working demo [here](https://liamross.github.io/interval-resizer/)
-to play around with functionality and props
-1. Download from GitHub, and customize the original component:  
-  `git clone https://github.com/liamross/interval-resizer.git`
+### How big is it?
+
+**minify:** `~2200 bytes` (small)
+
+**minify + gzip:** `~900 bytes` (very small)
 
 ## Use
 
@@ -61,9 +61,8 @@ to play around with functionality and props
 > See [Props](#props) for explanation and use for each prop.
 
 ```jsx harmony
-import React, {Component} from 'react';
-import {IntervalResizer} from 'interval-resizer';
-// ...
+import React, { Component } from 'react';
+import { IntervalResizer } from 'interval-resizer';
 
 export default class App extends Component {
   // ...
@@ -101,8 +100,6 @@ is larger than its internals. As such, it is probably best if something inside
 is able to grow and fill the extra space. I personally do this with flex box,
 as shown in the following example:
 
-#### SCSS
-
 ```scss
 // This is the child you give to the interval-resizer component.
 // The styling can be anything, but keep in mind that the height
@@ -121,18 +118,14 @@ as shown in the following example:
   > .internals-content {
     flex: 1 1 auto;
     /*
-    same as:
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: auto;
+      same as:
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: auto;
     */
   }
 }
 ```
-
-Of course you can always use percentages, or have hard-coded height and just
-ensure they float or position how you want. The best method is the one that fits
-your use case.
 
 ## Props
 
