@@ -31,3 +31,6 @@ yarn-error.log*
 # hide unnecessary original files
 src/*
 !src/*.Props.ts
+
+# hide tsconfig
+tsconfig.json

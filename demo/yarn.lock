@@ -3888,9 +3888,9 @@ interpret@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.4.tgz#820cdd588b868ffb191a809506d6c9c8f212b1b0"
 
-interval-resizer@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/interval-resizer/-/interval-resizer-3.3.1.tgz#cb032e50344e8c640b34685f23d20e50be2fff00"
+interval-resizer@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/interval-resizer/-/interval-resizer-3.3.3.tgz#c9eacf4437d423b776155a3efb24cd9ff2ca911d"
 
 invariant@^2.2.2:
   version "2.2.2"
