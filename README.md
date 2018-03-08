@@ -148,7 +148,10 @@ but less guarantee that your components will round to the same height.
 **Default**: *none* - required Prop
 
 **Description**:  
-The internal content wrapped by the IntervalResizer.
+The internal content wrapped by the IntervalResizer. Note that child must be a
+single element (it may wrap as many elements as you want). This can be passed as
+a JSX child rather than a prop as shown in the
+[Inside your component](#inside-your-component) section.
 
 **Use**:  
 See [Styling](#styling) for a detailed explanation of how to structure
