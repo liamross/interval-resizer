@@ -97,35 +97,11 @@ export default class App extends Component {
 Style the internals of this component however you'd style any div that resizes
 with its content. However, keep in mind that the div will snap to a height that
 is larger than its internals. As such, it is probably best if something inside
-is able to grow and fill the extra space. I personally do this with flex box,
-as shown in the following example:
-
-```scss
-// This is the child you give to the interval-resizer component.
-// The styling can be anything, but keep in mind that the height
-// attribute will be overwritten by the interval-resizer in order
-// to switch between measuring the height and snapping to an
-// interval, so it's best to not put a height in here.
-.internals-wrapper {
-  display: flex;
-  flex-direction: column;
-
-  // This is an example of how to style at least one of the
-  // children inside of your internals-wrapper. By allowing it
-  // to flex-grow and flex-shrink, and making the flex-basis auto,
-  // this component will fill any remaining height after the
-  // component expands to the next-biggest interval.
-  > .internals-content {
-    flex: 1 1 auto;
-    /*
-      same as:
-      flex-grow: 1;
-      flex-shrink: 1;
-      flex-basis: auto;
-    */
-  }
-}
-```
+is able to grow and fill the extra space. This can easily be done using flexbox
+and `flex: 1 1 auto;` on one of the internal children. Additionally, the keep in
+mind that the height attribute of the child will be overwritten by the
+interval-resizer in order to switch between measuring the height and snapping to
+an interval, so it's best to not add a height property.
 
 ## Props
 
