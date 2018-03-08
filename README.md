@@ -97,7 +97,7 @@ export default class App extends Component {
 
 ### Styling
 
-In this section I will refer to the components above by their className
+> In this section I will refer to the child components above by their className
 attributes. Naturally these can be anything and follow any structure, this is
 simply for ease of explaining.
 
