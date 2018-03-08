@@ -10,38 +10,27 @@ import * as React from 'react';
 import {IIntervalResizerProps} from './IntervalResizer.Props';
 
 export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> {
-  public static defaultProps = {
-    minHeight: 0,
-    maxHeight: -1,
-    className: '',
-    screenWidthCutoff: 0,
-  };
 
   private _resizerRef: HTMLDivElement | null;
 
-  constructor(props: IIntervalResizerProps) {
-    super(props);
-    props.uniqueId && console.error('uniqueId is depreciated as of 2.1.0,'
-      + ' and is no longer used.');
-    props.documentRef && console.error('documentRef is depreciated as of 2.2.0,'
-      + ' and is no longer used.');
-    props.timeoutDelay && console.error('timeoutDelay is depreciated as of'
-      + ' 3.1.0, and is no longer used.');
-    props.instantOnReceiveProps && console.error('instantOnReceiveProps is'
-      + ' depreciated as of 3.1.0, and is no longer used.');
+  public static defaultProps = {
+    minHeight: 0,
+    maxHeight: -1,
+    className: undefined,
+    screenWidthCutoff: 0,
   };
 
   public componentDidMount(): void {
-    this._setWrapperHeight(this.props);
-    window.addEventListener('resize', this._resizeListener);
+    this._setWrapperHeight();
+    window.addEventListener('resize', this._setWrapperHeight);
   };
 
   public componentDidUpdate(): void {
-    this._setWrapperHeight(this.props);
+    this._setWrapperHeight();
   }
 
   public componentWillUnmount(): void {
-    window.removeEventListener('resize', this._resizeListener);
+    window.removeEventListener('resize', this._setWrapperHeight);
   };
 
   public render(): React.ReactNode {
@@ -55,31 +44,20 @@ export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> 
   };
 
   /**
-   * A pass-through to _setWrapperHeight, allows passing props instead of
-   * event from the listener, since sometimes we would like to call
-   * _setWrapperHeight directly with nextProps or from componentDidMount.
-   * @private
-   */
-  private _resizeListener = (): void => {
-    this._setWrapperHeight(this.props);
-  };
-
-  /**
    * Detects the internal wrapper height and sets the resize wrapper to the next
    * larger intervalUnit multiple, then adjusts the content to fit that height.
    * If the window is smaller than the screenWidthCutoff, then the component
    * will match the height of the internals with no intervals.
-   * @param {IIntervalResizerProps} props - The current props.
    * @private
    */
-  private _setWrapperHeight = (props: IIntervalResizerProps): void => {
-    const {screenWidthCutoff} = props;
+  private _setWrapperHeight = (): void => {
+    const {screenWidthCutoff} = this.props;
     if (this._resizerRef) {
       const internalWrapper = this._resizerRef.firstChild as HTMLElement;
       if (!screenWidthCutoff || window.document.documentElement.clientWidth > screenWidthCutoff) {
         internalWrapper.style.height = 'auto';
         const contentHeight: number = internalWrapper.offsetHeight;
-        const newHeight: number = this._getIntervalHeight(contentHeight, props);
+        const newHeight: number = this._getIntervalHeight(contentHeight);
         this._resizerRef.style.height = `${String(newHeight)}px`;
         internalWrapper.style.height = '100%';
       } else {
@@ -96,12 +74,11 @@ export class IntervalResizer extends React.Component<IIntervalResizerProps, {}> 
    * for the minHeight and maxHeight. Will override minHeight with maxHeight if
    * maxHeight is smaller than minHeight.
    * @param {number} contentHeight - The 'auto' height of the content.
-   * @param {IIntervalResizerProps} props - The current props.
    * @returns {number} - Returns a multiple of your intervalUnit.
    * @private
    */
-  private _getIntervalHeight = (contentHeight: number, props: IIntervalResizerProps): number => {
-    const {intervalUnit, minHeight, maxHeight} = props;
+  private _getIntervalHeight = (contentHeight: number): number => {
+    const {intervalUnit, minHeight, maxHeight} = this.props;
     let newHeight: number = Math.ceil(contentHeight / intervalUnit) * intervalUnit;
     if (typeof minHeight === 'number' && minHeight > 0) {
       newHeight = Math.max(newHeight, Math.ceil(minHeight / intervalUnit) * intervalUnit);

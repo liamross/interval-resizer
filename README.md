@@ -190,7 +190,7 @@ For if you don't want your component to grow beyond a certain height.
 
 <h3><a name="classname" href="#classname">#</a> <b>className</b> - <code>string</code></h3>
 
-**Default**: `''` (no class)
+**Default**: `undefined` (no class)
 
 **Description**:  
 A value for the class attribute on the component.

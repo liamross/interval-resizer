@@ -39,26 +39,22 @@ export interface IIntervalResizerProps extends React.HTMLAttributes<IntervalResi
    */
   screenWidthCutoff?: number;
   /**
-   * This property has been removed at 3.1.0, and will be removed from code
-   * at 4.0.0.
+   * This property has been removed at 3.1.0.
    * @deprecated
    */
   timeoutDelay?: number;
   /**
-   * This property has been removed at 3.1.0, and will be removed from code
-   * at 4.0.0.
+   * This property has been removed at 3.1.0.
    * @deprecated
    */
   instantOnReceiveProps?: boolean;
   /**
-   * This property has been removed at 2.1.0, and will be removed from code
-   * at 4.0.0.
+   * This property has been removed at 2.1.0.
    * @deprecated
    */
   uniqueId?: string;
   /**
-   * This property has been removed at 2.2.0, and will be removed from code
-   * at 4.0.0.
+   * This property has been removed at 2.2.0.
    * @deprecated
    */
   documentRef?: Document;
