@@ -28,6 +28,7 @@
 ## About the Component
 
 ### What is this for?
+
 Interval-resizer is useful in a dashboard widget scenario, where you want your
 components to expand with their content, but you don't want a bunch of uneven
 heights. By setting your [intervalUnit](#intervalunit), you give the
@@ -35,6 +36,7 @@ interval-resizer intervals to snap to, which means nice even heights among all
 your widget components, and a good end-user visual experience.
 
 ### How does it work?
+
 Whenever there is a change in the width of the window or a component update
 (triggered by prop changes or by any changes to the child wrapped in the
 interval-resizer), the interval-resizer will evaluate what the natural height of
@@ -43,6 +45,7 @@ to. This allows the *internals* to resize naturally, while still rounding to a
 clean interval height.
 
 ### Why is it in TypeScript?
+
 Don't worry, the npm package is in ES5 JavaScript! The source is written in
 TypeScript to generate a typings file just in case someone uses
 interval-resizer in a TypeScript project. Additionally some IDEs use typing in
@@ -50,9 +53,9 @@ their corrective hinting, so it's just nice to have.
 
 ### How big is it?
 
-**minify:** `~2200 bytes` (small)
+minify: `~2200 bytes`
 
-**minify + gzip:** `~900 bytes` (very small)
+minify + gzip: `~900 bytes`
 
 ## Use
 
@@ -94,14 +97,21 @@ export default class App extends Component {
 
 ### Styling
 
+In this section I will refer to the components above by their className
+attributes. Naturally these can be anything and follow any structure, this is
+simply for ease of explaining.
+
 Style the internals of this component however you'd style any div that resizes
-with its content. However, keep in mind that the div will snap to a height that
-is larger than its internals. As such, it is probably best if something inside
-is able to grow and fill the extra space. This can easily be done using flexbox
-and `flex: 1 1 auto;` on one of the internal children. Additionally, the keep in
-mind that the height attribute of the child will be overwritten by the
-interval-resizer in order to switch between measuring the height and snapping to
-an interval, so it's best to not add a height property.
+with its content. Note that the child (`internals-wrapper`) will snap to a
+height that is larger than its natural height, as it must reach an interval. As
+such, it is probably best if something inside is able to grow and fill the extra
+space. This can easily be done using flexbox and `flex: 1 1 auto;` on one of the
+internal children, for example `internals-content`. This is how it is done in
+the [demo](https://liamross.github.io/interval-resizer/).
+
+Keep in mind that the height attribute of the child (`internals-wrapper`) will
+be overwritten by the interval-resizer in order to switch between measuring the
+height and snapping to an interval, so it's best to not add a height property.
 
 ## Props
 
