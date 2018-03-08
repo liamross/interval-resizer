@@ -1,6 +1,14 @@
 Only versions where code functionality changed are documented in this log. All
 unmentioned versions are to documentation or are code cleanup.
 
+## **3.4.0**
+- [Refactor] Since in **3.2.0** componentWillReceiveProps was changed to
+componentDidUpdate, no longer a need for different props to be passed through
+functions. As such there is no longer a need for passthrough function from
+listeners, as functions no longer take any parameters.
+- [Removed] Passthrough function for listeners is removed.
+- [Removed] Depreciated warnings for depreciated props are removed.
+
 ## **3.3.0**
 - [Removed] Dependency on tslib, now defines `extends` within file. Now has
 zero dependencies besides React!

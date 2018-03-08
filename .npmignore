@@ -34,3 +34,6 @@ src/*
 
 # hide tsconfig
 tsconfig.json
+
+# hide yarn.lock
+yarn.lock
