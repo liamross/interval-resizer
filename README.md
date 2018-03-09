@@ -53,9 +53,9 @@ their corrective hinting, so it's just nice to have.
 
 ### How big is it?
 
-minify: `~2200 bytes`
+minify: `~1800 bytes`
 
-minify + gzip: `~900 bytes`
+minify + gzip: `~800 bytes`
 
 ## Use
 
