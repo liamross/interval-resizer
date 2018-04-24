@@ -17,13 +17,11 @@
 </p>
 
 ---
-  
-| Site (click to open)                                   | Install command                                              |
-|:------------------------------------------------------:|--------------------------------------------------------------|
-| [npm](https://www.npmjs.com/package/interval-resizer)  | `npm i interval-resizer`                                     |
-| [yarn](https://yarn.pm/interval-resizer)               | `yarn add interval-resizer`                                  |
-| [GitHub](https://github.com/liamross/interval-resizer) | `git clone https://github.com/liamross/interval-resizer.git` |
 
+|                 Site (click to open)                  | Install command             |
+| :---------------------------------------------------: | --------------------------- |
+| [npm](https://www.npmjs.com/package/interval-resizer) | `npm i interval-resizer`    |
+|       [yarn](https://yarn.pm/interval-resizer)        | `yarn add interval-resizer` |
 
 ## About the Component
 
@@ -40,16 +38,16 @@ your widget components, and a good end-user visual experience.
 Whenever there is a change in the width of the window or a component update
 (triggered by prop changes or by any changes to the child wrapped in the
 interval-resizer), the interval-resizer will evaluate what the natural height of
-the *internals*. Then, the interval-resizer calculates the next interval to size
-to. This allows the *internals* to resize naturally, while still rounding to a
+the _internals_. Then, the interval-resizer calculates the next interval to size
+to. This allows the _internals_ to resize naturally, while still rounding to a
 clean interval height.
 
 ### Why is it in TypeScript?
 
 Don't worry, the npm package is in ES5 JavaScript! The source is written in
-TypeScript to generate a typings file just in case someone uses
-interval-resizer in a TypeScript project. Additionally some IDEs use typing in
-their corrective hinting, so it's just nice to have.
+TypeScript to generate a typings file just in case someone uses interval-resizer
+in a TypeScript project. Additionally some IDEs use typing in their corrective
+hinting, so it's just nice to have.
 
 ### How big is it?
 
@@ -79,18 +77,14 @@ export default class App extends Component {
         screenWidthCutoff={screenWidthCutoff}
       >
         <div className="internals-wrapper">
-          <div className="some-header">
-            I'm a header
-          </div>
+          <div className="some-header">I'm a header</div>
           <div className="internals-content">
             {/* see 'Styling' below for more info */}
           </div>
-          <div className="some-footer">
-            I'm a footer
-          </div>
+          <div className="some-footer">I'm a footer</div>
         </div>
       </IntervalResizer>
-    )
+    );
   }
 }
 ```
@@ -98,8 +92,8 @@ export default class App extends Component {
 ### Styling
 
 > In this section I will refer to the child components above by their className
-attributes. Naturally these can be anything and follow any structure, this is
-simply for ease of explaining.
+> attributes. Naturally these can be anything and follow any structure, this is
+> simply for ease of explaining.
 
 Style the internals of this component however you'd style any div that resizes
 with its content. Note that the child (`internals-wrapper`) will snap to a
@@ -117,45 +111,43 @@ height and snapping to an interval, so it's best to not add a height property.
 
 Required
 
-- [intervalUnit](#intervalunit)
-- [children](#children)
+* [intervalUnit](#intervalunit)
+* [children](#children)
 
 Not Required
 
-- [minHeight](#minheight)
-- [maxHeight](#maxheight)
-- [className](#classname)
-- [screenWidthCutoff](#screenwidthcutoff)
+* [minHeight](#minheight)
+* [maxHeight](#maxheight)
+* [className](#classname)
+* [screenWidthCutoff](#screenwidthcutoff)
 
 <h3><a name="intervalunit" href="#intervalunit">#</a> <b>intervalUnit</b> - <code>number</code></h3>
 
-**Default**: *none* - required Prop
+**Default**: _none_ - required Prop
 
 **Description**:  
-Defines the interval in pixels to adjust height by when
-resizing.
+Defines the interval in pixels to adjust height by when resizing.
 
 **Use**:  
-This is the main feature of the component; it allows for your component
-to resize to a clean pixel height, at intervals defined using intervalUnit. A
-large value for intervalUnit means nice clean sizing, but the downside is lots
-of unused space within the component once it resizes to a larger height.
-Alternatively, a small value for intervalUnit will cause more accurate resizing,
-but less guarantee that your components will round to the same height.
+This is the main feature of the component; it allows for your component to resize
+to a clean pixel height, at intervals defined using intervalUnit. A large value for
+intervalUnit means nice clean sizing, but the downside is lots of unused space within
+the component once it resizes to a larger height. Alternatively, a small value for
+intervalUnit will cause more accurate resizing, but less guarantee that your components
+will round to the same height.
 
 <h3><a name="children" href="#children">#</a> <b>children</b> - <code>JSX.Element</code></h3>
 
-**Default**: *none* - required Prop
+**Default**: _none_ - required Prop
 
 **Description**:  
-The internal content wrapped by the IntervalResizer. Note that child must be a
-single element (it may wrap as many elements as you want). This can be passed as
-a JSX child rather than a prop as shown in the
-[Inside your component](#inside-your-component) section.
+The internal content wrapped by the IntervalResizer. Note that child must be a single
+element (it may wrap as many elements as you want). This can be passed as a JSX child
+rather than a prop as shown in the [Inside your component](#inside-your-component)
+section.
 
 **Use**:  
-See [Styling](#styling) for a detailed explanation of how to structure
-the *internals*.
+See [Styling](#styling) for a detailed explanation of how to structure the _internals_.
 
 <h3><a name="minheight" href="#minheight">#</a> <b>minHeight</b> - <code>number</code></h3>
 
@@ -171,8 +163,8 @@ will not allow the component to become smaller than the provided height.
 **Default**: `-1` (not applied)
 
 **Description**:  
-The maximum height in pixels of the interval-resizer. If given,
-will not allow the component to become larger than the provided height.
+The maximum height in pixels of the interval-resizer. If given, will not allow the
+component to become larger than the provided height.
 
 **Use**:  
 For if you don't want your component to grow beyond a certain height.
@@ -192,12 +184,11 @@ For applying styling to the component, as it has no inherent styling.
 **Default**: `0` (not applied)
 
 **Description**:  
-Defined the minimum width in pixels for interval resizing. Any
-browser window width below this amount will be resized normally with content
-(height: auto).
+Defined the minimum width in pixels for interval resizing. Any browser window width
+below this amount will be resized normally with content (height: auto).
 
 **Use**:  
-Used in tandem with styling breakpoints, this allows you to stop
-interval resizing below a certain screen width. The main use case is when you
-only have one column of dashboard widgets and you no longer need the heights to
-round off as the components fall one after another in a scrolling UI.
+Used in tandem with styling breakpoints, this allows you to stop interval resizing
+below a certain screen width. The main use case is when you only have one column
+of dashboard widgets and you no longer need the heights to round off as the components
+fall one after another in a scrolling UI.

@@ -8,7 +8,8 @@
  */
 import * as React from 'react';
 import { IntervalResizer } from './IntervalResizer';
-export interface IIntervalResizerProps extends React.HTMLAttributes<IntervalResizer> {
+export interface IIntervalResizerProps
+  extends React.HTMLAttributes<IntervalResizer> {
   /**
    * Defines the pixel interval to adjust height by when resizing.
    */
@@ -19,23 +20,23 @@ export interface IIntervalResizerProps extends React.HTMLAttributes<IntervalResi
   children: React.ReactNode;
   /**
    * The minimum height in pixels of the interval-resizer.
-   * @defaultvalue null
+   * @default null
    */
   minHeight?: number;
   /**
    * The maximum height in pixels of the interval-resizer.
-   * @defaultvalue null
+   * @default null
    */
   maxHeight?: number;
   /**
    * A value for the class attribute on the component.
-   * @defaultvalue null
+   * @default null
    */
   className?: string;
   /**
    * Defined the minimum width in pixels for interval resizing. At any window
    * width below this, interval-resizer height adjusts normally with content.
-   * @defaultvalue 0
+   * @default 0
    */
   screenWidthCutoff?: number;
   /**

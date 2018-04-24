@@ -8,6 +8,7 @@
     "type": "git",
     "url": "git+https://github.com/liamross/interval-resizer.git"
   },
+  "keywords": ["react", "ux", "dashboard", "resize"],
   "author": "Liam Ross",
   "license": "MIT",
   "peerDependencies": {
@@ -15,6 +16,7 @@
   },
   "devDependencies": {
     "@types/react": "^16.0.25",
+    "prettier": "^1.12.1",
     "react": "^16.1.1"
   }
 }
