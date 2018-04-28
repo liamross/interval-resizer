@@ -20,17 +20,17 @@ export interface IIntervalResizerProps
   children: React.ReactNode;
   /**
    * The minimum height in pixels of the interval-resizer.
-   * @default null
+   * @default 0
    */
   minHeight?: number;
   /**
    * The maximum height in pixels of the interval-resizer.
-   * @default null
+   * @default -1
    */
   maxHeight?: number;
   /**
    * A value for the class attribute on the component.
-   * @default null
+   * @default undefined
    */
   className?: string;
   /**
