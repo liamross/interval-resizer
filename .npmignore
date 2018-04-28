@@ -37,3 +37,6 @@ tsconfig.json
 
 # hide yarn.lock
 yarn.lock
+
+# hide prettier config files
+.prettierrc
