@@ -2,9 +2,9 @@
 
 ## Get it running
 
-1. Make sure your terminal is cd to ~\interval-resizer\demo
-1. Run `npm install` or `yarn` to install node_modules
-1. Run `npm start` or `yarn start` to view demo locally
+1.  Make sure your terminal is cd to ~\interval-resizer\demo
+1.  Run `npm install` or `yarn` to install node_modules
+1.  Run `npm start` or `yarn start` to view demo locally
 
 ## If you choose to edit IntervalResizer.tsx
 

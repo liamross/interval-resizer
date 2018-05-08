@@ -1,6 +1,9 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/interval-resizer">
-    <img alt="Interval Resizer" src="assets/interval-resizer-header.png?raw=true" width="800">
+    <img
+      alt="Interval Resizer"
+      src="assets/interval-resizer-header.png?raw=true"
+      width="800" >
   </a>
 </p>
 
@@ -12,15 +15,19 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/liamross/interval-resizer/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/npm/l/interval-resizer.svg"></a>
-  <a href="https://www.npmjs.com/package/interval-resizer"><img alt="NPM Version" src="https://badge.fury.io/js/interval-resizer.svg"></a>
+  <a href="https://github.com/liamross/interval-resizer/blob/master/LICENSE">
+    <img alt="License" src="https://img.shields.io/npm/l/interval-resizer.svg">
+  </a>
+  <a href="https://www.npmjs.com/package/interval-resizer">
+    <img alt="NPM Version" src="https://badge.fury.io/js/interval-resizer.svg">
+  </a>
 </p>
 
 ---
 
-|                 Site (click to open)                  | Install command             |
-| :---------------------------------------------------: | --------------------------- |
-| [npm](https://www.npmjs.com/package/interval-resizer) | `npm i interval-resizer`    |
+|                 Site (click to open)                  |       Install command       |
+| :---------------------------------------------------: | :-------------------------: |
+| [npm](https://www.npmjs.com/package/interval-resizer) |  `npm i interval-resizer`   |
 |       [yarn](https://yarn.pm/interval-resizer)        | `yarn add interval-resizer` |
 
 ## About the Component
