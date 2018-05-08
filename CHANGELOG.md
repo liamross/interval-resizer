@@ -1,7 +1,11 @@
 Only versions where code functionality changed are documented in this log. All
 unmentioned versions are to documentation or are code cleanup.
 
-## **3.4.0**
+## **3.5.1**
+
+* [Types] Updated TypeScript documentation and typing.
+
+## **3.5.0**
 
 * [Refactor] Since in **3.2.0** componentWillReceiveProps was changed to
   componentDidUpdate, no longer a need for different props to be passed through
