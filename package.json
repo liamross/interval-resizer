@@ -1,6 +1,6 @@
 {
   "name": "interval-resizer",
-  "version": "3.5.0",
+  "version": "3.5.1",
   "description": "Interval Resizer is a React wrapper for resizing components at pre-defined intervals.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -8,7 +8,12 @@
     "type": "git",
     "url": "git+https://github.com/liamross/interval-resizer.git"
   },
-  "keywords": ["react", "ux", "dashboard", "resize"],
+  "keywords": [
+    "react",
+    "ux",
+    "dashboard",
+    "resize"
+  ],
   "author": "Liam Ross",
   "license": "MIT",
   "peerDependencies": {
