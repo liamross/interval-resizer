@@ -10,16 +10,25 @@
   },
   "dependencies": {
     "gh-pages": "^1.0.0",
-    "interval-resizer": "^3.5.0",
+    "interval-resizer": "^3.5.1",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-scripts": "1.0.17"
   },
   "scripts": {
-    "start": "start-storybook -p 9009 -s public",
-    "build": "build-storybook -s public -o .out",
-    "deploy": "npm run build && storybook-to-ghpages"
+    "start": "npm run storybook",
+    "build": "npm run build-storybook",
+    "deploy": "npm run build-storybook && npm run deploy-storybook",
+    "react-predeploy": "npm run build",
+    "react-deploy": "gh-pages -d build",
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test --env=jsdom",
+    "react-eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public -o .out",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "devDependencies": {
     "@storybook/addon-knobs": "^3.2.16",
