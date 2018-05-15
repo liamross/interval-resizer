@@ -21,14 +21,22 @@
   <a href="https://www.npmjs.com/package/interval-resizer">
     <img alt="NPM Version" src="https://badge.fury.io/js/interval-resizer.svg">
   </a>
+  <a href="https://bundlephobia.com/result?p=interval-resizer">
+    <img alt="Minified Size" src="https://img.shields.io/bundlephobia/min/interval-resizer.svg">
+  </a>
+  <a href="https://bundlephobia.com/result?p=interval-resizer">
+    <img alt="Zipped Size" src="https://img.shields.io/bundlephobia/minzip/interval-resizer.svg">
+  </a>
 </p>
 
 ---
 
-|                 Site (click to open)                  |       Install command       |
-| :---------------------------------------------------: | :-------------------------: |
-| [npm](https://www.npmjs.com/package/interval-resizer) |  `npm i interval-resizer`   |
-|       [yarn](https://yarn.pm/interval-resizer)        | `yarn add interval-resizer` |
+## Use this Component
+
+| Site (click to open)                                  | Install command             |
+| :---------------------------------------------------- | :-------------------------- |
+| [npm](https://www.npmjs.com/package/interval-resizer) | `npm i interval-resizer`    |
+| [yarn](https://yarn.pm/interval-resizer)              | `yarn add interval-resizer` |
 
 ## About the Component
 
@@ -55,12 +63,6 @@ Don't worry, the npm package is in ES5 JavaScript! The source is written in
 TypeScript to generate a typings file just in case someone uses interval-resizer
 in a TypeScript project. Additionally some IDEs use typing in their corrective
 hinting, so it's just nice to have.
-
-### How big is it?
-
-minify: `~1800 bytes`
-
-minify + gzip: `~800 bytes`
 
 ## Use
 

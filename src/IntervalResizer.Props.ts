@@ -39,24 +39,4 @@ export interface IIntervalResizerProps
    * @default 0
    */
   screenWidthCutoff?: number;
-  /**
-   * This property has been removed at 3.1.0.
-   * @deprecated
-   */
-  timeoutDelay?: number;
-  /**
-   * This property has been removed at 3.1.0.
-   * @deprecated
-   */
-  instantOnReceiveProps?: boolean;
-  /**
-   * This property has been removed at 2.1.0.
-   * @deprecated
-   */
-  uniqueId?: string;
-  /**
-   * This property has been removed at 2.2.0.
-   * @deprecated
-   */
-  documentRef?: Document;
 }

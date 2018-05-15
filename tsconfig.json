@@ -5,29 +5,20 @@
     "target": "es5",
     "module": "commonjs",
     "jsx": "react",
-    "declaration": true,
     "sourceMap": true,
-    "experimentalDecorators": true,
+    "declaration": true,
+    "removeComments": true,
     "noUnusedLocals": false,
-    "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": [
-      "es2017",
-      "dom"
-    ],
-    "types": [
-      "jest",
-      "webpack-env"
-    ],
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["es2017", "dom"],
+    "types": ["jest", "webpack-env"],
     "paths": {
-      "interval-resizer/lib/*": [
-        "./src/*"
-      ]
+      "interval-resizer/lib/*": ["./src/*"]
     }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
